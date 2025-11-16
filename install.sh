@@ -21,56 +21,56 @@
 # Authors: Unknown
 #          Tomáš Hnyk <tomashnyk@gmail.com>
 
-# If there is no kdedialog, create an error log and abort.
-if [ ! `command -v kdialog` ]; then
+# If there is no kdialog, create an error log and abort.
+if ! command -v kdialog >/dev/null 2>&1; then
     touch ~/kim6_installation_failed.log
-    echo "You tried to install KDE Image Menu 6 (KIM 6) service menu for KDE's Dolphin file manager in an environment that does not have kdialog. Most of the functionality would not work and the installation was aborted. Please install KDE< or kdialog and try again. This message was created by this command: $(realpath "$0")." > ~/kim6_installation_failed.log
-    exit
+    echo "You tried to install KDE Image Menu 6 (KIM 6) service menu for KDE's Dolphin file manager in an environment that does not have kdialog. Most of the functionality would not work and the installation was aborted. Please install KDE or kdialog and try again. This message was created by this command: $(realpath "$0")." > ~/kim6_installation_failed.log
+    exit 1
 fi
 
-#function to show install errors and declare install_log variable to store the errors
+# Function to show install errors and declare install_log variable to store the errors
 install_log=""
 spit_install_log() {
-kdialog --title "KIM 6 Installation problems" --error="$install_log"
+    kdialog --title "KIM 6 Installation problems" --error="$install_log"
 }
 
 # Test for presence of dependencies, if not present, a user is presented with a log after installation
-if [ ! `command -v qtpaths6` ]; then
-    install_log="$install_log""KDE Image Menu 6 is meant to be run under KDE 6, but I can't find executable <b>qtpaths6</b> that should be a part of your QT base installation. Without qtpaths6, I cannot check for installations directories.  Please check your system installation. Installation was aborted."
+if ! command -v qtpaths6 >/dev/null 2>&1; then
+    install_log="$install_log""KDE Image Menu 6 is meant to be run under KDE 6, but I can't find executable <b>qtpaths6</b> that should be a part of your QT base installation. Without qtpaths6, I cannot check for installation directories. Please check your system installation. Installation was aborted."
     spit_install_log
     exit 1
 fi
-if [ ! `command -v montage` ]; then
+if ! command -v montage >/dev/null 2>&1; then
     install_log="$install_log""Cannot find executable <b>montage</b>  Please install it. It is usually in package <b>graphicsmagick</b> Without it, the montage feature will not work.<br><br>"
 fi
-
-if [ ! `command -v mogrify` ]; then
+if ! command -v mogrify >/dev/null 2>&1; then
     install_log="$install_log""Cannot find executable <b>mogrify</b>  Please install it. It  is usually in package <b>graphicsmagick</b> Without it, a lot of features like resizing and rotating and other transformations will not work.<br><br>"
 fi
-if [ ! `command -v convert` ]; then
+if ! command -v convert >/dev/null 2>&1; then
     install_log="$install_log""Cannot find executable <b>convert</b>  Please install it. It is usually in package <b>graphicsmagick</b> Without it, format conversion will not work.<br><br>"
 fi
-if [ ! `command -v ffmpeg` ]; then
+if ! command -v ffmpeg >/dev/null 2>&1; then
     install_log="$install_log""Cannot find executable <b>ffmpeg</b>.  Please install it. It may be in package <b>ffmpeg</b>. Without it, video resizing will not work.<br><br>"
 else
    if ! ffmpeg -encoders 2>&1 | grep -q libx264; then
-   install_log="$install_log""Cannot find encoder <b>libx264</b> for FFmpeg. Encoding video with it will not work. Please install it.<br><br>"
+       install_log="$install_log""Cannot find encoder <b>libx264</b> for FFmpeg. Encoding video with it will not work. Please install it.<br><br>"
    fi
    if ! ffmpeg -encoders 2>&1 | grep -q libx265; then
-   install_log="$install_log""Cannot find encoder <b>libx265</b> for FFmpeg. Encoding video with it will not work. Please install it.<br><br>"
+       install_log="$install_log""Cannot find encoder <b>libx265</b> for FFmpeg. Encoding video with it will not work. Please install it.<br><br>"
    fi
 fi
-if [ ! `command -v xdg-email` ]; then
-    install_log="$install_log""Cannot find executable <b>xdg-email</b>  Please install it. It may be in package <b>xdg-utils</b> Without it, sending an image by e-mail will not work.<br><br>"
+if ! command -v xdg-email >/dev/null 2>&1; then
+    install_log="$install_log""Cannot find executable <b>xdg-email</b>  Please install it. It may be in package <b>xdg-utils</b>. Without it, sending an image by e-mail will not work.<br><br>"
 fi
+
 if [[ -n "$install_log" ]]; then
     install_log="$install_log""Some <b>dependencies are missing</b>. The installation continued, but some functionality might not work.<br><br>"
 fi
 
 
-# sets directories from and to which we install
+# Sets directories from and to which we install
 src_folder="$(dirname "$(realpath "$0")")"
-kim_install_dir=`qtpaths6 --locate-dirs GenericDataLocation kio/servicemenus | cut -f 1 -d ':'`
+kim_install_dir=$(qtpaths6 --locate-dirs GenericDataLocation kio/servicemenus | cut -f 1 -d ':')
 kim_helper_files="$kim_install_dir"/kim6
 
 # This checks if qtpaths6 returned an existing directory
@@ -83,16 +83,18 @@ fi
 # First uninstall so we do not leave anything behind when potentially renaming, removing or moving stuff from version to version
 "$src_folder"/uninstall.sh --no_message
 
-# Test if there are pregenerated .desktop files and if not generate them (normally in a release they would be, during developement not)
-if compgen -G "$src_folder"/*.desktop > /dev/null; then
+# Test if there are pregenerated .desktop files and if not generate them (normally in a release they would be, during development not)
+if compgen -G "$src_folder"/src/kim_*.desktop >/dev/null; then
     desktop_files_generated=false
 else
     desktop_files_generated=true
-    if [ ! `command -v intltool-merge` ]; then
-        install_log="$install_log""You are probably trying to install KIM6 from git and do not have pregenerated .desktop files.<br>They are generated by the tool <b>intltool-merge</b>, usually found in package <b>intltool</b>.<br>Please install it. The installation was attempted, but it failed.<br><br>"
+    if ! command -v intltool-merge >/dev/null 2>&1; then
+        install_log="$install_log""You are probably trying to install KIM6 from git and do not have pregenerated .desktop files.<br>They are generated by the tool <b>intltool-merge</b>, usually found in package <b>intltool</b>.<br>Please install it. The installation was aborted.<br><br>"
+        spit_install_log
+        exit 1
     else
         for desk_ini in "$src_folder"/src/*.desktop.in
-            do
+        do
             new_desktop_file_filename="${desk_ini%.in}"
             intltool-merge --desktop-style "$src_folder"/po/ "$desk_ini"  "$new_desktop_file_filename" > /dev/null
             chmod +x "$new_desktop_file_filename"
@@ -100,14 +102,27 @@ else
     fi
 fi
 
-# install desktopl
+# install helper files and desktop files
 mkdir -p "$kim_helper_files"
-cp -pr "$src_folder"/src/gallery -pr "$src_folder"/docs "$src_folder"/po "$src_folder"/src/bin "$src_folder"/src/kim_translation "$src_folder"/ABOUT "$src_folder"/LICENSE "$kim_helper_files"/
+
+cp -pr "$src_folder"/src/gallery \
+       "$src_folder"/po \
+       "$src_folder"/src/bin \
+       "$src_folder"/src/kim_translation \
+       "$src_folder"/ABOUT \
+       "$src_folder"/LICENSE \
+       "$kim_helper_files"/
+
+# copy docs if present
+if [ -d "$src_folder/docs" ]; then
+    cp -pr "$src_folder"/docs "$kim_helper_files"/
+fi
+
 cp -pr "$src_folder"/src/kim_*.desktop "$kim_install_dir"
 
 # Replace the path in desktop and other files with the installed path
 for file in "$kim_install_dir"/kim_*.desktop; do
-    sed -i "s|Exec=kim|Exec='$kim_helper_files/bin/kim'|g" "$file"
+    sed -i "s|Exec=kim|Exec=$kim_helper_files/bin/kim|g" "$file"
 done
 for file in "$kim_helper_files"/bin/kim_*; do
     sed -i "s|KIM_INST_TTT|kim_inst='$kim_helper_files'|g" "$file"
@@ -116,27 +131,26 @@ done
 sed -i "s|LOCALE_SOURCE_TTT|'$kim_helper_files/locale'|g" "$kim_helper_files/kim_translation"
 
 # install translation mo files
-if [ ! `command -v msgfmt` ]; then
+if ! command -v msgfmt >/dev/null 2>&1; then
     install_log="$install_log""The <b>msgfmt</b> command was not found, translation files were not generated and KIM6 will only be available in English. The command is usually provided by the package <b>gettext</b>. Please install it and then install KIM6 again.<br><br>"
 else
     for i in "$kim_helper_files"/po/*.po; do
-        TRANSLANG=`basename -s .po $i`
-        mkdir -p "$kim_helper_files"/locale/$TRANSLANG/LC_MESSAGES
-        msgfmt -o "$kim_helper_files"/locale/$TRANSLANG/LC_MESSAGES/kim6.mo $i
+        TRANSLANG=$(basename -s .po "$i")
+        mkdir -p "$kim_helper_files/locale/$TRANSLANG/LC_MESSAGES"
+        msgfmt -o "$kim_helper_files/locale/$TRANSLANG/LC_MESSAGES/kim6.mo" "$i"
     done
 fi
 
 # po files do not need to be installed after generating locale
-rm -rf "$kim_helper_files/"po
+rm -rf "$kim_helper_files/po"
 
 # in case we generated desktop files, remove them
 if [ "$desktop_files_generated" = true ] ; then
     rm "$src_folder"/src/*.desktop
 fi
-
-# if error were encoutered, display them, otherwise the succes message will only be seen when installed manually from a terminal, not from GUI
+# if errors were encountered, display them, otherwise the success message will only be seen when installed manually from a terminal, not from GUI
 if [[ "$install_log" == "" ]]; then
-    echo "Kim has been succesfully installed. Good bye!"
+    echo "KIM6 has been successfully installed. Goodbye."
 else
     spit_install_log
 fi
