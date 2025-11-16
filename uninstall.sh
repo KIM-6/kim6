@@ -18,14 +18,25 @@
 # Authors: Unknown
 #          Tomáš Hnyk <tomashnyk@gmail.com>
 
-kim_install_dir=`qtpaths6 --locate-dirs GenericDataLocation kio/servicemenus | cut -f 1 -d ':'`
+# Determine KDE servicemenu install directory
+if ! command -v qtpaths6 >/dev/null 2>&1; then
+    echo "qtpaths6 not found. Cannot determine KDE servicemenu directory."
+    exit 1
+fi
 
-rm -f $kim_install_dir/kim_*.desktop 2&> /dev/null
-rm -rf $kim_install_dir/kim6 2&> /dev/null
+kim_install_dir=$(qtpaths6 --locate-dirs GenericDataLocation kio/servicemenus | cut -f 1 -d ':')
+
+if [[ -z "$kim_install_dir" || ! -d "$kim_install_dir" ]]; then
+    echo "Could not determine KIM6 installation directory."
+    exit 1
+fi
+
+# Remove desktop files and helper directory
+rm -f "$kim_install_dir"/kim_*.desktop 2>/dev/null
+rm -rf "$kim_install_dir"/kim6 2>/dev/null
 
 if [[ "$1" == "--no_message" ]]; then
     : # Say nothing when called from install script
 else
-    echo "Kim6 has been removed. Good bye."
+    echo "KIM6 has been removed. Goodbye."
 fi
-
