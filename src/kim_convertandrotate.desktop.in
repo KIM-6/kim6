@@ -18,8 +18,8 @@
 
 [Desktop Entry]
 Type=Service
-ServiceTypes=KonqPopupMenu/Plugin,image/*
-Actions=JPEG;PNG;GIF;TIFF;PDF;ConvCustom;_SEPARATOR_;GrayScale;Sepia;_SEPARATOR_;AutoRot;Rot90;Rot180;Rot270;RotCustom;_SEPARATOR_;Flip;Flop
+MimeType=image/*;
+Actions=JPEG;PNG;GIF;TIFF;PDF;WEBP;AVIF;ConvCustom;_SEPARATOR_;GrayScale;Sepia;_SEPARATOR_;AutoRot;Rot90;Rot180;Rot270;RotCustom;_SEPARATOR_;Flip;Flop
 Encoding=UTF-8
 _X-KDE-Submenu=Kim — Convert and Rotate
 
@@ -47,6 +47,20 @@ Exec=kim_convert tiff %U
 _Name=Convert to PDF
 Icon=application-pdf
 Exec=kim_convert pdf %U
+
+[Desktop Action WEBP]
+Name=Convert to WebP
+Name[es]=Convertir a WebP
+Name[fr]=Convertir en WebP
+Icon=image
+Exec=kim_convert webp %U
+
+[Desktop Action AVIF]
+Name=Convert to AVIF
+Name[es]=Convertir a AVIF
+Name[fr]=Convertir en AVIF
+Icon=image
+Exec=kim_convert avif %U
 
 [Desktop Action ConvCustom]
 _Name=Convert custom ...
