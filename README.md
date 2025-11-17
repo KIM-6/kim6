@@ -87,7 +87,71 @@ You can also run individual scripts directly:
 ```
 ./kim_resize ~/example.jpg 300x300
 ```
+## Web Export Quality (`WEB_Q`)
 
+KIM6’s Web Export tool (`kim_webexport`) creates resized images optimized for websites, email, and social media.  
+Beginning with version 2.0.1+, KIM6 introduces a configurable Web Export quality setting via the `WEB_Q` environment variable.
+
+### Default Behavior
+
+If the user does not define a custom value, KIM6 uses:
+
+```
+WEB_Q=90
+```
+
+A default of **90** was chosen because it provides excellent visual quality on modern displays while still producing significantly smaller files than maximum-quality images.
+
+### User Override (Advanced)
+
+Users may override the default Web Export quality by setting `WEB_Q` before launching Dolphin or running the script.
+
+#### Example: Smaller files for email or bulk uploads
+
+```bash
+export WEB_Q=75
+```
+
+#### Example: Aggressive compression for minimal file sizes
+
+```bash
+export WEB_Q=60
+```
+
+#### One-time override for a single Dolphin session
+
+```bash
+WEB_Q=80 dolphin
+```
+
+### How It Works
+
+During Web Export, KIM6 applies the quality setting to ImageMagick using:
+
+```bash
+-quality "$WEB_Q"
+```
+
+This affects:
+
+- JPEG Web Export  
+- WebP Web Export  
+- AVIF Web Export (where quality applies)  
+- Every WebExport size preset in the service menus  
+
+If `WEB_Q` is not set explicitly, KIM6 silently falls back to **90**.
+
+### Applies To
+
+The `WEB_Q` variable is used in:
+
+- `kim_webexport`  
+- All WebExport presets in `kim_compressandresize.desktop`  
+- Any new WebExport actions added by users or maintainers  
+
+---
+
+This allows users to fine-tune Web Export output quality without modifying any script files.
 ## History
 
 - KIM6 is a fork for KDE 6 of KIM5: [KIM5 fork](https://github.com/caco3/kim5)
