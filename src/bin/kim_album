@@ -21,6 +21,32 @@
 # Author: Unknown
 
 SOURCE_TRANSLATION_TTT
+
+# Optional threading control: choose a sensible default for ImageMagick
+if [ -n "${KIM_THREADS:-}" ]; then
+    # User override wins
+    export MAGICK_THREAD_LIMIT="$KIM_THREADS"
+else
+    cores=""
+    if command -v nproc >/dev/null 2>&1; then
+        cores=$(nproc 2>/dev/null || echo "")
+    elif command -v getconf >/dev/null 2>&1; then
+        cores=$(getconf _NPROCESSORS_ONLN 2>/dev/null || echo "")
+    fi
+
+    # Fallback if detection fails or looks bogus
+    if ! printf '%s\n' "$cores" | grep -Eq '^[0-9]+$' || [ "$cores" -le 0 ]; then
+        cores=4
+    fi
+
+    threads=$((cores - 1))
+    if [ "$threads" -lt 1 ]; then
+        threads=1
+    fi
+
+    export MAGICK_THREAD_LIMIT="$threads"
+fi
+
 dir="$1";
 nb=`kdialog --radiolist "$(gettext "Kim — Select album type:")" 1 "$(gettext "1x1 portrait album")"  off 2 "$(gettext "1x1 landscape album")"  off 3 "$(gettext "1x2 landscape album")"  off 4 "$(gettext "2x1 portrait album")"  off 5 "$(gettext "2x2 landscape album")" on 6 "$(gettext "3x2 portrait album")" off 7 "$(gettext "3x4 landscape album")" off 8 "$(gettext "4x4 landscape album")" off`
 
