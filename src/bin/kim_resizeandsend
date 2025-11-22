@@ -24,6 +24,32 @@
 #          Raphaël Pinson <raphink@raphink.net>
 
 SOURCE_TRANSLATION_TTT
+
+# Optional threading control: choose a sensible default for ImageMagick
+if [ -n "${KIM_THREADS:-}" ]; then
+    # User override wins
+    export MAGICK_THREAD_LIMIT="$KIM_THREADS"
+else
+    cores=""
+    if command -v nproc >/dev/null 2>&1; then
+        cores=$(nproc 2>/dev/null || echo "")
+    elif command -v getconf >/dev/null 2>&1; then
+        cores=$(getconf _NPROCESSORS_ONLN 2>/dev/null || echo "")
+    fi
+
+    # Fallback if detection fails or looks bogus
+    if ! printf '%s\n' "$cores" | grep -Eq '^[0-9]+$' || [ "$cores" -le 0 ]; then
+        cores=4
+    fi
+
+    threads=$((cores - 1))
+    if [ "$threads" -lt 1 ]; then
+        threads=1
+    fi
+
+    export MAGICK_THREAD_LIMIT="$threads"
+fi
+
 #test -n "$KDEHOME" || KDEHOME="`kde4-config --localprefix`"; export KDEHOME
 TMPDIR=`mktemp -d /tmp/kim.XXXXXXXX` || exit 1
 
