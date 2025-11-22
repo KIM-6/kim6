@@ -87,6 +87,87 @@ You can also run individual scripts directly:
 ```
 ./kim_resize ~/example.jpg 300x300
 ```
+## Multithreaded Image Processing (Optional)
+
+KIM6 performs many CPU-intensive operations using ImageMagick (`magick`, `mogrify`, `montage`, `identify`).  
+Beginning with version 2.0.1+, KIM6 includes optional multithreading control to improve performance during large batch operations.
+
+### Automatic Thread Selection (Default)
+
+If the user does not specify any custom settings, KIM6 automatically:
+
+1. Detects the number of available CPU cores  
+2. Uses **cores minus one** as the ImageMagick thread limit  
+3. Ensures at least **one** thread is always used  
+
+Examples:
+
+| CPU Cores | Threads Used |
+|----------:|--------------:|
+| 16        | 15            |
+| 12        | 11            |
+| 8         | 7             |
+| 4         | 3             |
+| 2         | 1             |
+
+This default behavior provides strong performance while keeping the system responsive during image operations.
+
+### User Override (Advanced)
+
+Users may explicitly control the number of threads by setting the environment variable `KIM_THREADS`.  
+If set, this value overrides automatic detection.
+
+#### Set a global value
+
+```bash
+export KIM_THREADS=4
+```
+
+#### One-time override for a single Dolphin session
+
+```bash
+KIM_THREADS=6 dolphin
+```
+
+#### Disable multithreading entirely
+
+```bash
+export KIM_THREADS=1
+```
+
+### How It Works
+
+KIM6 maps the user-provided or auto-detected thread count to:
+
+```bash
+MAGICK_THREAD_LIMIT
+```
+
+All ImageMagick tools used by KIM6 respect this variable, including:
+
+- `magick`
+- `mogrify`
+- `montage`
+- `identify`
+
+No configuration files or UI changes are required.
+
+### Applies To
+
+Threading control is active for:
+
+- Image compression  
+- Image resizing  
+- Web export processing  
+- Album (montage) generation  
+- Print/contact sheet generation  
+- Collage / pele-mele  
+- Multiburst / animation  
+- Gallery generation  
+- Resize-and-send  
+- Image treatments and filters  
+
+All lightweight operations continue to run normally without threading adjustments.
 
 ## History
 
