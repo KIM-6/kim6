@@ -27,7 +27,7 @@ SOURCE_TRANSLATION_TTT
 FILE="";
 RESOLUTION="$1"; # hd720/hd1080
 CRF="$2"; # 17 / 23 / 29
-CODEC="$3"; # x264 / x265
+CODEC="$3"; # libx264 / libx265
 DIR="$4";
 let "nbfiles = ($# -1)/2"
 kdialog --title "$(gettext "Kim")" --yesnocancel "$(gettext "Do you want to create new files?")" --yes-label "$(gettext "Create new")" --no-label "$(gettext "Replace existing")"

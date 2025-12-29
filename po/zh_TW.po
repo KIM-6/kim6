@@ -393,51 +393,51 @@ msgid "WebExport: 1024x1024 at 75 %"
 msgstr "網頁匯出：1024x1024 比例 75%"
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:2
-msgid "Transcode video to 1280x720, good quality, x265"
+msgid "Transcode video to 1280x720, good quality, libx265"
 msgstr ""
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:3
-msgid "Transcode video to 1280x720, medium quality, x265"
+msgid "Transcode video to 1280x720, medium quality, libx265"
 msgstr ""
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:4
-msgid "Transcode video to 1280x720, bad quality, x265"
+msgid "Transcode video to 1280x720, bad quality, libx265"
 msgstr ""
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:5
-msgid "Transcode video to 1280x720, good quality, x264"
+msgid "Transcode video to 1280x720, good quality, libx264"
 msgstr ""
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:6
-msgid "Transcode video to 1280x720, medium quality, x264"
+msgid "Transcode video to 1280x720, medium quality, libx264"
 msgstr ""
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:7
-msgid "Transcode video to 1280x720, bad quality, x264"
+msgid "Transcode video to 1280x720, bad quality, libx264"
 msgstr ""
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:8
-msgid "Transcode video to 1920x1080, good quality, x265"
+msgid "Transcode video to 1920x1080, good quality, libx265"
 msgstr ""
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:9
-msgid "Transcode video to 1920x1080, medium quality, x265"
+msgid "Transcode video to 1920x1080, medium quality, libx265"
 msgstr ""
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:10
-msgid "Transcode video to 1920x1080, bad quality, x265"
+msgid "Transcode video to 1920x1080, bad quality, libx265"
 msgstr ""
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:11
-msgid "Transcode video to 1920x1080, good quality, x264"
+msgid "Transcode video to 1920x1080, good quality, libx264"
 msgstr ""
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:12
-msgid "Transcode video to 1920x1080, medium quality, x264"
+msgid "Transcode video to 1920x1080, medium quality, libx264"
 msgstr ""
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:13
-msgid "Transcode video to 1920x1080, bad quality, x264"
+msgid "Transcode video to 1920x1080, bad quality, libx264"
 msgstr ""
 
 #: ../src/kim_convertandrotate.desktop.in.h:1
