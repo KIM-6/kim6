@@ -78,7 +78,6 @@ _Name=Add text annotation
 Icon=text
 Exec=kim_treatment mark %D %U
 
-
 [Desktop Action Manual]
 _Name=KIM 6 Manual
 Icon=help-contents
