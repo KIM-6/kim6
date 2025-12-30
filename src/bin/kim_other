@@ -22,7 +22,6 @@
 #          Raphaël Pinson <raphink@raphink.net>
 
 SOURCE_TRANSLATION_TTT
-ATTACHMENTS="";
 ACTION="$1";
 KIM_INST_TTT
 

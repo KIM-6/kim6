@@ -24,7 +24,7 @@
 #          Raphaël Pinson <raphink@raphink.net>
 
 SOURCE_TRANSLATION_TTT
-ATTACHMENTS="";
+ATTACHMENT="";
 SCELTA="$1";
 DIR="$2";
 let "nbfiles = ($# -1)/2" 
@@ -45,25 +45,25 @@ case $? in
                 qdbus $dbusRef close
                 exit 1
             fi
-            ATTACHMENTS="$i"
+            ATTACHMENT="$i"
             let "counter +=1"
-            qdbus $dbusRef setLabelText "$(gettext "Kim — Treatment of file: ") `basename "$ATTACHMENTS"`"
+            qdbus $dbusRef setLabelText "$(gettext "Kim — Treatment of file: ") `basename "$ATTACHMENT"`"
             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value "$counter"
             case "$SCELTA" in
                 gray)
-                    mogrify -colorspace gray -- "$ATTACHMENTS"
+                    mogrify -colorspace gray -- "$ATTACHMENT"
                 ;;
                 sepia)
-                    mogrify -sepia-tone 80% -- "$ATTACHMENTS"
+                    mogrify -sepia-tone 80% -- "$ATTACHMENT"
                 ;;
                 border)
                     case "$color" in
-                    1) mogrify -border 10x10 -bordercolor white -- "$ATTACHMENTS";;
-                    2) mogrify -border 10x10 -bordercolor black -- "$ATTACHMENTS";;
+                    1) mogrify -border 10x10 -bordercolor white -- "$ATTACHMENT";;
+                    2) mogrify -border 10x10 -bordercolor black -- "$ATTACHMENT";;
                     esac
                 ;;
                 mark)
-                    mogrify -font SheerBeauty -pointsize 20 -draw "gravity southeast  text 0,0 '$annotation'" -- "$ATTACHMENTS"
+                    mogrify -font SheerBeauty -pointsize 20 -draw "gravity southeast  text 0,0 '$annotation'" -- "$ATTACHMENT"
                 ;;
                 *)
                     exit 1
@@ -84,25 +84,25 @@ case $? in
                 qdbus $dbusRef close
                 exit 1
             fi
-            ATTACHMENTS="$i"
+            ATTACHMENT="$i"
             let "counter +=1"
-            qdbus $dbusRef setLabelText "$(gettext "Kim — Treatment of file: ") `basename "$ATTACHMENTS"`"
+            qdbus $dbusRef setLabelText "$(gettext "Kim — Treatment of file: ") `basename "$ATTACHMENT"`"
             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value "$counter"
             case "$SCELTA" in
                 gray)
-                    magick -- "$ATTACHMENTS" -colorspace gray "$DIR/gray_`basename "$ATTACHMENTS"`"
+                    magick -- "$ATTACHMENT" -colorspace gray "$DIR/gray_`basename "$ATTACHMENT"`"
                 ;;
                 sepia)
-                    magick -- "$ATTACHMENTS" -sepia-tone 80% "$DIR/sepia_`basename "$ATTACHMENTS"`"
+                    magick -- "$ATTACHMENT" -sepia-tone 80% "$DIR/sepia_`basename "$ATTACHMENT"`"
                 ;;
                 border)
                     case "$color" in
-                    1) magick -- "$ATTACHMENTS" -border 10x10 -bordercolor white "$DIR/border_`basename "$ATTACHMENTS"`";;
-                    2) magick -- "$ATTACHMENTS" -border 10x10 -bordercolor black "$DIR/border_`basename "$ATTACHMENTS"`";;
+                    1) magick -- "$ATTACHMENT" -border 10x10 -bordercolor white "$DIR/border_`basename "$ATTACHMENT"`";;
+                    2) magick -- "$ATTACHMENT" -border 10x10 -bordercolor black "$DIR/border_`basename "$ATTACHMENT"`";;
                     esac
                 ;;
                 mark)
-                    magick -- "$ATTACHMENTS" -font SheerBeauty -pointsize 20 -draw "gravity southeast  text 0,0 '$annotation'" "$DIR"/text_`basename "$ATTACHMENTS"`
+                    magick -- "$ATTACHMENT" -font SheerBeauty -pointsize 20 -draw "gravity southeast  text 0,0 '$annotation'" "$DIR"/text_`basename "$ATTACHMENT"`
                 ;;
                 *)
                     exit 1
