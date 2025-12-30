@@ -19,7 +19,7 @@
 [Desktop Entry]
 Type=Service
 MimeType=image/*;
-Actions=JPEG;PNG;GIF;TIFF;PDF;WEBP;AVIF;ConvCustom;_SEPARATOR_;GrayScale;Sepia;_SEPARATOR_;AutoRot;Rot90;Rot180;Rot270;RotCustom;_SEPARATOR_;Flip;Flop
+Actions=JPEG;PNG;GIF;BMP;TIFF;PDF;WEBP;AVIF;ConvCustom;_SEPARATOR_;GrayScale;Sepia;_SEPARATOR_;AutoRot;Rot90;Rot180;Rot270;RotCustom;_SEPARATOR_;Flip;Flop
 Encoding=UTF-8
 _X-KDE-Submenu=Kim — Convert and Rotate
 
@@ -38,6 +38,11 @@ _Name=Convert to GIF
 Icon=image-gif
 Exec=kim_convert gif %U
 
+[Desktop Action BMP]
+_Name=Convert to BMP (bitmap)
+Icon=image-bmp
+Exec=kim_convert "bmp -define bmp:format=bmp5" %U
+
 [Desktop Action TIFF]
 _Name=Convert to TIFF
 Icon=image-tiff
@@ -50,15 +55,11 @@ Exec=kim_convert pdf %U
 
 [Desktop Action WEBP]
 Name=Convert to WebP
-Name[es]=Convertir a WebP
-Name[fr]=Convertir en WebP
 Icon=image
 Exec=kim_convert webp %U
 
 [Desktop Action AVIF]
 Name=Convert to AVIF
-Name[es]=Convertir a AVIF
-Name[fr]=Convertir en AVIF
 Icon=image
 Exec=kim_convert avif %U
 
