@@ -24,7 +24,6 @@ SOURCE_TRANSLATION_TTT
 FILE="";
 let "nbfiles = $#"
 
-#test -n "$KDEHOME" || KDEHOME="`kde4-config --localprefix`"; export KDEHOME
 TMPDIR=`mktemp -d /tmp/kim.XXXXXXXX` || exit 1
 
 SIZE=`kdialog --inputbox "$(gettext "Size of small images:")" 400x400`;
@@ -44,7 +43,6 @@ for i in "$@";do
         #test if cancel button has been pushed
         if [[ "$(qdbus $dbusRef wasCancelled)" == "true" ]] ; then
             qdbus $dbusRef close
-            #rm -rf "$KDEHOME"/tmp-"$HOST"/kim.*
             rm -rf $TMPDIR
             exit 1
         fi
@@ -54,7 +52,7 @@ for i in "$@";do
         while [ -e "$TMPDIR/pelemele_$RANDOM.png" ]; do
             RANDOM=`perl -e 'print int(rand(1000000))'`;
         done
-        magick -resize $SIZE -- $i "$TMPDIR/$FILE"
+        magick -- $i -resize $SIZE "$TMPDIR/$FILE"
         magick -- "$TMPDIR/$FILE" \
             -bordercolor white  -border $BORDER \
             -bordercolor grey60 -border 1 \
@@ -62,7 +60,6 @@ for i in "$@";do
             -background  black  \( +clone -shadow 60x4+4+4 \) +swap \
             -background  none   -flatten \
             -depth 8  -quality 95 "$TMPDIR/pelemele_$RANDOM.png"
-        #    -depth 8  -quality 95 "$TMPDIR/pelemele_$FILE.png"
         qdbus $dbusRef setLabelText "$(gettext "Kim — resizing of file: ") $FILE"
          qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value "$counter"
         fi;
@@ -70,6 +67,5 @@ done
 qdbus $dbusRef close;
 montage -background "$COLOR" -tile "$TILE" -geometry "-$OVER-$OVER" -- "$TMPDIR"/pelemele_*.png `kdialog --getsavefilename ~ *.png`;
 
-#rm -rf "$KDEHOME"/tmp-"$HOST"/kim.*;
 rm -rf $TMPDIR
 
