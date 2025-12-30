@@ -1,9 +1,9 @@
 # KDE Image Menu 6 — KIM6
 KIM6 is a service menu for the KDE Plasma desktop. It adds context-menu actions in Dolphin and Folder View so you can resize, convert and batch-process images (and some video formats) directly from the file manager.
 
-KDE store link: [KDE Store](https://store.kde.org/p/2307290/)
+KDE store link: https://store.kde.org/p/2307290/
 
-The manual: [KIM6 manual](https://kim-6.github.io/kim6/)
+The manual: https://kim-6.github.io/kim6/
 
 ![Screenshot](KIM6.png)
 
@@ -31,7 +31,7 @@ The manual: [KIM6 manual](https://kim-6.github.io/kim6/)
 
 1. Open: Dolphin → Settings → Configure Dolphin → Services.
 2. Search for “KIM6” and install it.
-3. If it does not appear, try changing the sorting order in Dolphin's service list, which will refresh the view.
+3. If it does not appear, try changing the sorting order in Dolphin's service list (reported as https://bugs.kde.org/show_bug.cgi?id=508140)
 
 ### Option 2: Install using `servicemenuinstaller` with a downloaded release
 
@@ -54,20 +54,18 @@ cd kim6
 ### Option 1: Remove from Dolphin
 
 Use Dolphin’s service menu configuration to remove KIM6.  
-On some systems, uninstall may need to be triggered twice because the service list does not always refresh correctly.
+On some systems, uninstall may need to be triggered twice (reported as https://bugs.kde.org/show_bug.cgi?id=508142).
 
 ### Option 2: Remove using `servicemenuinstaller`
 
 If you installed KIM6 using a `.tar.gz` archive:
 
-1. Locate the archive. Dolphin usually stores downloaded service menu archives under:
 ```
-~/.local/share/servicemenu-download
+servicemenuinstaller uninstall ~/.local/share/servicemenu-download/kim6*.tar.gz
 ```
-2. Uninstall with:
-```
-servicemenuinstaller uninstall PATH_TO_ARCHIVE.tar.gz
-```
+
+In the unusual case when the archive was stored elsewhere, you need to locate it and change the path above.
+
 ### Option 3: Remove from a cloned repository
 
 From inside the cloned repository:
@@ -82,22 +80,23 @@ From inside the cloned repository:
 3. Choose an action, such as “Compress and resize → Webexport 1920 px”.
 4. Confirm whether to overwrite originals or create new files.
 
-You can also run individual scripts directly:
+You can also run individual scripts (usually stored in `~/.local/share/kio/servicemenus/kim6/bin/`) directly:
 
 ```
 ./kim_resize ~/example.jpg 300x300
 ```
 
+
 ## History
 
-- KIM6 is a fork for KDE 6 of KIM5: [KIM5 fork](https://github.com/caco3/kim5)
-- One KDE4 fork is here: [KDE4 fork](https://store.kde.org/p/998188/)
-- The original version for KDE4 is here: [Original KDE4 version](https://store.kde.org/p/1126887/)
-- KIM itself goes as far back as KDE 3. There is a website that was still functioning in 2025: [KDE3](http://bouveyron.free.fr/kim/index.html)
+- KIM6 is a fork for KDE 6 of KIM5: https://github.com/caco3/kim5
+- One KDE4 fork is here: https://store.kde.org/p/998188/
+- The original version for KDE4 is here: https://store.kde.org/p/1126887/
+- KIM itself goes as far back as KDE 3. There is a website that was still functioning in 2025: http://bouveyron.free.fr/kim/index.html
 - A huge majority of the code is from the original authors, thanks to them!
 
 ## See also
-There is a functionally similar but independent project: [kde-service-menu-reimage](https://github.com/irfanhakim-as/kde-service-menu-reimage)
+There is a functionally similar but independent project: https://github.com/irfanhakim-as/kde-service-menu-reimage
 
 ## Developer and translator information
 
@@ -153,7 +152,7 @@ tar -czf kim6_$VERSION.tar.gz --exclude=README.md  --exclude=KIM6.png --exclude=
 rm src/kim_compressandresize.desktop src/kim_compressandresizevideo.desktop src/kim_convertandrotate.desktop src/kim_publication.desktop
 ```
 
-After making the archive, it is manually uploaded here to Github and then to [Store](https://store.kde.org/p/2307290/)
+After making the archive, it is manually uploaded here to Github and then to https://store.kde.org/p/2307290/
 
 ## Development
 
