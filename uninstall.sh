@@ -20,7 +20,7 @@
 
 # Determine KDE servicemenu install directory
 if ! command -v qtpaths6 >/dev/null 2>&1; then
-    echo "qtpaths6 not found. Cannot determine KDE servicemenu directory."
+    echo "qtpaths6 not found. Cannot determine KDE servicemenu directory. Exiting without uninstalling."
     exit 1
 fi
 
