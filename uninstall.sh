@@ -18,24 +18,48 @@
 # Authors: Unknown
 #          Tomáš Hnyk <tomashnyk@gmail.com>
 
-# Determine KDE servicemenu install directory
-if ! command -v qtpaths6 >/dev/null 2>&1; then
-    echo "qtpaths6 not found. Cannot determine KDE servicemenu directory. Exiting without uninstalling."
+# Get install directory according to the XDG standard (previously qtpaths6 were used, but Ubuntu has them in development package)
+# This assumes we installed the same way (root vs normal user) as we uninstall
+NO_MESSAGE=$1
+
+if [ "$(id -u)" -eq 0 ]; then
+    # We are root, installed in system directories
+    SYSTEM_DIRS="${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+    for dir in $(echo "$SYSTEM_DIRS" | tr ":" "\n"); do
+        if [ -d "$dir/kio/servicemenus" ]; then
+            kim_install_dir="$dir/kio/servicemenus"
+            break
+        fi
+    done
+    message1="The KDE servicemenu install prefix could not be determined. Uninstallation was aborted. Uninstall is run as root. Didn't you install as normal user?"
+    message2="The KIM 6 executables directory not found. You are trying to uninstall as root. Did you install as normal user?"
+else
+    # We are not root, installed in user directory
+    kim_install_dir="${XDG_DATA_HOME:-$HOME/.local/share}/kio/servicemenus"
+    message1="The KDE servicemenu install prefix could not be determined. Uninstallation was aborted. Uninstall is run as normal user. Didn't you install as root?"
+    message2="The KIM 6 executables directory not found. You are trying to uninstall as normal user. Did you install as root?"
+fi
+
+# This checks if we got an existing install directory
+if [[ ! -d "$kim_install_dir" || -z "$kim_install_dir" ]]; then
+    echo $message1
     exit 1
 fi
 
-kim_install_dir=$(qtpaths6 --locate-dirs GenericDataLocation kio/servicemenus | cut -f 1 -d ':')
-
-if [[ -z "$kim_install_dir" || ! -d "$kim_install_dir" ]]; then
-    echo "Could not determine KIM6 installation directory."
-    exit 1
+if [[ ! -d "$kim_install_dir/kim6" ]]; then
+    if [[ $NO_MESSAGE == "--no_message" ]]; then
+        : # Say nothing when called from install script
+    else
+        echo $message2
+        NO_MESSAGE="--no_message"
+    fi
 fi
 
 # Remove desktop files and helper directory
 rm -f "$kim_install_dir"/kim_*.desktop 2>/dev/null
 rm -rf "$kim_install_dir"/kim6 2>/dev/null
 
-if [[ "$1" == "--no_message" ]]; then
+if [[ $NO_MESSAGE == "--no_message" ]]; then
     : # Say nothing when called from install script
 else
     echo "KIM6 has been removed. Goodbye."

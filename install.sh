@@ -35,11 +35,6 @@ spit_install_log() {
 }
 
 # Test for presence of dependencies, if not present, a user is presented with a log after installation
-if ! command -v qtpaths6 >/dev/null 2>&1; then
-    install_log="$install_log""KDE Image Menu 6 is meant to be run under KDE 6, but I can't find executable <b>qtpaths6</b> that should be a part of your QT base installation. Without qtpaths6, I cannot check for installation directories. Please check your system installation. Installation was aborted."
-    spit_install_log
-    exit 1
-fi
 if ! command -v montage >/dev/null 2>&1; then
     install_log="$install_log""Cannot find executable <b>montage</b>  Please install it. It is usually in package <b>graphicsmagick</b> Without it, the montage feature will not work.<br><br>"
 fi
@@ -67,18 +62,32 @@ if [[ -n "$install_log" ]]; then
     install_log="$install_log""Some <b>dependencies are missing</b>. The installation continued, but some functionality might not work.<br><br>"
 fi
 
+# Get install directory according to the XDG standard (previously qtpaths6 were used, but Ubuntu has them in development package)
+if [ "$(id -u)" -eq 0 ]; then
+    # We are root, installing in system directories
+    SYSTEM_DIRS="${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+    for dir in $(echo "$SYSTEM_DIRS" | tr ":" "\n"); do
+        if [ -d "$dir/kio/servicemenus" ]; then
+            kim_install_dir="$dir/kio/servicemenus"
+            break
+        fi
+    done
+else
+    # We are not root, installing in user directory
+    kim_install_dir="${XDG_DATA_HOME:-$HOME/.local/share}/kio/servicemenus"
+fi
 
-# Sets directories from and to which we install
-src_folder="$(dirname "$(realpath "$0")")"
-kim_install_dir=$(qtpaths6 --locate-dirs GenericDataLocation kio/servicemenus | cut -f 1 -d ':')
-kim_helper_files="$kim_install_dir"/kim6
-
-# This checks if qtpaths6 returned an existing directory
+# This checks if we got an existing install directory
 if [[ ! -d "$kim_install_dir" ]]; then
     install_log="<b>Error</b> fetching the KDE install prefix. Installation was aborted."
     spit_install_log
     exit 1
 fi
+
+# Target directory to install helper files
+kim_helper_files="$kim_install_dir"/kim6
+# Directory from which we install
+src_folder="$(dirname "$(realpath "$0")")"
 
 # First uninstall so we do not leave anything behind when potentially renaming, removing or moving stuff from version to version
 "$src_folder"/uninstall.sh --no_message
