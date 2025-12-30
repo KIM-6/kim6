@@ -124,7 +124,7 @@ msgstr "Kim — 壓縮此檔案中："
 #: ../src/bin/kim_sortbydate:106 ../src/bin/kim_treatment:115
 #: ../src/bin/kim_video:80 ../src/bin/kim_webexport:76
 #, fuzzy
-msgid "The action was cancelled by user!"
+msgid "The action was cancelled by the user!"
 msgstr "此動作已被使用者取消。"
 
 #: ../src/bin/kim_convert:43
@@ -580,7 +580,7 @@ msgstr "關於 Kim"
 #~ msgstr "調整大小（1200x900 像素）"
 
 #, fuzzy
-#~ msgid "The action was cancelled by user !"
+#~ msgid "The action was cancelled by the user!"
 #~ msgstr "此動作已被使用者取消。"
 
 #~ msgid "Choose duration of animation (sec):"

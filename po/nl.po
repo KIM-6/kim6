@@ -124,7 +124,7 @@ msgstr "Kim — Bezig met comprimeren van bestand: "
 #: ../src/bin/kim_sortbydate:106 ../src/bin/kim_treatment:115
 #: ../src/bin/kim_video:80 ../src/bin/kim_webexport:76
 #, fuzzy
-msgid "The action was cancelled by user!"
+msgid "The action was cancelled by the user!"
 msgstr "De handeling is afgebroken."
 
 #: ../src/bin/kim_convert:43
@@ -577,7 +577,7 @@ msgstr "Over Kim"
 #~ msgstr "Grootte aanpassen (1200x900 pixels)"
 
 #, fuzzy
-#~ msgid "The action was cancelled by user !"
+#~ msgid "The action was cancelled by the user!"
 #~ msgstr "De handeling is afgebroken."
 
 #~ msgid "Choose duration of animation (sec):"

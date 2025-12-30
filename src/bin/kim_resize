@@ -74,7 +74,7 @@ case $? in
     done
     qdbus $dbusRef close;;
 
-    2) kdialog --title "$(gettext "Kim")" --msgbox "$(gettext "The action was cancelled by user!")"
+    2) kdialog --title "$(gettext "Kim")" --msgbox "$(gettext "The action was cancelled by the user!")"
     exit 1;;
 esac;
 

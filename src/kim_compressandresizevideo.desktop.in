@@ -19,69 +19,129 @@
 [Desktop Entry]
 Type=Service
 ServiceTypes=KonqPopupMenu/Plugin,video/*
-Actions=ResizeVideo1280_17_265;ResizeVideo1280_23_265;ResizeVideo1280_29_265;ResizeVideo1280_17_264;ResizeVideo1280_23_264;ResizeVideo1280_29_264;_SEPARATOR_;ResizeVideo1920_17_265;ResizeVideo1920_23_265;ResizeVideo1920_29_265;ResizeVideo1920_17_264;ResizeVideo1920_23_264;ResizeVideo1920_29_264;_SEPARATOR_;Manual;License;About;
+Actions=ResizeVideo1280_17_265_orig;ResizeVideo1280_23_265_orig;ResizeVideo1280_29_265_orig;ResizeVideo1280_17_264_orig;ResizeVideo1280_23_264_orig;ResizeVideo1280_29_264_orig;_SEPARATOR_;ResizeVideo1920_17_265_orig;ResizeVideo1920_23_265_orig;ResizeVideo1920_29_265_orig;ResizeVideo1920_17_264_orig;ResizeVideo1920_23_264_orig;ResizeVideo1920_29_264_orig;_SEPARATOR_;ResizeVideo1280_17_265_mp4;ResizeVideo1280_23_265_mp4;ResizeVideo1280_29_265_mp4;ResizeVideo1280_17_264_mp4;ResizeVideo1280_23_264_mp4;ResizeVideo1280_29_264_mp4;_SEPARATOR_;ResizeVideo1920_17_265_mp4;ResizeVideo1920_23_265_mp4;ResizeVideo1920_29_265_mp4;ResizeVideo1920_17_264_mp4;ResizeVideo1920_23_264_mp4;ResizeVideo1920_29_264_mp4;_SEPARATOR_;Manual;License;About;
 Encoding=UTF-8
 _X-KDE-Submenu=Kim — Compress and Resize
 
-[Desktop Action ResizeVideo1280_17_265]
+[Desktop Action ResizeVideo1280_17_265_orig]
 _Name=Transcode video to 1280x720, good quality, libx265
 Icon=video-mp4
-Exec=kim_video hd720 17 libx265 %D %U
+Exec=kim_video hd720 17 libx265 orig %D %U
 
-[Desktop Action ResizeVideo1280_23_265]
+[Desktop Action ResizeVideo1280_23_265_orig]
 _Name=Transcode video to 1280x720, medium quality, libx265
 Icon=video-mp4
-Exec=kim_video hd720 23 libx265 %D %U
+Exec=kim_video hd720 23 libx265 orig %D %U
 
-[Desktop Action ResizeVideo1280_29_265]
+[Desktop Action ResizeVideo1280_29_265_orig]
 _Name=Transcode video to 1280x720, bad quality, libx265
 Icon=video-mp4
-Exec=kim_video hd720 29 libx265 %D %U
+Exec=kim_video hd720 29 libx265 orig %D %U
 
-[Desktop Action ResizeVideo1280_17_264]
+[Desktop Action ResizeVideo1280_17_264_orig]
 _Name=Transcode video to 1280x720, good quality, libx264
 Icon=video-mp4
-Exec=kim_video hd720 17 libx264 %D %U
+Exec=kim_video hd720 17 libx264 orig %D %U
 
-[Desktop Action ResizeVideo1280_23_264]
+[Desktop Action ResizeVideo1280_23_264_orig]
 _Name=Transcode video to 1280x720, medium quality, libx264
 Icon=video-mp4
-Exec=kim_video hd720 23 libx264 %D %U
+Exec=kim_video hd720 23 libx264 orig %D %U
 
-[Desktop Action ResizeVideo1280_29_264]
+[Desktop Action ResizeVideo1280_29_264_orig]
 _Name=Transcode video to 1280x720, bad quality, libx264
 Icon=video-mp4
-Exec=kim_video hd720 29 libx264 %D %U
+Exec=kim_video hd720 29 libx264 orig %D %U
 
-[Desktop Action ResizeVideo1920_17_265]
+[Desktop Action ResizeVideo1920_17_265_orig]
 _Name=Transcode video to 1920x1080, good quality, libx265
 Icon=video-mp4
-Exec=kim_video hd1080 17 libx265 %D %U
+Exec=kim_video hd1080 17 libx265 orig %D %U
 
-[Desktop Action ResizeVideo1920_23_265]
+[Desktop Action ResizeVideo1920_23_265_orig]
 _Name=Transcode video to 1920x1080, medium quality, libx265
 Icon=video-mp4
-Exec=kim_video hd1080 23 libx265 %D %U
+Exec=kim_video hd1080 23 libx265 orig %D %U
 
-[Desktop Action ResizeVideo1920_29_265]
+[Desktop Action ResizeVideo1920_29_265_orig]
 _Name=Transcode video to 1920x1080, bad quality, libx265
 Icon=video-mp4
-Exec=kim_video hd1080 29 libx265 %D %U
+Exec=kim_video hd1080 29 libx265 orig %D %U
 
-[Desktop Action ResizeVideo1920_17_264]
+[Desktop Action ResizeVideo1920_17_264_orig]
 _Name=Transcode video to 1920x1080, good quality, libx264
 Icon=video-mp4
-Exec=kim_video hd1080 17 libx264 %D %U
+Exec=kim_video hd1080 17 libx264 orig %D %U
 
-[Desktop Action ResizeVideo1920_23_264]
+[Desktop Action ResizeVideo1920_23_264_orig]
 _Name=Transcode video to 1920x1080, medium quality, libx264
 Icon=video-mp4
-Exec=kim_video hd1080 23 libx264 %D %U
+Exec=kim_video hd1080 23 libx264 orig %D %U
 
-[Desktop Action ResizeVideo1920_29_264]
+[Desktop Action ResizeVideo1920_29_264_orig]
 _Name=Transcode video to 1920x1080, bad quality, libx264
 Icon=video-mp4
-Exec=kim_video hd1080 29 libx264 %D %U
+Exec=kim_video hd1080 29 libx264 orig %D %U
+
+[Desktop Action ResizeVideo1280_17_265_mp4]
+_Name=Transcode video to 1280x720, good quality, mp4, libx265
+Icon=video-mp4
+Exec=kim_video hd720 17 libx265 mp4 %D %U
+
+[Desktop Action ResizeVideo1280_23_265_mp4]
+_Name=Transcode video to 1280x720, medium quality, mp4, libx265
+Icon=video-mp4
+Exec=kim_video hd720 23 libx265 mp4 %D %U
+
+[Desktop Action ResizeVideo1280_29_265_mp4]
+_Name=Transcode video to 1280x720, bad quality, mp4, libx265
+Icon=video-mp4
+Exec=kim_video hd720 29 libx265 mp4 %D %U
+
+[Desktop Action ResizeVideo1280_17_264_mp4]
+_Name=Transcode video to 1280x720, good quality, mp4, libx264
+Icon=video-mp4
+Exec=kim_video hd720 17 libx264 mp4 %D %U
+
+[Desktop Action ResizeVideo1280_23_264_mp4]
+_Name=Transcode video to 1280x720, medium quality, mp4, libx264
+Icon=video-mp4
+Exec=kim_video hd720 23 libx264 mp4 %D %U
+
+[Desktop Action ResizeVideo1280_29_264_mp4]
+_Name=Transcode video to 1280x720, bad quality, mp4, libx264
+Icon=video-mp4
+Exec=kim_video hd720 29 libx264 mp4 %D %U
+
+[Desktop Action ResizeVideo1920_17_265_mp4]
+_Name=Transcode video to 1920x1080, good quality, mp4, libx265
+Icon=video-mp4
+Exec=kim_video hd1080 17 libx265 mp4 %D %U
+
+[Desktop Action ResizeVideo1920_23_265_mp4]
+_Name=Transcode video to 1920x1080, medium quality, mp4, libx265
+Icon=video-mp4
+Exec=kim_video hd1080 23 libx265 mp4 %D %U
+
+[Desktop Action ResizeVideo1920_29_265_mp4]
+_Name=Transcode video to 1920x1080, bad quality, mp4, libx265
+Icon=video-mp4
+Exec=kim_video hd1080 29 libx265 mp4 %D %U
+
+[Desktop Action ResizeVideo1920_17_264_mp4]
+_Name=Transcode video to 1920x1080, good quality, mp4, libx264
+Icon=video-mp4
+Exec=kim_video hd1080 17 libx264 mp4 %D %U
+
+[Desktop Action ResizeVideo1920_23_264_mp4]
+_Name=Transcode video to 1920x1080, medium quality, mp4, libx264
+Icon=video-mp4
+Exec=kim_video hd1080 23 libx264 mp4 %D %U
+
+[Desktop Action ResizeVideo1920_29_264_mp4]
+_Name=Transcode video to 1920x1080, bad quality, mp4, libx264
+Icon=video-mp4
+Exec=kim_video hd1080 29 libx264 mp4 %D %U
 
 [Desktop Action Manual]
 _Name=KIM 6 Manual

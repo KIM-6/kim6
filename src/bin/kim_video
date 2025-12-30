@@ -4,7 +4,7 @@
 #
 # Copyright (C) 2005, 2006  Charles Bouveyron <charles.bouveyron@free.fr>
 # Copyright (C) 2025  Tomáš Hnyk <tomashnyk@gmail.com>
-# 
+#
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -27,9 +27,74 @@ SOURCE_TRANSLATION_TTT
 FILE="";
 RESOLUTION="$1"; # hd720/hd1080
 CRF="$2"; # 17 / 23 / 29
-CODEC="$3"; # libx264 / libx265
-DIR="$4";
-let "nbfiles = ($# -1)/2"
+CODEC="$3" ; # libx264 / libx265
+EXTENSION="$4"; # orig or mp4
+DIR="$5";
+let "nbfiles = ($# -4)/2"
+
+# Function to get video duration in seconds
+get_duration() {
+    ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$1" 2>/dev/null | cut -d'.' -f1
+}
+
+# Function to encode with progress
+encode_with_progress() {
+    local input="$1"
+    local output="$2"
+    local dbusRef="$3"
+    local filenum="$4"
+    local totalfiles="$5"
+    # when creating a new mp4 file, makes sure it has the correct extension
+    if [ "$EXTENSION" = "orig" ]; then
+        EXTENSION=""
+    else
+        EXTENSION="-f mp4"
+        #means we are not overwriting, if overwriting, having movie.mov that is actually MP4 is allowed
+        if [ "$WORK" != "$input" ]; then
+            extension="${output##*.}"
+            if [ "$extension" != "mp4" ]; then
+               output="${output%.*}"".mp4"
+            fi
+        fi
+    fi
+    # Get duration for progress calculation
+    local duration=$(get_duration "$input")
+    # Use process substitution to get ffmpeg PID while reading its output
+    exec 3< <(ffmpeg -i "$input" -s $RESOLUTION -c:v $CODEC -crf $CRF -c:a copy -strict -2 -progress pipe:1 $EXTENSION "$output" 2>&1)
+    local ffmpeg_pid=$!
+    # Splits ffmpeg output in form "out_time_ms=12345678" by =, so value is 12345678
+    while IFS='=' read -r key value <&3; do
+        # Check for cancellation
+        service=$(echo "$dbusRef" | cut -d' ' -f1)
+        if ! qdbus "$service" >/dev/null 2>&1 || [[ "$(qdbus $dbusRef wasCancelled 2>/dev/null)" == "true" ]]; then
+            kill -9 $ffmpeg_pid 2>/dev/null
+            pkill -9 -P $ffmpeg_pid 2>/dev/null
+            exec 3<&- 2>/dev/null
+            rm -f "$output"
+            return 1
+        fi
+
+        # Parse time progress (only catching lines that output ffmpeg's progress
+        if [[ "$key" == "out_time_ms" ]]; then
+            # Convert microseconds to seconds
+            current_sec=$((value / 1000000))
+            if [ "$current_sec" -gt 0 ] && [ "$duration" -gt 0 ]; then
+                # Calculate percentage for current file
+                percent=$((current_sec * 100 / duration))
+                # caps percentage to 100, probably useless
+                [ "$percent" -gt 100 ] && percent=100
+                # Update label with file progress
+                qdbus $dbusRef setLabelText "$(gettext "Kim —  Transcoding video: ") $filenum/$totalfiles: $(basename "$input") — ${percent}%" 2>/dev/null
+            fi
+        fi
+    done
+
+    exec 3<&- 2>/dev/null
+    wait $ffmpeg_pid
+    return $?
+
+}
+
 kdialog --title "$(gettext "Kim")" --yesnocancel "$(gettext "Do you want to create new files?")" --yes-label "$(gettext "Create new")" --no-label "$(gettext "Replace existing")"
 case $? in
     1)    # Replace existing files!
@@ -45,14 +110,30 @@ case $? in
             fi
             let "counter +=1"
             FILE="$i"
-            qdbus $dbusRef setLabelText "$(gettext "Kim — Compressing file: ") `basename "$FILE"`"
-            mv "$FILE" "$FILE-work"
-            ffmpeg -i "$FILE-work" -s $RESOLUTION -c:v $CODEC -crf $CRF -c:a copy -strict -2 "$FILE"
-            qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
+            qdbus $dbusRef setLabelText "$(gettext "Kim — ") $counter/$nbfiles: `basename "$FILE"`" 2>/dev/null
+            WORK="$FILE-work"
+            counter_suffix=1
+            # handle the unlikely scenario $FILE-work already exists (this only works when we transcode to mp4, otherwise the command fails as ffmpeg does not know what format to transcode to without an extension)
+            while [ -f "$WORK" ]; do
+                WORK="$WORK-${counter_suffix}"
+                let "counter_suffix +=1"
+            done
+            mv "$FILE" "$WORK"
+
+            # Encode with progress tracking
+            encode_with_progress "$WORK" "$FILE" "$dbusRef" "$counter" "$nbfiles"
+            if [ $? -ne 0 ]; then
+                # Restore original if cancelled
+                mv "$WORK" "$FILE" 2>/dev/null
+                qdbus $dbusRef close
+                exit 1
+            fi
+
+            # Remove work file
+            rm -f "$WORK"
         fi;
     done
     qdbus $dbusRef close;;
-
     0)
     dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
     qdbus $dbusRef showCancelButton true
@@ -67,16 +148,23 @@ case $? in
             let "counter +=1"
             FILE="$i"
             filename=$(basename -- "$FILE")
-                        extension="${filename##*.}"
-                        filename="${filename%.*}"
+            extension="${filename##*.}"
+            filename="${filename%.*}"
             DIR=$(dirname "${FILE}")
-            ffmpeg -i "$FILE" -s $RESOLUTION -c:v $CODEC -crf $CRF -c:a copy -strict -2 "$DIR/$filename-transcoded.$extension"
-            qdbus $dbusRef setLabelText "$(gettext "Kim — Compressing file: ") `basename "$FILE"`"
-#             qdbus $dbusRef setProgress "$counter"
+            OUTPUT="$DIR/$filename-transcoded.$extension"
+            counter_suffix=1
+            # handle the unlikely scenario $filename-transcoded.$extension already exists
+            while [ -f "$OUTPUT" ]; do
+                OUTPUT="$DIR/$filename-transcoded-${counter_suffix}.$extension"
+                let "counter_suffix +=1"
+            done
+
+            qdbus $dbusRef setLabelText "$(gettext "Kim — Transcoding video") $counter/$nbfiles: `basename "$FILE"`" 2>/dev/null
+            # Encode with progress tracking
+            encode_with_progress "$FILE" "$OUTPUT" "$dbusRef" "$counter" "$nbfiles"
         fi;
     done
     qdbus $dbusRef close;;
-
-    2) kdialog --title "$(gettext "Kim")" --msgbox "$(gettext "The action was cancelled by user!")"
+    2) kdialog --title "$(gettext "Kim")" --msgbox "$(gettext "The action was cancelled by the user!")"
     exit 1;;
 esac;

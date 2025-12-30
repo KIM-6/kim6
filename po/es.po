@@ -121,7 +121,7 @@ msgstr ""
 #: ../src/bin/kim_compress:76 ../src/bin/kim_rename:88 ../src/bin/kim_resize:77
 #: ../src/bin/kim_sortbydate:106 ../src/bin/kim_treatment:115
 #: ../src/bin/kim_video:80 ../src/bin/kim_webexport:76
-msgid "The action was cancelled by user!"
+msgid "The action was cancelled by the user!"
 msgstr ""
 
 #: ../src/bin/kim_convert:43
