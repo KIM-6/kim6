@@ -27,7 +27,7 @@ SOURCE_TRANSLATION_TTT
 #test -n "$KDEHOME" || KDEHOME="`kde4-config --localprefix`"; export KDEHOME
 TMPDIR=`mktemp -d /tmp/kim.XXXXXXXX` || exit 1
 
-ATTACHMENTS="";
+ATTACHMENT="";
 
 choice=`kdialog --radiolist "$(gettext "Kim — Send by mail:")" 1 "$(gettext "Full size")"  off 2 "$(gettext "800x800 px")"  on 3 "$(gettext "600x600 px")" off 4 "$(gettext "300x300 px")"  off`;
 
@@ -44,15 +44,15 @@ for i in "$@";do
             qdbus $dbusRef close
             exit 1
         fi
-        ATTACHMENTS="$i"
+        ATTACHMENT="$i"
         let "counter +=1"
-        qdbus $dbusRef setLabelText "$(gettext "Kim — Resizing and compressing file: ") `basename "$ATTACHMENTS"`"
+        qdbus $dbusRef setLabelText "$(gettext "Kim — Resizing and compressing file: ") `basename "$ATTACHMENT"`"
          qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         case "$choice" in
             1) cp $i $TMPDIR;;
-            2) magick -- "$ATTACHMENTS" -resize 800x800 "$TMPDIR"/`basename "$ATTACHMENTS"`;;
-            3) magick -- "$ATTACHMENTS" -resize 600x600 "$TMPDIR"/`basename "$ATTACHMENTS"`;;
-            4) magick -- "$ATTACHMENTS" -resize 300x300 "$TMPDIR"/`basename "$ATTACHMENTS"`;;
+            2) magick -- "$ATTACHMENT" -resize 800x800 "$TMPDIR/$(basename -- "$ATTACHMENT")";;
+            3) magick -- "$ATTACHMENT" -resize 600x600 "$TMPDIR/$(basename -- "$ATTACHMENT")";;
+            4) magick -- "$ATTACHMENT" -resize 300x300 "$TMPDIR/$(basename -- "$ATTACHMENT")";;
             *)exit 1;;
         esac
     fi;
