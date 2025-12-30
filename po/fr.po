@@ -122,7 +122,8 @@ msgstr ""
 #: ../src/bin/kim_sortbydate:106 ../src/bin/kim_treatment:115
 #: ../src/bin/kim_video:80 ../src/bin/kim_webexport:76
 msgid "The action was cancelled by the user!"
-msgstr ""
+msgstr "L'action à été annulée par l'utilisateur !"
+
 
 #: ../src/bin/kim_convert:43
 msgid "Kim — Converting file:"
@@ -795,9 +796,6 @@ msgstr "A propos de Kim"
 
 #~ msgid "Kim–Sort by date"
 #~ msgstr "Kim–Trier par date"
-
-#~ msgid "The action was cancelled by the user!"
-#~ msgstr "L'action à été annulée par l'utilisateur !"
 
 #~ msgid "Kim Animation"
 #~ msgstr "Kim Animation"

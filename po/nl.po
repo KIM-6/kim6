@@ -576,10 +576,6 @@ msgstr "Over Kim"
 #~ msgid "Resize (1200x900 pixels)"
 #~ msgstr "Grootte aanpassen (1200x900 pixels)"
 
-#, fuzzy
-#~ msgid "The action was cancelled by the user!"
-#~ msgstr "De handeling is afgebroken."
-
 #~ msgid "Choose duration of animation (sec):"
 #~ msgstr "Kies de animatieduur (in sec.):"
 

@@ -579,10 +579,6 @@ msgstr "關於 Kim"
 #~ msgid "Resize (1200x900 pixels)"
 #~ msgstr "調整大小（1200x900 像素）"
 
-#, fuzzy
-#~ msgid "The action was cancelled by the user!"
-#~ msgstr "此動作已被使用者取消。"
-
 #~ msgid "Choose duration of animation (sec):"
 #~ msgstr "選擇動畫時間（秒）："
 

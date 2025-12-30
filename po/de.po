@@ -126,7 +126,7 @@ msgstr ""
 #: ../src/bin/kim_sortbydate:106 ../src/bin/kim_treatment:115
 #: ../src/bin/kim_video:80 ../src/bin/kim_webexport:76
 msgid "The action was cancelled by the user!"
-msgstr ""
+msgstr "Der Vorgang wurde durch den Benutzer abgebrochen!"
 
 #: ../src/bin/kim_convert:43
 msgid "Kim — Converting file:"
@@ -750,6 +750,3 @@ msgstr ""
 
 #~ msgid "Kim–Sort by date"
 #~ msgstr "Kim: nach Datum sortieren"
-
-#~ msgid "The action was cancelled by the user!"
-#~ msgstr "Der Vorgang wurde durch den Benutzer abgebrochen!"
