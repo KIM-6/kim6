@@ -57,6 +57,36 @@
         <p>Transcodes video using either libx264 or libx265 to HD (1280x720) or FullHD (1920x1080) in three qualities (CFR values 17, 23 and 29 — only 17 should more or less preserve the amount of detail). Audio is copied and container (like MP4) is also preserved.</p></li>
     </ul>
 
+    <h1>Usage</h1>
+
+    <p>
+    KIM6 is used via the file manager context menu. Select one or more image or video
+    files, right-click, and choose the desired action from the KIM6 submenu.
+    </p>
+
+    <p>
+    Most actions will prompt for confirmation before overwriting existing files.
+    Pressing Enter will usually select the default option, which is to create new
+    files rather than overwrite existing ones.
+    </p>
+
+    <p>
+    Some behavior can be customized using environment variables. These variables can
+    be set in the environment where your file manager is launched.
+    </p>
+
+    <ul>
+        <li><b>Web export quality</b>
+
+        <p>When using the <b>Webexport</b> actions in the <b>Compress and resize</b> menu, KIM6 allows control over the JPEG compression quality via an environment variable.</p>
+        <p>Set the <code>KIM_WEB_QUALITY</code> environment variable to a value between <b>1</b> and <b>100</b> to define the quality used when
+        exporting images for the web:</p>
+
+        <pre>KIM_WEB_QUALITY=85</pre>
+
+        <p>If the variable is not set, KIM6 defaults to a quality value of <b>75</b>.</p>
+        </li>
+    </ul>
     <h1>Installation</h1>
     See <a href="https://github.com/KIM-6/kim6?tab=readme-ov-file#install">here.</a></div>
 
