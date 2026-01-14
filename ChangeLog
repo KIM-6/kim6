@@ -1,3 +1,12 @@
+Release 2.1.0.
+- Add WEB_Q variable for image quality settings for webexport
+- Add Italian translation
+- Improve install and uninstall so it does not need qtpath6
+- Add bitmap conversion
+- Various small code style, README etc. changes
+- Make it more robust when handling filenames starting with a hyphen
+- Fix Video transform, show progress, make cancelling it work and add format change to mp4
+
 Release 2.0.1.
 - Better format manual
 
