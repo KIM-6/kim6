@@ -136,7 +136,7 @@ for po in *.po; do msgmerge --update "$po" kim6.pot;
 done
 cd ..
 ```
-## Release
+### Release
 
 Do not forget to update translations and changelog and then run the following (change VERSION) in the project root directory:
 ```
@@ -157,7 +157,7 @@ rm src/kim_compressandresize.desktop src/kim_compressandresizevideo.desktop src/
 
 After making the archive, it is manually uploaded here to Github and then to https://store.kde.org/p/2307290/
 
-## Development
+### Development
 
 Try to make a release (see above) and then test your changes with:
 ```
@@ -175,7 +175,7 @@ Individual scripts can also be run directly. Look into the bin files (which are 
 ./kim_resize ~/example.jpg 300x300
 ```
 
-## Todo
+### Todo
 
 - Functionally, KIM 6 is stable. Please report bugs if you find any.
 - Technically, it would be good to merge executable files and refactor common code in functions, that should reduce the code size by half. Patches welcome!
