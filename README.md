@@ -113,7 +113,7 @@ LANGUAGE=nl dolphin
 
 To generate new `.pot` template and update the individual translations, one runs this in the project root directory (it actually runs in the `po` directory; unless you develop a new feature, you should not need this as I try to keep the translation strings up-to-date):
 ```
-VERSION=2.1; # set kim6 version
+VERSION=$(grep -m 1 "^Release" ChangeLog | grep -oP '\d+\.\d+\.\d+') # set kim6 version
 cd po;
 # this creates a new pot file from the files in the bin directory (do not update because then deleted strings are kept)
 xgettext --language=Shell --keyword=gettext --output=kim6.pot --from-code=UTF-8 --add-comments=TRANSLATORS --package-name="KIM 6 — Kde Image Menu 6" --package-version="$VERSION" --msgid-bugs-address="https://github.com/KIM-6/kim6/issues" ../src/bin/kim_*
@@ -138,9 +138,10 @@ cd ..
 ```
 ### Release
 
-Do not forget to update translations and changelog and then run the following (change VERSION) in the project root directory:
+First update the changelog (keep format!), then the translations (do not forget to commit them!) and then run the following in the project root directory (you need to have `gh` installed):
 ```
-VERSION=2.0; # set kim6 version
+VERSION=$(grep -m 1 "^Release" ChangeLog | grep -oP '\d+\.\d+\.\d+') # set kim6 version
+
 
 # generate desktop files
 cd po;
@@ -153,9 +154,11 @@ tar -czf kim6_$VERSION.tar.gz --exclude=README.md  --exclude=KIM6.png --exclude=
 
 # generated desktop files are no longer needed
 rm src/kim_compressandresize.desktop src/kim_compressandresizevideo.desktop src/kim_convertandrotate.desktop src/kim_publication.desktop
+NOTES=$(sed -n '/^Release/,/^$/p' ChangeLog | grep '^-' | head -n -1)
+gh release create "v$VERSION" --title "Version $RELEASE" --notes "$NOTES" ./kim6*.tar.gz
 ```
 
-After making the archive, it is manually uploaded here to Github and then to https://store.kde.org/p/2307290/
+The archive is automatically uploaded to Github and a release and a new verison tag is made here. Then manually upload it to https://store.kde.org/p/2307290/ (you can delete the tar file after).
 
 ### Development
 

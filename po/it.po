@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KIM 6 – Kde Image Menu 6 2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/KIM-6/kim6/issues\n"
-"POT-Creation-Date: 2025-10-22 22:37+0200\n"
+"POT-Creation-Date: 2026-01-14 01:15+0100\n"
 "PO-Revision-Date: 2025-11-16 00:00+0100\n"
 "Last-Translator: Miguel Useche <migueluseche@skatox.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
@@ -56,78 +56,81 @@ msgstr "Album 4x4 orizzontale"
 msgid "Kim — Creating miniatures ..."
 msgstr "Kim — Creazione miniature ..."
 
-#: ../src/bin/kim_album:34 ../src/bin/kim_album:40 ../src/bin/kim_album:46 \
-../src/bin/kim_album:51 ../src/bin/kim_album:56 ../src/bin/kim_album:61 \
-../src/bin/kim_album:66 ../src/bin/kim_album:71 ../src/bin/kim_print:55 \
-../src/bin/kim_print:61 ../src/bin/kim_print:66 ../src/bin/kim_print:71 \
-../src/bin/kim_print:76 ../src/bin/kim_print:81 ../src/bin/kim_print:86
+#: ../src/bin/kim_album:34 ../src/bin/kim_album:39 ../src/bin/kim_album:45
+#: ../src/bin/kim_album:50 ../src/bin/kim_album:55 ../src/bin/kim_album:60
+#: ../src/bin/kim_album:65 ../src/bin/kim_album:70 ../src/bin/kim_print:55
+#: ../src/bin/kim_print:61 ../src/bin/kim_print:66 ../src/bin/kim_print:71
+#: ../src/bin/kim_print:76 ../src/bin/kim_print:81 ../src/bin/kim_print:86
 msgid "Kim — Creating album ..."
 msgstr "Kim — Creazione dell'album ..."
 
-#: ../src/bin/kim_album:75 ../src/bin/kim_print:90
+#: ../src/bin/kim_album:74 ../src/bin/kim_print:90
 msgid "Kim — Unrecognized option! "
 msgstr "Kim — Opzione non riconosciuta! "
 
-#: ../src/bin/kim_album:78 ../src/bin/kim_print:93
+#: ../src/bin/kim_album:77 ../src/bin/kim_print:93
 msgid "Kim — Deleting miniatures ..."
 msgstr "Kim — Eliminazione miniature ..."
 
-#: ../src/bin/kim_compress:31 ../src/bin/kim_compress:76 \
-../src/bin/kim_rename:30 ../src/bin/kim_rename:88 ../src/bin/kim_resize:31 \
-../src/bin/kim_resize:77 ../src/bin/kim_sortbydate:31 \
-../src/bin/kim_sortbydate:106 ../src/bin/kim_treatment:35 \
-../src/bin/kim_treatment:115 ../src/bin/kim_video:33 ../src/bin/kim_video:80 \
-../src/bin/kim_webexport:31 ../src/bin/kim_webexport:76
+#: ../src/bin/kim_compress:31 ../src/bin/kim_compress:76
+#: ../src/bin/kim_rename:30 ../src/bin/kim_rename:88 ../src/bin/kim_resize:31
+#: ../src/bin/kim_resize:77 ../src/bin/kim_sortbydate:31
+#: ../src/bin/kim_sortbydate:106 ../src/bin/kim_treatment:35
+#: ../src/bin/kim_treatment:115 ../src/bin/kim_video:98
+#: ../src/bin/kim_video:168 ../src/bin/kim_webexport:32
+#: ../src/bin/kim_webexport:77
 msgid "Kim"
 msgstr "Kim"
 
-#: ../src/bin/kim_compress:31 ../src/bin/kim_rename:30 ../src/bin/kim_resize:31 \
-../src/bin/kim_sortbydate:31 ../src/bin/kim_treatment:35 \
-../src/bin/kim_video:33 ../src/bin/kim_webexport:31
+#: ../src/bin/kim_compress:31 ../src/bin/kim_rename:30 ../src/bin/kim_resize:31
+#: ../src/bin/kim_sortbydate:31 ../src/bin/kim_treatment:35
+#: ../src/bin/kim_video:98 ../src/bin/kim_webexport:32
 msgid "Do you want to create new files?"
 msgstr "Vuoi creare nuovi file?"
 
-#: ../src/bin/kim_compress:31 ../src/bin/kim_rename:30 ../src/bin/kim_resize:31 \
-../src/bin/kim_sortbydate:31 ../src/bin/kim_treatment:35 \
-../src/bin/kim_video:33 ../src/bin/kim_webexport:31
+#: ../src/bin/kim_compress:31 ../src/bin/kim_rename:30 ../src/bin/kim_resize:31
+#: ../src/bin/kim_sortbydate:31 ../src/bin/kim_treatment:35
+#: ../src/bin/kim_video:98 ../src/bin/kim_webexport:32
 msgid "Create new"
 msgstr "Crea nuovo"
 
-#: ../src/bin/kim_compress:31 ../src/bin/kim_rename:30 ../src/bin/kim_resize:31 \
-../src/bin/kim_sortbydate:31 ../src/bin/kim_treatment:35 \
-../src/bin/kim_video:33 ../src/bin/kim_webexport:31
+#: ../src/bin/kim_compress:31 ../src/bin/kim_rename:30 ../src/bin/kim_resize:31
+#: ../src/bin/kim_sortbydate:31 ../src/bin/kim_treatment:35
+#: ../src/bin/kim_video:98 ../src/bin/kim_webexport:32
 msgid "Replace existing"
 msgstr "Sostituisci esistente"
 
-#: ../src/bin/kim_compress:34 ../src/bin/kim_compress:54 ../src/bin/kim_convert:30 \
-../src/bin/kim_flipflop:30 ../src/bin/kim_galery:39 ../src/bin/kim_pelemele:38 \
-../src/bin/kim_print:31 ../src/bin/kim_rename:33 ../src/bin/kim_rename:61 \
-../src/bin/kim_resize:34 ../src/bin/kim_resize:55 ../src/bin/kim_resizeandsend:35 \
-../src/bin/kim_rotate:30 ../src/bin/kim_rotatewithexif:30 \
-../src/bin/kim_sortbydate:35 ../src/bin/kim_sortbydate:71 \
-../src/bin/kim_treatment:38 ../src/bin/kim_treatment:77 \
-../src/bin/kim_video:36 ../src/bin/kim_video:57
+#: ../src/bin/kim_compress:34 ../src/bin/kim_compress:54
+#: ../src/bin/kim_convert:31 ../src/bin/kim_flipflop:30
+#: ../src/bin/kim_galery:39 ../src/bin/kim_pelemele:37 ../src/bin/kim_print:31
+#: ../src/bin/kim_rename:33 ../src/bin/kim_rename:61 ../src/bin/kim_resize:34
+#: ../src/bin/kim_resize:55 ../src/bin/kim_resizeandsend:35
+#: ../src/bin/kim_rotate:30 ../src/bin/kim_rotatewithexif:30
+#: ../src/bin/kim_sortbydate:35 ../src/bin/kim_sortbydate:71
+#: ../src/bin/kim_treatment:38 ../src/bin/kim_treatment:77
+#: ../src/bin/kim_video:101 ../src/bin/kim_video:138
 msgid "Kim — Initialising ..."
 msgstr "Kim — Inizializzazione ..."
 
-#: ../src/bin/kim_compress:46 ../src/bin/kim_compress:70 ../src/bin/kim_multiburst:53 \
-../src/bin/kim_video:48 ../src/bin/kim_video:74 ../src/bin/kim_webexport:47 \
-../src/bin/kim_webexport:70
+#: ../src/bin/kim_compress:46 ../src/bin/kim_compress:70
+#: ../src/bin/kim_multiburst:53 ../src/bin/kim_webexport:48
+#: ../src/bin/kim_webexport:71
 msgid "Kim — Compressing file: "
 msgstr "Kim — Compressione file: "
 
-#: ../src/bin/kim_compress:76 ../src/bin/kim_rename:88 ../src/bin/kim_resize:77 \
-../src/bin/kim_sortbydate:106 ../src/bin/kim_treatment:115 \
-../src/bin/kim_video:80 ../src/bin/kim_webexport:76
-msgid "The action was cancelled by user!"
+#: ../src/bin/kim_compress:76 ../src/bin/kim_rename:88 ../src/bin/kim_resize:77
+#: ../src/bin/kim_sortbydate:106 ../src/bin/kim_treatment:115
+#: ../src/bin/kim_video:168 ../src/bin/kim_webexport:77
+#, fuzzy
+msgid "The action was cancelled by the user!"
 msgstr "L'azione è stata annullata dall'utente!"
 
-#: ../src/bin/kim_convert:43
+#: ../src/bin/kim_convert:44
 msgid "Kim — Converting file:"
 msgstr "Kim — Conversione file:"
 
-#: ../src/bin/kim_flipflop:43 ../src/bin/kim_rotate:47 \
-../src/bin/kim_rotatewithexif:44
+#: ../src/bin/kim_flipflop:43 ../src/bin/kim_rotate:47
+#: ../src/bin/kim_rotatewithexif:44
 msgid "Kim — Rotating file: "
 msgstr "Kim — Rotazione file: "
 
@@ -147,32 +150,33 @@ msgstr "Kim — Autore:"
 msgid "Kim — Number of columns:"
 msgstr "Kim — Numero di colonne:"
 
-#: ../src/bin/kim_galery:79 ../src/bin/kim_treatment:50 ../src/bin/kim_treatment:89
+#: ../src/bin/kim_galery:79 ../src/bin/kim_treatment:50
+#: ../src/bin/kim_treatment:89
 msgid "Kim — Treatment of file: "
 msgstr "Kim — Elaborazione del file: "
 
-#: ../src/bin/kim_multiburst:34 ../src/bin/kim_webexport:34 \
-../src/bin/kim_webexport:54
+#: ../src/bin/kim_multiburst:34 ../src/bin/kim_webexport:35
+#: ../src/bin/kim_webexport:55
 msgid "Kim — Initialising compression"
 msgstr "Kim — Inizializzazione della compressione"
 
-#: ../src/bin/kim_pelemele:30
+#: ../src/bin/kim_pelemele:29
 msgid "Size of small images:"
 msgstr "Dimensione delle immagini piccole:"
 
-#: ../src/bin/kim_pelemele:31
+#: ../src/bin/kim_pelemele:30
 msgid "Number of rows and columns:"
 msgstr "Numero di righe e colonne:"
 
-#: ../src/bin/kim_pelemele:32
+#: ../src/bin/kim_pelemele:31
 msgid "Overlaping ratio in percent:"
 msgstr "Percentuale di sovrapposizione:"
 
-#: ../src/bin/kim_pelemele:33
+#: ../src/bin/kim_pelemele:32
 msgid "Background color:"
 msgstr "Colore di sfondo:"
 
-#: ../src/bin/kim_pelemele:66 ../src/bin/kim_print:46
+#: ../src/bin/kim_pelemele:63 ../src/bin/kim_print:46
 msgid "Kim — resizing of file: "
 msgstr "Kim — Ridimensionamento del file: "
 
@@ -204,8 +208,8 @@ msgstr "Miniature: 4x5 immagini, verticale"
 msgid "Choose the new name of images:"
 msgstr "Scegli il nuovo nome delle immagini:"
 
-#: ../src/bin/kim_rename:54 ../src/bin/kim_rename:82 ../src/bin/kim_sortbydate:64 \
-../src/bin/kim_sortbydate:100
+#: ../src/bin/kim_rename:54 ../src/bin/kim_rename:82
+#: ../src/bin/kim_sortbydate:64 ../src/bin/kim_sortbydate:100
 msgid "Kim — Renaming file: "
 msgstr "Kim — Rinomina file: "
 
@@ -237,8 +241,8 @@ msgstr "300x300 px"
 msgid "Kim — Resizing and compressing file: "
 msgstr "Kim — Ridimensionamento e compressione del file: "
 
-#: ../src/bin/kim_resizeandsend:64 ../src/bin/kim_resizeandsend:69 \
-../src/bin/kim_resizeandsend:74
+#: ../src/bin/kim_resizeandsend:64 ../src/bin/kim_resizeandsend:69
+#: ../src/bin/kim_resizeandsend:74
 msgid "Kim — Send by mail: you can write your message!"
 msgstr "Kim — Invia per e-mail: puoi scrivere il tuo messaggio!"
 
@@ -262,8 +266,23 @@ msgstr "bianco"
 msgid "black"
 msgstr "nero"
 
-#: ../src/kim_compressandresize.desktop.in.h:1 \
-../src/kim_compressandresizevideo.desktop.in.h:1
+#: ../src/bin/kim_video:87
+#, fuzzy
+msgid "Kim —  Transcoding video: "
+msgstr "Kim — Compressione file: "
+
+#: ../src/bin/kim_video:113
+#, fuzzy
+msgid "Kim — "
+msgstr "Kim — Titolo:"
+
+#: ../src/bin/kim_video:162
+#, fuzzy
+msgid "Kim — Transcoding video"
+msgstr "Kim — Compressione file: "
+
+#: ../src/kim_compressandresize.desktop.in.h:1
+#: ../src/kim_compressandresizevideo.desktop.in.h:1
 msgid "Kim — Compress and Resize"
 msgstr "Kim — Comprimi e ridimensiona"
 
@@ -372,52 +391,139 @@ msgid "WebExport: 1024x1024 at 75 %"
 msgstr "Esporta Web: 1024x1024 al 75%"
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:2
-msgid "Transcode video to 1280x720, good quality, x265"
+#, fuzzy
+msgid "Transcode video to 1280x720, good quality, libx265"
 msgstr "Transcodifica video a 1280x720, qualità buona, x265"
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:3
-msgid "Transcode video to 1280x720, medium quality, x265"
+#, fuzzy
+msgid "Transcode video to 1280x720, medium quality, libx265"
 msgstr "Transcodifica video a 1280x720, qualità media, x265"
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:4
-msgid "Transcode video to 1280x720, bad quality, x265"
+#, fuzzy
+msgid "Transcode video to 1280x720, bad quality, libx265"
 msgstr "Transcodifica video a 1280x720, qualità scarsa, x265"
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:5
-msgid "Transcode video to 1280x720, good quality, x264"
+#, fuzzy
+msgid "Transcode video to 1280x720, good quality, libx264"
 msgstr "Transcodifica video a 1280x720, qualità buona, x264"
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:6
-msgid "Transcode video to 1280x720, medium quality, x264"
+#, fuzzy
+msgid "Transcode video to 1280x720, medium quality, libx264"
 msgstr "Transcodifica video a 1280x720, qualità media, x264"
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:7
-msgid "Transcode video to 1280x720, bad quality, x264"
+#, fuzzy
+msgid "Transcode video to 1280x720, bad quality, libx264"
 msgstr "Transcodifica video a 1280x720, qualità scarsa, x264"
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:8
-msgid "Transcode video to 1920x1080, good quality, x265"
+#, fuzzy
+msgid "Transcode video to 1920x1080, good quality, libx265"
 msgstr "Transcodifica video a 1920x1080, qualità buona, x265"
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:9
-msgid "Transcode video to 1920x1080, medium quality, x265"
+#, fuzzy
+msgid "Transcode video to 1920x1080, medium quality, libx265"
 msgstr "Transcodifica video a 1920x1080, qualità media, x265"
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:10
-msgid "Transcode video to 1920x1080, bad quality, x265"
+#, fuzzy
+msgid "Transcode video to 1920x1080, bad quality, libx265"
 msgstr "Transcodifica video a 1920x1080, qualità scarsa, x265"
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:11
-msgid "Transcode video to 1920x1080, good quality, x264"
+#, fuzzy
+msgid "Transcode video to 1920x1080, good quality, libx264"
 msgstr "Transcodifica video a 1920x1080, qualità buona, x264"
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:12
-msgid "Transcode video to 1920x1080, medium quality, x264"
+#, fuzzy
+msgid "Transcode video to 1920x1080, medium quality, libx264"
 msgstr "Transcodifica video a 1920x1080, qualità media, x264"
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:13
-msgid "Transcode video to 1920x1080, bad quality, x264"
+#, fuzzy
+msgid "Transcode video to 1920x1080, bad quality, libx264"
 msgstr "Transcodifica video a 1920x1080, qualità scarsa, x264"
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:14
+#, fuzzy
+msgid "Transcode video to 1280x720, good quality, mp4, libx265"
+msgstr "Transcodifica video a 1280x720, qualità buona, x265"
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:15
+#, fuzzy
+msgid "Transcode video to 1280x720, medium quality, mp4, libx265"
+msgstr "Transcodifica video a 1280x720, qualità media, x265"
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:16
+#, fuzzy
+msgid "Transcode video to 1280x720, bad quality, mp4, libx265"
+msgstr "Transcodifica video a 1280x720, qualità scarsa, x265"
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:17
+#, fuzzy
+msgid "Transcode video to 1280x720, good quality, mp4, libx264"
+msgstr "Transcodifica video a 1280x720, qualità buona, x264"
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:18
+#, fuzzy
+msgid "Transcode video to 1280x720, medium quality, mp4, libx264"
+msgstr "Transcodifica video a 1280x720, qualità media, x264"
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:19
+#, fuzzy
+msgid "Transcode video to 1280x720, bad quality, mp4, libx264"
+msgstr "Transcodifica video a 1280x720, qualità scarsa, x264"
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:20
+#, fuzzy
+msgid "Transcode video to 1920x1080, good quality, mp4, libx265"
+msgstr "Transcodifica video a 1920x1080, qualità buona, x265"
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:21
+#, fuzzy
+msgid "Transcode video to 1920x1080, medium quality, mp4, libx265"
+msgstr "Transcodifica video a 1920x1080, qualità media, x265"
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:22
+#, fuzzy
+msgid "Transcode video to 1920x1080, bad quality, mp4, libx265"
+msgstr "Transcodifica video a 1920x1080, qualità scarsa, x265"
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:23
+#, fuzzy
+msgid "Transcode video to 1920x1080, good quality, mp4, libx264"
+msgstr "Transcodifica video a 1920x1080, qualità buona, x264"
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:24
+#, fuzzy
+msgid "Transcode video to 1920x1080, medium quality, mp4, libx264"
+msgstr "Transcodifica video a 1920x1080, qualità media, x264"
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:25
+#, fuzzy
+msgid "Transcode video to 1920x1080, bad quality, mp4, libx264"
+msgstr "Transcodifica video a 1920x1080, qualità scarsa, x264"
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:26
+#: ../src/kim_publication.desktop.in.h:13
+msgid "KIM 6 Manual"
+msgstr "Manuale di KIM 6"
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:27
+#: ../src/kim_publication.desktop.in.h:14
+msgid "License"
+msgstr "Licenza"
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:28
+#: ../src/kim_publication.desktop.in.h:15
+msgid "About Kim"
+msgstr "Informazioni su Kim"
 
 #: ../src/kim_convertandrotate.desktop.in.h:1
 msgid "Kim — Convert and Rotate"
@@ -436,50 +542,55 @@ msgid "Convert to GIF"
 msgstr "Converti in GIF"
 
 #: ../src/kim_convertandrotate.desktop.in.h:5
+#, fuzzy
+msgid "Convert to BMP (bitmap)"
+msgstr "Converti in PNG"
+
+#: ../src/kim_convertandrotate.desktop.in.h:6
 msgid "Convert to TIFF"
 msgstr "Converti in TIFF"
 
-#: ../src/kim_convertandrotate.desktop.in.h:6
+#: ../src/kim_convertandrotate.desktop.in.h:7
 msgid "Convert to PDF"
 msgstr "Converti in PDF"
 
-#: ../src/kim_convertandrotate.desktop.in.h:7
+#: ../src/kim_convertandrotate.desktop.in.h:8
 msgid "Convert custom ..."
 msgstr "Conversione personalizzata ..."
 
-#: ../src/kim_convertandrotate.desktop.in.h:8
+#: ../src/kim_convertandrotate.desktop.in.h:9
 msgid "Convert to graysale"
 msgstr "Converti in scala di grigi"
 
-#: ../src/kim_convertandrotate.desktop.in.h:9
+#: ../src/kim_convertandrotate.desktop.in.h:10
 msgid "Convert in sepia tone"
 msgstr "Converti in seppia"
 
-#: ../src/kim_convertandrotate.desktop.in.h:10
+#: ../src/kim_convertandrotate.desktop.in.h:11
 msgid "Auto-rotate with EXIF"
 msgstr "Ruota automaticamente con EXIF"
 
-#: ../src/kim_convertandrotate.desktop.in.h:11
+#: ../src/kim_convertandrotate.desktop.in.h:12
 msgid "Rotate (90°)"
 msgstr "Ruota (90°)"
 
-#: ../src/kim_convertandrotate.desktop.in.h:12
+#: ../src/kim_convertandrotate.desktop.in.h:13
 msgid "Rotate (180°)"
 msgstr "Ruota (180°)"
 
-#: ../src/kim_convertandrotate.desktop.in.h:13
+#: ../src/kim_convertandrotate.desktop.in.h:14
 msgid "Rotate (270°)"
 msgstr "Ruota (270°)"
 
-#: ../src/kim_convertandrotate.desktop.in.h:14
+#: ../src/kim_convertandrotate.desktop.in.h:15
 msgid "Rotate custom..."
 msgstr "Rotazione personalizzata..."
 
-#: ../src/kim_convertandrotate.desktop.in.h:15
+#: ../src/kim_convertandrotate.desktop.in.h:16
 msgid "Flip verticaly"
 msgstr "Rifletti verticalmente"
 
-#: ../src/kim_convertandrotate.desktop.in.h:16
+#: ../src/kim_convertandrotate.desktop.in.h:17
 msgid "Flip horizontaly"
 msgstr "Rifletti orizzontalmente"
 
@@ -530,16 +641,3 @@ msgstr "Crea un album PDF"
 #: ../src/kim_publication.desktop.in.h:12
 msgid "Add text annotation"
 msgstr "Aggiungi annotazione testuale"
-
-#: ../src/kim_publication.desktop.in.h:13
-msgid "KIM 6 Manual"
-msgstr "Manuale di KIM 6"
-
-#: ../src/kim_publication.desktop.in.h:14
-msgid "License"
-msgstr "Licenza"
-
-#: ../src/kim_publication.desktop.in.h:15
-msgid "About Kim"
-msgstr "Informazioni su Kim"
-

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KIM 6 — Kde Image Menu 6\n"
 "Report-Msgid-Bugs-To: https://github.com/KIM-6/kim6/issues\n"
-"POT-Creation-Date: 2025-10-22 22:37+0200\n"
+"POT-Creation-Date: 2026-01-14 01:15+0100\n"
 "PO-Revision-Date: 2020-08-20 22:13+0800\n"
 "Last-Translator: Franklin Weng <franklin@goodhorse.idv.tw>\n"
 "Language-Team: Chinese (traditional) <zh_l10n@lists.linux.org.tw>\n"
@@ -57,20 +57,20 @@ msgstr "4x4 橫向相簿"
 msgid "Kim — Creating miniatures ..."
 msgstr "Kim — 建立縮圖中..."
 
-#: ../src/bin/kim_album:34 ../src/bin/kim_album:40 ../src/bin/kim_album:46
-#: ../src/bin/kim_album:51 ../src/bin/kim_album:56 ../src/bin/kim_album:61
-#: ../src/bin/kim_album:66 ../src/bin/kim_album:71 ../src/bin/kim_print:55
+#: ../src/bin/kim_album:34 ../src/bin/kim_album:39 ../src/bin/kim_album:45
+#: ../src/bin/kim_album:50 ../src/bin/kim_album:55 ../src/bin/kim_album:60
+#: ../src/bin/kim_album:65 ../src/bin/kim_album:70 ../src/bin/kim_print:55
 #: ../src/bin/kim_print:61 ../src/bin/kim_print:66 ../src/bin/kim_print:71
 #: ../src/bin/kim_print:76 ../src/bin/kim_print:81 ../src/bin/kim_print:86
 msgid "Kim — Creating album ..."
 msgstr "Kim — 建立相簿中..."
 
-#: ../src/bin/kim_album:75 ../src/bin/kim_print:90
+#: ../src/bin/kim_album:74 ../src/bin/kim_print:90
 #, fuzzy
 msgid "Kim — Unrecognized option! "
 msgstr "Kim — 無法識別的選項。"
 
-#: ../src/bin/kim_album:78 ../src/bin/kim_print:93
+#: ../src/bin/kim_album:77 ../src/bin/kim_print:93
 msgid "Kim — Deleting miniatures ..."
 msgstr "Kim — 刪除縮圖中..."
 
@@ -78,56 +78,57 @@ msgstr "Kim — 刪除縮圖中..."
 #: ../src/bin/kim_rename:30 ../src/bin/kim_rename:88 ../src/bin/kim_resize:31
 #: ../src/bin/kim_resize:77 ../src/bin/kim_sortbydate:31
 #: ../src/bin/kim_sortbydate:106 ../src/bin/kim_treatment:35
-#: ../src/bin/kim_treatment:115 ../src/bin/kim_video:33 ../src/bin/kim_video:80
-#: ../src/bin/kim_webexport:31 ../src/bin/kim_webexport:76
+#: ../src/bin/kim_treatment:115 ../src/bin/kim_video:98
+#: ../src/bin/kim_video:168 ../src/bin/kim_webexport:32
+#: ../src/bin/kim_webexport:77
 msgid "Kim"
 msgstr "Kim"
 
 #: ../src/bin/kim_compress:31 ../src/bin/kim_rename:30 ../src/bin/kim_resize:31
 #: ../src/bin/kim_sortbydate:31 ../src/bin/kim_treatment:35
-#: ../src/bin/kim_video:33 ../src/bin/kim_webexport:31
+#: ../src/bin/kim_video:98 ../src/bin/kim_webexport:32
 #, fuzzy
 msgid "Do you want to create new files?"
 msgstr "您要取代現有的檔案嗎？"
 
 #: ../src/bin/kim_compress:31 ../src/bin/kim_rename:30 ../src/bin/kim_resize:31
 #: ../src/bin/kim_sortbydate:31 ../src/bin/kim_treatment:35
-#: ../src/bin/kim_video:33 ../src/bin/kim_webexport:31
+#: ../src/bin/kim_video:98 ../src/bin/kim_webexport:32
 msgid "Create new"
 msgstr ""
 
 #: ../src/bin/kim_compress:31 ../src/bin/kim_rename:30 ../src/bin/kim_resize:31
 #: ../src/bin/kim_sortbydate:31 ../src/bin/kim_treatment:35
-#: ../src/bin/kim_video:33 ../src/bin/kim_webexport:31
+#: ../src/bin/kim_video:98 ../src/bin/kim_webexport:32
 msgid "Replace existing"
 msgstr ""
 
 #: ../src/bin/kim_compress:34 ../src/bin/kim_compress:54
-#: ../src/bin/kim_convert:30 ../src/bin/kim_flipflop:30
-#: ../src/bin/kim_galery:39 ../src/bin/kim_pelemele:38 ../src/bin/kim_print:31
+#: ../src/bin/kim_convert:31 ../src/bin/kim_flipflop:30
+#: ../src/bin/kim_galery:39 ../src/bin/kim_pelemele:37 ../src/bin/kim_print:31
 #: ../src/bin/kim_rename:33 ../src/bin/kim_rename:61 ../src/bin/kim_resize:34
 #: ../src/bin/kim_resize:55 ../src/bin/kim_resizeandsend:35
 #: ../src/bin/kim_rotate:30 ../src/bin/kim_rotatewithexif:30
 #: ../src/bin/kim_sortbydate:35 ../src/bin/kim_sortbydate:71
 #: ../src/bin/kim_treatment:38 ../src/bin/kim_treatment:77
-#: ../src/bin/kim_video:36 ../src/bin/kim_video:57
+#: ../src/bin/kim_video:101 ../src/bin/kim_video:138
 msgid "Kim — Initialising ..."
 msgstr "Kim — 初始化中..."
 
 #: ../src/bin/kim_compress:46 ../src/bin/kim_compress:70
-#: ../src/bin/kim_multiburst:53 ../src/bin/kim_video:48 ../src/bin/kim_video:74
-#: ../src/bin/kim_webexport:47 ../src/bin/kim_webexport:70
+#: ../src/bin/kim_multiburst:53 ../src/bin/kim_webexport:48
+#: ../src/bin/kim_webexport:71
 msgid "Kim — Compressing file: "
 msgstr "Kim — 壓縮此檔案中："
 
 #: ../src/bin/kim_compress:76 ../src/bin/kim_rename:88 ../src/bin/kim_resize:77
 #: ../src/bin/kim_sortbydate:106 ../src/bin/kim_treatment:115
-#: ../src/bin/kim_video:80 ../src/bin/kim_webexport:76
+#: ../src/bin/kim_video:168 ../src/bin/kim_webexport:77
 #, fuzzy
 msgid "The action was cancelled by the user!"
 msgstr "此動作已被使用者取消。"
 
-#: ../src/bin/kim_convert:43
+#: ../src/bin/kim_convert:44
 msgid "Kim — Converting file:"
 msgstr "Kim — 轉換此檔案中："
 
@@ -157,28 +158,28 @@ msgstr "Kim — 欄數："
 msgid "Kim — Treatment of file: "
 msgstr "Kim — 檔案處理方式："
 
-#: ../src/bin/kim_multiburst:34 ../src/bin/kim_webexport:34
-#: ../src/bin/kim_webexport:54
+#: ../src/bin/kim_multiburst:34 ../src/bin/kim_webexport:35
+#: ../src/bin/kim_webexport:55
 msgid "Kim — Initialising compression"
 msgstr "Kim — 壓縮初始化中"
 
-#: ../src/bin/kim_pelemele:30
+#: ../src/bin/kim_pelemele:29
 msgid "Size of small images:"
 msgstr "小影像的大小："
 
-#: ../src/bin/kim_pelemele:31
+#: ../src/bin/kim_pelemele:30
 msgid "Number of rows and columns:"
 msgstr "列數與欄數："
 
-#: ../src/bin/kim_pelemele:32
+#: ../src/bin/kim_pelemele:31
 msgid "Overlaping ratio in percent:"
 msgstr "覆蓋比例（百分比）："
 
-#: ../src/bin/kim_pelemele:33
+#: ../src/bin/kim_pelemele:32
 msgid "Background color:"
 msgstr "背景顏色："
 
-#: ../src/bin/kim_pelemele:66 ../src/bin/kim_print:46
+#: ../src/bin/kim_pelemele:63 ../src/bin/kim_print:46
 msgid "Kim — resizing of file: "
 msgstr "Kim — 調整此檔案大小中："
 
@@ -267,6 +268,21 @@ msgstr "白色"
 #: ../src/bin/kim_treatment:33
 msgid "black"
 msgstr "黑色"
+
+#: ../src/bin/kim_video:87
+#, fuzzy
+msgid "Kim —  Transcoding video: "
+msgstr "Kim — 壓縮此檔案中："
+
+#: ../src/bin/kim_video:113
+#, fuzzy
+msgid "Kim — "
+msgstr "Kim — 標題："
+
+#: ../src/bin/kim_video:162
+#, fuzzy
+msgid "Kim — Transcoding video"
+msgstr "Kim — 壓縮此檔案中："
 
 #: ../src/kim_compressandresize.desktop.in.h:1
 #: ../src/kim_compressandresizevideo.desktop.in.h:1
@@ -440,6 +456,69 @@ msgstr ""
 msgid "Transcode video to 1920x1080, bad quality, libx264"
 msgstr ""
 
+#: ../src/kim_compressandresizevideo.desktop.in.h:14
+msgid "Transcode video to 1280x720, good quality, mp4, libx265"
+msgstr ""
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:15
+msgid "Transcode video to 1280x720, medium quality, mp4, libx265"
+msgstr ""
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:16
+msgid "Transcode video to 1280x720, bad quality, mp4, libx265"
+msgstr ""
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:17
+msgid "Transcode video to 1280x720, good quality, mp4, libx264"
+msgstr ""
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:18
+msgid "Transcode video to 1280x720, medium quality, mp4, libx264"
+msgstr ""
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:19
+msgid "Transcode video to 1280x720, bad quality, mp4, libx264"
+msgstr ""
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:20
+msgid "Transcode video to 1920x1080, good quality, mp4, libx265"
+msgstr ""
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:21
+msgid "Transcode video to 1920x1080, medium quality, mp4, libx265"
+msgstr ""
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:22
+msgid "Transcode video to 1920x1080, bad quality, mp4, libx265"
+msgstr ""
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:23
+msgid "Transcode video to 1920x1080, good quality, mp4, libx264"
+msgstr ""
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:24
+msgid "Transcode video to 1920x1080, medium quality, mp4, libx264"
+msgstr ""
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:25
+msgid "Transcode video to 1920x1080, bad quality, mp4, libx264"
+msgstr ""
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:26
+#: ../src/kim_publication.desktop.in.h:13
+msgid "KIM 6 Manual"
+msgstr ""
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:27
+#: ../src/kim_publication.desktop.in.h:14
+msgid "License"
+msgstr "版權宣告"
+
+#: ../src/kim_compressandresizevideo.desktop.in.h:28
+#: ../src/kim_publication.desktop.in.h:15
+msgid "About Kim"
+msgstr "關於 Kim"
+
 #: ../src/kim_convertandrotate.desktop.in.h:1
 msgid "Kim — Convert and Rotate"
 msgstr "Kim — 轉換與旋轉"
@@ -457,50 +536,55 @@ msgid "Convert to GIF"
 msgstr "轉換成 GIF"
 
 #: ../src/kim_convertandrotate.desktop.in.h:5
+#, fuzzy
+msgid "Convert to BMP (bitmap)"
+msgstr "轉換成 PNG"
+
+#: ../src/kim_convertandrotate.desktop.in.h:6
 msgid "Convert to TIFF"
 msgstr "轉換成 TIFF"
 
-#: ../src/kim_convertandrotate.desktop.in.h:6
+#: ../src/kim_convertandrotate.desktop.in.h:7
 msgid "Convert to PDF"
 msgstr "轉換成 PDF"
 
-#: ../src/kim_convertandrotate.desktop.in.h:7
+#: ../src/kim_convertandrotate.desktop.in.h:8
 msgid "Convert custom ..."
 msgstr "自訂轉換格式"
 
-#: ../src/kim_convertandrotate.desktop.in.h:8
+#: ../src/kim_convertandrotate.desktop.in.h:9
 msgid "Convert to graysale"
 msgstr "轉換成灰階"
 
-#: ../src/kim_convertandrotate.desktop.in.h:9
+#: ../src/kim_convertandrotate.desktop.in.h:10
 msgid "Convert in sepia tone"
 msgstr "轉換成深褐色調（sepia tone）"
 
-#: ../src/kim_convertandrotate.desktop.in.h:10
+#: ../src/kim_convertandrotate.desktop.in.h:11
 msgid "Auto-rotate with EXIF"
 msgstr "自動旋轉 (根據 EXIF)"
 
-#: ../src/kim_convertandrotate.desktop.in.h:11
+#: ../src/kim_convertandrotate.desktop.in.h:12
 msgid "Rotate (90°)"
 msgstr "旋轉（90°）"
 
-#: ../src/kim_convertandrotate.desktop.in.h:12
+#: ../src/kim_convertandrotate.desktop.in.h:13
 msgid "Rotate (180°)"
 msgstr "旋轉（180°）"
 
-#: ../src/kim_convertandrotate.desktop.in.h:13
+#: ../src/kim_convertandrotate.desktop.in.h:14
 msgid "Rotate (270°)"
 msgstr "旋轉（270°）"
 
-#: ../src/kim_convertandrotate.desktop.in.h:14
+#: ../src/kim_convertandrotate.desktop.in.h:15
 msgid "Rotate custom..."
 msgstr "自訂旋轉角度"
 
-#: ../src/kim_convertandrotate.desktop.in.h:15
+#: ../src/kim_convertandrotate.desktop.in.h:16
 msgid "Flip verticaly"
 msgstr "垂直"
 
-#: ../src/kim_convertandrotate.desktop.in.h:16
+#: ../src/kim_convertandrotate.desktop.in.h:17
 msgid "Flip horizontaly"
 msgstr "水平"
 
@@ -553,18 +637,6 @@ msgstr "建立 GIF 動畫"
 msgid "Add text annotation"
 msgstr "新增文字註記"
 
-#: ../src/kim_publication.desktop.in.h:13
-msgid "KIM 6 Manual"
-msgstr ""
-
-#: ../src/kim_publication.desktop.in.h:14
-msgid "License"
-msgstr "版權宣告"
-
-#: ../src/kim_publication.desktop.in.h:15
-msgid "About Kim"
-msgstr "關於 Kim"
-
 #, fuzzy
 #~ msgid "Convert  to TIFF"
 #~ msgstr "轉換成 TIFF"
@@ -592,7 +664,3 @@ msgstr "關於 Kim"
 #, fuzzy
 #~ msgid "The animation is created ! "
 #~ msgstr "動畫已建立。"
-
-#, fuzzy
-#~ msgid "Kim — Size:"
-#~ msgstr "Kim — 標題："
