@@ -1,9 +1,12 @@
 # KDE Image Menu 6 — KIM6
-KIM6 is a service menu for the KDE Plasma desktop. It adds context-menu actions in Dolphin and Folder View so you can resize, convert and batch-process images (and some video formats) directly from the file manager.
+KIM6 is a service menu for the KDE Plasma desktop that adds context-menu actions in Dolphin and Folder View.
+It allows image and video operations directly from the file manager context menu without launching separate applications.
 
-KDE store link: https://store.kde.org/p/2307290/
-
-The manual: https://kim-6.github.io/kim6/
+Project links:
+- Source code: https://github.com/KIM-6/kim6
+- KDE store link: https://store.kde.org/p/2307290/
+- Project webpage (work in progress): https://skatox.com/blog/kim-kde-image-manipulator-for-plasma-6/
+- License: GPL-3.0 or later
 
 ![Screenshot](KIM6.png)
 
@@ -25,6 +28,49 @@ The manual: https://kim-6.github.io/kim6/
 - **FFmpeg**: Required for video conversion; image functions work without it.
 - **xdg-email** from `xdg-utils`: Required for the “send by e-mail” action.
 
+
+## Menus
+
+### Compress and resize
+
+This menu allows you to compress and resize images while preserving aspect ratio.
+
+Each resize action defines a maximum dimension. The longest side of the image is scaled to that value.
+
+Examples:
+- A 2000×1000 image resized to 500×500 becomes 500×250.
+- A 1000×2000 image resized to 500×500 becomes 250×500.
+
+The *Webexport* actions combine resizing and JPEG compression.
+For these actions, you will be asked whether to overwrite existing files or create new ones (default).
+
+### Convert and rotate
+
+Allows conversion between image formats, color transformations (pale colors, black and white), and rotation or flipping of images.
+
+### Treatment and publication
+
+This menu contains various batch and publishing actions:
+
+- Rename images using a shared base name and numeric suffix
+- Sort images by EXIF date
+- Resize and attach images directly to a new email (KMail or Thunderbird)
+- Create HTML galleries or photo collages
+- Add text annotations and borders
+- Combine multiple images into a single multi-layer TIFF
+- Create animated GIFs
+- Display license information and documentation
+
+### Video compress and resize
+
+Transcodes video using FFmpeg with:
+- libx264 or libx265
+- HD (1280×720) or Full HD (1920×1080)
+- CRF values 17, 23, or 29 (17 preserves the most detail)
+
+Audio streams and container format (for example MP4) are preserved.
+
+
 ## Install
 
 ### Option 1: Install from Dolphin (recommended)
@@ -41,7 +87,7 @@ The manual: https://kim-6.github.io/kim6/
 ```
 servicemenuinstaller install ./kim6*.tar.gz
 ```
-(when run with root priviledges, it will install system-wide)
+(when run with root privileges, it will install system-wide)
 
 ### Option 3: Install from a cloned repository
 ```
@@ -49,7 +95,7 @@ git clone https://github.com/KIM-6/kim6.git
 cd kim6
 ./install.sh
 ```
-(when run with root priviledges, it will install system-wide)
+(when run with root privileges, it will install system-wide)
 
 ## Uninstall
 
@@ -60,13 +106,13 @@ On some systems, uninstall may need to be triggered twice (reported as https://b
 
 ### Option 2: Remove using `servicemenuinstaller`
 
-If you installed via Dolphion, you can also do:
+If you installed via Dolphin, you can also do:
 
 ```
 servicemenuinstaller uninstall ~/.local/share/servicemenu-download/kim6*.tar.gz
 ```
 
-In the unusual case when the archive was stored elsewhere (meaning you have non-standrd `$XDG_DATA_HOME`, you need to locate the archive and change the path above.
+In the unusual case when the archive was stored elsewhere (meaning you have non-standard `$XDG_DATA_HOME`, you need to locate the archive and change the path above.
 
 ### Option 3: Remove from a cloned repository
 
@@ -83,11 +129,25 @@ From inside the cloned repository:
 3. Choose an action, such as “Compress and resize → Webexport 1920 px”.
 4. Confirm whether to overwrite originals or create new files.
 
-You can also run individual scripts (usually stored in `~/.local/share/kio/servicemenus/kim6/bin/`) directly:
+Most actions prompt before overwriting files. Pressing Enter selects the default option, which is usually to create new files rather than overwrite originals.
+
+You can also run individual scripts (usually stored in `~/.local/share/kio/servicemenus/kim6/bin/`) directly, like so:
 
 ```
 ./kim_resize ~/example.jpg 300x300
 ```
+
+### Environment variables
+
+Some behavior can be customized using environment variables.
+
+#### Web export quality
+
+When using the *Webexport* actions in the *Compress and resize* menu, JPEG quality can be controlled via the `KIM_WEB_QUALITY` environment variable:
+
+Valid values range from **1** to **100**.
+
+If not set, KIM6 defaults to a quality value of **75**.
 
 
 ## History
@@ -104,7 +164,8 @@ There is a functionally similar but independent project: https://github.com/irf
 ## Developer and translator information
 
 ### Translations
-To submit a new translation, just run `msginit -l XX` in the po directory (replace "XX" with the shortcut of your language) and translate the strings there. Then open an issue here with the resulting file as an attachment to submit it or better create a pull request. Current wrong or incomplete translations can be done by directly editing the po files and opening pull requests.
+To submit a new translation, just run `msginit -l XX` in the po directory (replace "XX" with the shortcut of your language) and translate the strings there. 
+Then open an issue with the project with the resulting file as an attachment to submit it or better create a pull request. Current wrong or incomplete translations can be done by directly editing the po files and opening pull requests.
 
 To test your translation, install it (see release) and run Dolphin like this (replace your new language, this is for Dutch):
 ```
@@ -178,7 +239,19 @@ Individual scripts can also be run directly. Look into the bin files (which are 
 ./kim_resize ~/example.jpg 300x300
 ```
 
+## Documentation
+
+`README.md` is the canonical documentation source.
+
+The HTML manual (`docs/index.html`) is generated from `README.md` using pandoc:
+
+```
+./build-docs.sh
+```
+
 ### Todo
 
 - Functionally, KIM 6 is stable. Please report bugs if you find any.
 - Technically, it would be good to merge executable files and refactor common code in functions, that should reduce the code size by half. Patches welcome!
+
+Copyleft 2004–2026

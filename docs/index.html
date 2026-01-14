@@ -1,98 +1,430 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-
-
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-    <meta charset="UTF-8">
-    <meta name="author" content="Tomáš Hnyk" />
-    <meta name="description" content="KIM6's documentation" />
-    <meta name="robots" content="noarchive" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <title>KIM 6 documentation</title>
-
-    <style type="text/css" title="Work, a pseudo-professional style sheet.">
-      @import "work.css";
-    </style>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>KIM6 documentation</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
 </head>
-
 <body>
-    <!-- The title on top -->
-    <h1 id="maintitle">Documentation of Kde Image Menu 6 — KIM6</h1>
-    <!-- The actual content of the page -->
-    <div id="content">
-    <h1>KIM6 (Kde Image Menu 6)</h1>
-    <p id="links">
-    Developed at: <a href="https://github.com/KIM-6/kim6">https://github.com/KIM-6/kim6</a><br>
-    Webpage (work in progress): <a href="https://skatox.com/blog/kim-kde-image-manipulator-for-plasma-6/">https://skatox.com/blog/kim-kde-image-manipulator-for-plasma-6/</a><br>
-    KDE Store: <a href="https://store.kde.org/p/2307290/">https://store.kde.org/p/2307290/</a><br>
-    License: <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GPL 3</a> or any later version.</p>
+<header id="title-block-header">
+<h1 class="title">KIM6 documentation</h1>
+</header>
+<h1 id="kde-image-menu-6--kim6">KDE Image Menu 6 — KIM6</h1>
+<p>KIM6 is a service menu for the KDE Plasma desktop that adds
+context-menu actions in Dolphin and Folder View. It allows image and
+video operations directly from the file manager context menu without
+launching separate applications.</p>
+<p>Project links:</p>
+<ul>
+<li>Source code: <a
+href="https://github.com/KIM-6/kim6">https://github.com/KIM-6/kim6</a></li>
+<li>KDE store link: <a
+href="https://store.kde.org/p/2307290/">https://store.kde.org/p/2307290/</a></li>
+<li>Project webpage (work in progress): <a
+href="https://skatox.com/blog/kim-kde-image-manipulator-for-plasma-6/">https://skatox.com/blog/kim-kde-image-manipulator-for-plasma-6/</a></li>
+<li>License: GPL-3.0 or later</li>
+</ul>
+<p><img src="KIM6.png" alt="Screenshot" /></p>
+<h2 id="features">Features</h2>
+<ul>
+<li>Process images directly from Dolphin's context menu.</li>
+<li>Compress and resize images for web, sharing or archival.</li>
+<li>Convert between multiple image formats.</li>
+<li>Rotate, flip and losslessly manipulate images.</li>
+<li>Sort images based on EXIF date.</li>
+<li>Batch-rename images with flexible patterns.</li>
+<li>Create HTML galleries, collages and simple GIF animations.</li>
+<li>Reduce or re-encode video clips using FFmpeg (HD or Full HD).</li>
+</ul>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li><strong>KDE Plasma 6</strong>: Dolphin, KDialog and Qt.</li>
+<li><strong>ImageMagick</strong>: Required for most image
+operations.</li>
+<li><strong>FFmpeg</strong>: Required for video conversion; image
+functions work without it.</li>
+<li><strong>xdg-email</strong> from <code>xdg-utils</code>: Required for
+the “send by e-mail” action.</li>
+</ul>
+<h2 id="menus">Menus</h2>
+<h3 id="compress-and-resize">Compress and resize</h3>
+<p>This menu allows you to compress and resize images while preserving
+aspect ratio.</p>
+<p>Each resize action defines a maximum dimension. The longest side of
+the image is scaled to that value.</p>
+<p>Examples:</p>
+<ul>
+<li>A 2000×1000 image resized to 500×500 becomes 500×250.</li>
+<li>A 1000×2000 image resized to 500×500 becomes 250×500.</li>
+</ul>
+<p>The <em>Webexport</em> actions combine resizing and JPEG compression.
+For these actions, you will be asked whether to overwrite existing files
+or create new ones (default).</p>
+<h3 id="convert-and-rotate">Convert and rotate</h3>
+<p>Allows conversion between image formats, color transformations (pale
+colors, black and white), and rotation or flipping of images.</p>
+<h3 id="treatment-and-publication">Treatment and publication</h3>
+<p>This menu contains various batch and publishing actions:</p>
+<ul>
+<li>Rename images using a shared base name and numeric suffix</li>
+<li>Sort images by EXIF date</li>
+<li>Resize and attach images directly to a new email (KMail or
+Thunderbird)</li>
+<li>Create HTML galleries or photo collages</li>
+<li>Add text annotations and borders</li>
+<li>Combine multiple images into a single multi-layer TIFF</li>
+<li>Create animated GIFs</li>
+<li>Display license information and documentation</li>
+</ul>
+<h3 id="video-compress-and-resize">Video compress and resize</h3>
+<p>Transcodes video using FFmpeg with:</p>
+<ul>
+<li>libx264 or libx265</li>
+<li>HD (1280×720) or Full HD (1920×1080)</li>
+<li>CRF values 17, 23, or 29 (17 preserves the most detail)</li>
+</ul>
+<p>Audio streams and container format (for example MP4) are
+preserved.</p>
+<h2 id="install">Install</h2>
+<h3 id="option-1-install-from-dolphin-recommended">Option 1: Install
+from Dolphin (recommended)</h3>
+<ol type="1">
+<li>Open: Dolphin → Settings → Configure Dolphin → Services.</li>
+<li>Search for “KIM6” and install it.</li>
+<li>If it does not appear, try changing the sorting order in Dolphin's
+service list (reported as <a
+href="https://bugs.kde.org/show_bug.cgi?id=508140">https://bugs.kde.org/show_bug.cgi?id=508140</a>)</li>
+</ol>
+<h3
+id="option-2-install-using-servicemenuinstaller-with-a-downloaded-release">Option
+2: Install using <code>servicemenuinstaller</code> with a downloaded
+release</h3>
+<ol type="1">
+<li>Download the latest <code>kim6_*.tar.gz</code> release from the
+project’s Releases page.</li>
+<li>Install it using:</li>
+</ol>
+<pre><code>servicemenuinstaller install ./kim6*.tar.gz</code></pre>
+<p>(when run with root privileges, it will install system-wide)</p>
+<h3 id="option-3-install-from-a-cloned-repository">Option 3: Install
+from a cloned repository</h3>
+<pre><code>git clone https://github.com/KIM-6/kim6.git
+cd kim6
+./install.sh</code></pre>
+<p>(when run with root privileges, it will install system-wide)</p>
+<h2 id="uninstall">Uninstall</h2>
+<h3 id="option-1-remove-from-dolphin">Option 1: Remove from Dolphin</h3>
+<p>Use Dolphin’s service menu configuration to remove KIM6.<br />
+On some systems, uninstall may need to be triggered twice (reported as
+<a
+href="https://bugs.kde.org/show_bug.cgi?id=508142">https://bugs.kde.org/show_bug.cgi?id=508142</a>).</p>
+<h3 id="option-2-remove-using-servicemenuinstaller">Option 2: Remove
+using <code>servicemenuinstaller</code></h3>
+<p>If you installed via Dolphin, you can also do:</p>
+<pre><code>servicemenuinstaller uninstall ~/.local/share/servicemenu-download/kim6*.tar.gz</code></pre>
+<p>In the unusual case when the archive was stored elsewhere (meaning
+you have non-standard <code>$XDG_DATA_HOME</code>, you need to locate
+the archive and change the path above.</p>
+<h3 id="option-3-remove-from-a-cloned-repository">Option 3: Remove from
+a cloned repository</h3>
+<p>From inside the cloned repository:</p>
+<pre><code>./uninstall.sh</code></pre>
+<p>(if you installed as root, you need to run this as root too)</p>
+<h2 id="usage">Usage</h2>
+<ol type="1">
+<li>Select one or more images in Dolphin or Folder View.</li>
+<li>Right-click and open the <strong>KIM6</strong> submenu.</li>
+<li>Choose an action, such as “Compress and resize → Webexport 1920
+px”.</li>
+<li>Confirm whether to overwrite originals or create new files.</li>
+</ol>
+<p>Most actions prompt before overwriting files. Pressing Enter selects
+the default option, which is usually to create new files rather than
+overwrite originals.</p>
+<p>You can also run individual scripts (usually stored in
+<code>~/.local/share/kio/servicemenus/kim6/bin/</code>) directly, like
+so:</p>
+<pre><code>./kim_resize ~/example.jpg 300x300</code></pre>
+<h3 id="environment-variables">Environment variables</h3>
+<p>Some behavior can be customized using environment variables.</p>
+<h4 id="web-export-quality">Web export quality</h4>
+<p>When using the <em>Webexport</em> actions in the <em>Compress and
+resize</em> menu, JPEG quality can be controlled via the
+<code>KIM_WEB_QUALITY</code> environment variable:</p>
+<p>Valid values range from <strong>1</strong> to
+<strong>100</strong>.</p>
+<p>If not set, KIM6 defaults to a quality value of
+<strong>75</strong>.</p>
+<h2 id="history">History</h2>
+<ul>
+<li>KIM6 is a fork for KDE 6 of KIM5: <a
+href="https://github.com/caco3/kim5">https://github.com/caco3/kim5</a></li>
+<li>One KDE4 fork is here: <a
+href="https://store.kde.org/p/998188/">https://store.kde.org/p/998188/</a></li>
+<li>The original version for KDE4 is here: <a
+href="https://store.kde.org/p/1126887/">https://store.kde.org/p/1126887/</a></li>
+<li>KIM itself goes as far back as KDE 3. There is a website that was
+still functioning in 2025: <a
+href="http://bouveyron.free.fr/kim/index.html">http://bouveyron.free.fr/kim/index.html</a></li>
+<li>A huge majority of the code is from the original authors, thanks to
+them!</li>
+</ul>
+<h2 id="see-also">See also</h2>
+<p>There is a functionally similar but independent project: <a
+href="https://github.com/irfanhakim-as/kde-service-menu-reimage">https://github.com/irfanhakim-as/kde-service-menu-reimage</a></p>
+<h2 id="developer-and-translator-information">Developer and translator
+information</h2>
+<h3 id="translations">Translations</h3>
+<p>To submit a new translation, just run <code>msginit -l XX</code> in
+the po directory (replace "XX" with the shortcut of your language) and
+translate the strings there. Then open an issue with the project with
+the resulting file as an attachment to submit it or better create a pull
+request. Current wrong or incomplete translations can be done by
+directly editing the po files and opening pull requests.</p>
+<p>To test your translation, install it (see release) and run Dolphin
+like this (replace your new language, this is for Dutch):</p>
+<pre><code>LANGUAGE=nl dolphin</code></pre>
+<p>To generate new <code>.pot</code> template and update the individual
+translations, one runs this in the project root directory (it actually
+runs in the <code>po</code> directory; unless you develop a new feature,
+you should not need this as I try to keep the translation strings
+up-to-date):</p>
+<pre><code>VERSION=$(grep -m 1 &quot;^Release&quot; ChangeLog | grep -oP &#39;\d+\.\d+\.\d+&#39;) # set kim6 version
+cd po;
+# this creates a new pot file from the files in the bin directory (do not update because then deleted strings are kept)
+xgettext --language=Shell --keyword=gettext --output=kim6.pot --from-code=UTF-8 --add-comments=TRANSLATORS --package-name=&quot;KIM 6 — Kde Image Menu 6&quot; --package-version=&quot;$VERSION&quot; --msgid-bugs-address=&quot;https://github.com/KIM-6/kim6/issues&quot; ../src/bin/kim_*
 
-    <p>KIM6 is a <a href="https://develop.kde.org/docs/apps/dolphin/service-menus">service menu</a> for <a href="https://kde.org">KDE</a> used for example by <a href="https://apps.kde.org/dolphin/Dolphin">Dolphin</a> and other users of <a href="https://invent.kde.org/frameworks/kio">KIO</a>. KIM6 allows you to perform actions on your images (and videos) from your desktop or file manager without having to use other applications. This service menu can be considered as a frontend of <a href="https://imagemagick.org">ImageMagick</a> (and <a href="https://ffmpeg.org">FFmpeg</a>).</p>
-    <p>KIM’s history goes as far back as some time around 2004 in the age of KDE 3. A huge thanks belongs to the original authors and people who later forked it. It has been resurrected for each successive KDE version, so this is its 4th iteration. Some features can therefore be a bit funky, especially in the publication menu.</p>
+# this gets strings from the desktop.in files, one needs to first extract the strings before gettext can recognize them, that creates header files and so comments about string locations are then wrong in the po and pot files
+for desk_ini in ../src/*.desktop.in;
+do intltool-extract --type=gettext/ini &quot;$desk_ini&quot;;
+xgettext --keyword=N_:1 --join-existing --output kim6.pot --from-code=UTF-8 --package-name=&quot;KIM 6 — Kde Image Menu 6&quot; --package-version=&quot;$VERSION&quot; --msgid-bugs-address=&quot;https://github.com/KIM-6/kim6/issues&quot; &quot;$desk_ini&quot;.h;
 
-    <h1>Menus</h1>
-    <ul>
-        <li><b>Compress and resize</b>
-        <p>This menu allows you to compress and resize images. Compression can significantly reduce the size of images in exchange for some loss of detail. Resizing changes the size of images but keeps scale. Each action defines a maximum size of the resulting image.</p>
-        <p>So if your image is 2000x1000 (landscape orientation) and you resize it to 500x500, your resulting image will be 500x250 (so the limit will be applied to horizontal length of the image).</p>
-        <p>If your image is 1000x2000 (portrait orientation) and you resize it to 500x500, your resulting image will be 250x500 (so the limit will be applied to vertical height of the image).</p>
-        <p>Webexport combines compression and resizing. In each case, you will be asked whether you want to create a new image or overwrite existing. Pressing enter will select to create new images.</p></li>
+# the header files are just temporary
+rm &quot;$desk_ini&quot;.h;
+done;
 
-        <li><b>Convert and rotate</b>
-        <p>This menu allows to convert the images to several other formats, change its colours to a pale shade or to black and white and rotate and flip images.</p></li>
+# % in the strings causes gettext to include this warning that we get rid of
+grep -v &#39;^#, no-c-format&#39; kim6.pot &gt; temp.pot;
+mv temp.pot kim6.pot;
 
-        <li><b>Treatment and publication</b>
-        <p>This menu contains various actions. You can rename images (they will then share the name and will be differentiated by a suffix, so it will be for example: Picture_001.jpg, Picture_002.jpg. etc.</p>
-        <p>If you use Kmail or Thunderbird, you should be able to resize pictures and open a message with them attached in one go.</p>
-        <p>Sort by date will rename pictures based on their EXIF dates so they should be then sorted by date in the file manager.</p>
-        <p>You can also create a HTML gallery or a funky collage of (photo montage) from your pictures.</p>
-        <p>You can add black text (annotation) to the bottom right corner of your image and add white or black border to your images.</p>
-        <p>You can combine several images into one file in the TIFF format (graphical programs like GIMP or Krita should be able to retrieve all the images from such a file.</p>
-        <p>You can create a gif animation. That can be also done from a so-called multiburst image, but the current authors are not sure what that is supposed to do.</p>
-        You can also display a license and this help.</p></li>
+# with the resulting pot file, we can update the po files in case there are new strings or some got deleted
+for po in *.po; do msgmerge --update &quot;$po&quot; kim6.pot;
+done
+cd ..</code></pre>
+<h3 id="release">Release</h3>
+<p>First update the changelog (keep format!), then the translations (do
+not forget to commit them!) and then run the following in the project
+root directory (you need to have <code>gh</code> installed):</p>
+<pre><code>VERSION=$(grep -m 1 &quot;^Release&quot; ChangeLog | grep -oP &#39;\d+\.\d+\.\d+&#39;) # set kim6 version
 
-        <li><b>Video Compress and resize</b>
-        <p>Transcodes video using either libx264 or libx265 to HD (1280x720) or FullHD (1920x1080) in three qualities (CFR values 17, 23 and 29 — only 17 should more or less preserve the amount of detail). Audio is copied and container (like MP4) is also preserved.</p></li>
-    </ul>
 
-    <h1>Usage</h1>
+# generate desktop files
+cd po;
+for desk_ini in ../src/*.desktop.in; do intltool-merge --desktop-style ./ &quot;$desk_ini&quot;  &quot;${desk_ini%.in}&quot;; chmod +x &quot;${desk_ini%.in}&quot; ; done
+cd ..;
 
-    <p>
-    KIM6 is used via the file manager context menu. Select one or more image or video
-    files, right-click, and choose the desired action from the KIM6 submenu.
-    </p>
+# Do not include files that need not be installed (we first need to create the archive so tar does not complain about file being changed as it is read)
+touch kim6_$VERSION.tar.gz
+tar -czf kim6_$VERSION.tar.gz --exclude=README.md  --exclude=KIM6.png --exclude=Changelog --exclude kim6_$VERSION.tar.gz --exclude kim6_*.tar.gz --exclude &#39;./src/*desktop.in&#39; --exclude ./.* ./
 
-    <p>
-    Most actions will prompt for confirmation before overwriting existing files.
-    Pressing Enter will usually select the default option, which is to create new
-    files rather than overwrite existing ones.
-    </p>
-
-    <p>
-    Some behavior can be customized using environment variables. These variables can
-    be set in the environment where your file manager is launched.
-    </p>
-
-    <ul>
-        <li><b>Web export quality</b>
-
-        <p>When using the <b>Webexport</b> actions in the <b>Compress and resize</b> menu, KIM6 allows control over the JPEG compression quality via an environment variable.</p>
-        <p>Set the <code>KIM_WEB_QUALITY</code> environment variable to a value between <b>1</b> and <b>100</b> to define the quality used when
-        exporting images for the web:</p>
-
-        <pre>KIM_WEB_QUALITY=85</pre>
-
-        <p>If the variable is not set, KIM6 defaults to a quality value of <b>75</b>.</p>
-        </li>
-    </ul>
-    <h1>Installation</h1>
-    See <a href="https://github.com/KIM-6/kim6?tab=readme-ov-file#install">here.</a></div>
-
-    <!-- The footer information -->
-    <div id="footer">
-         KIM6 M Kde Image Menu 6  | Copyleft 2004-2025
-    </div>
+# generated desktop files are no longer needed
+rm src/kim_compressandresize.desktop src/kim_compressandresizevideo.desktop src/kim_convertandrotate.desktop src/kim_publication.desktop
+NOTES=$(sed -n &#39;/^Release/,/^$/p&#39; ChangeLog | grep &#39;^-&#39; | head -n -1)
+gh release create &quot;v$VERSION&quot; --title &quot;Version $VERSION&quot; --notes &quot;$NOTES&quot; ./kim6*.tar.gz</code></pre>
+<p>The archive is automatically uploaded to Github and a release and a
+new verison tag is made here. Then manually upload it to <a
+href="https://store.kde.org/p/2307290/">https://store.kde.org/p/2307290/</a>
+(you can delete the tar file after).</p>
+<h3 id="development">Development</h3>
+<p>Try to make a release (see above) and then test your changes
+with:</p>
+<pre><code>servicemenuinstaller install kim6_$VERSION.tar.gz</code></pre>
+<p>Then clean up with:</p>
+<pre><code>servicemenuinstaller uninstall kim6_$VERSION.tar.gz</code></pre>
+<p>It is also possible to run the <code>.install.sh</code> and
+<code>.uninstall.sh</code> scripts, the desktop files will be generated
+automatically.</p>
+<p>Individual scripts can also be run directly. Look into the bin files
+(which are bash scripts in <code>src/bin</code> folder) to see what
+arguments they need. For example this resizes proportionally a given
+file 300 pixels along its shorter side:</p>
+<pre><code>./kim_resize ~/example.jpg 300x300</code></pre>
+<h2 id="documentation">Documentation</h2>
+<p><code>README.md</code> is the canonical documentation source.</p>
+<p>The HTML manual (<code>docs/index.html</code>) is generated from
+<code>README.md</code> using pandoc:</p>
+<pre><code>./build-docs.sh</code></pre>
+<h3 id="todo">Todo</h3>
+<ul>
+<li>Functionally, KIM 6 is stable. Please report bugs if you find
+any.</li>
+<li>Technically, it would be good to merge executable files and refactor
+common code in functions, that should reduce the code size by half.
+Patches welcome!</li>
+</ul>
+<p>Copyleft 2004–2026</p>
 </body>
 </html>
