@@ -155,7 +155,7 @@ tar -czf kim6_$VERSION.tar.gz --exclude=README.md  --exclude=KIM6.png --exclude=
 # generated desktop files are no longer needed
 rm src/kim_compressandresize.desktop src/kim_compressandresizevideo.desktop src/kim_convertandrotate.desktop src/kim_publication.desktop
 NOTES=$(sed -n '/^Release/,/^$/p' ChangeLog | grep '^-' | head -n -1)
-gh release create "v$VERSION" --title "Version $RELEASE" --notes "$NOTES" ./kim6*.tar.gz
+gh release create "v$VERSION" --title "Version $VERSION" --notes "$NOTES" ./kim6*.tar.gz
 ```
 
 The archive is automatically uploaded to Github and a release and a new verison tag is made here. Then manually upload it to https://store.kde.org/p/2307290/ (you can delete the tar file after).
