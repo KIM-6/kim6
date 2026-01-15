@@ -29,7 +29,7 @@ SOURCE_TRANSLATION_TTT
 KIMDIR=`mktemp -d /tmp/kim.XXXXXXXX` || exit 1
 
 let "nbfiles = $# -1"
-dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising compression")" "$nbfiles"`
+dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising compression")" $nbfiles`
 qdbus $dbusRef showCancelButton true
 
 counter=0
@@ -49,7 +49,7 @@ do
         y=$((($i-1)*240));
         magick -- "$1" -crop "320x240+$x+$y" "$KIMDIR/imagette.$i.$j.jpg"
         qdbus $dbusRef setLabelText "$(gettext "Kim — Compressing file: ") `basename "$FILE"`"
-         qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value "$counter"
+         qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
     done
 done
 

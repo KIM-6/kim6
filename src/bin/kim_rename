@@ -44,21 +44,21 @@ case $? in
             let "counter +=1"
             FILE="$i";
             suff="";
-            if [ "$counter" -lt "10" ];
+            if [ $counter -lt "10" ];
             then suff="00";
-            else   if [ "$counter" -lt "100" ];
+            else   if [ $counter -lt "100" ];
                 then suff="0";
                 fi
             fi
             mv "$FILE" "$DIR/$newname$suff$counter.jpg"
             qdbus $dbusRef setLabelText "$(gettext "Kim — Renaming file: ") `basename "$FILE"`"
-             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value "$counter"
+             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;
     done
     qdbus $dbusRef close;;
 
     0)
-    dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" "$nbfiles"`
+    dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
     qdbus $dbusRef showCancelButton true
     counter=0
     newname="`kdialog --inputbox "$(gettext "Choose the new name of images:")" "wallpaper_"`"
@@ -72,15 +72,15 @@ case $? in
             let "counter +=1"
             FILE="$i";
             suff="";
-            if [ "$counter" -lt "10" ];
+            if [ $counter -lt "10" ];
             then suff="00";
-            else   if [ "$counter" -lt "100" ];
+            else   if [ $counter -lt "100" ];
                 then suff="0";
                 fi
             fi
             cp "$FILE" "$DIR/$newname$suff$counter.jpg"
             qdbus $dbusRef setLabelText "$(gettext "Kim — Renaming file: ") `basename "$FILE"`"
-             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value "$counter"
+             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;
     done
     qdbus $dbusRef close;;

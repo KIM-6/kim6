@@ -28,7 +28,7 @@ FILE="";
 FORMAT="$1";
 echo $FORMAT
 let "nbfiles = $# -1"
-dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" "$nbfiles"`
+dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
 qdbus $dbusRef showCancelButton "true"
 
 counter=0

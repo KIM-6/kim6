@@ -45,7 +45,7 @@ for i in "$@";do
         else mogrify -rotate $ANGLE "$FILE"
         fi
         qdbus $dbusRef setLabelText "$(gettext "Kim — Rotating file: ") `basename "$FILE"`"
-         qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value "$counter"
+         qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
     fi;
 done
 

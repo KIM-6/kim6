@@ -68,7 +68,7 @@ case $? in
             EXT="${BASENAME##*.}"
             magick -quality $QUALITY -- "$FILE" "$DIR/${NAME}_compressed.${EXT}"
             qdbus $dbusRef setLabelText "$(gettext "Kim — Compressing file: ") `basename $(FILE)`"
-#             qdbus $dbusRef setProgress "$counter"
+#             qdbus $dbusRef setProgress $counter
         fi;
     done
     qdbus $dbusRef close;;

@@ -121,7 +121,7 @@ case $? in
             mv "$FILE" "$WORK"
 
             # Encode with progress tracking
-            encode_with_progress "$WORK" "$FILE" "$dbusRef" "$counter" "$nbfiles"
+            encode_with_progress "$WORK" "$FILE" "$dbusRef" $counter "$nbfiles"
             if [ $? -ne 0 ]; then
                 # Restore original if cancelled
                 mv "$WORK" "$FILE" 2>/dev/null
@@ -161,7 +161,7 @@ case $? in
 
             qdbus $dbusRef setLabelText "$(gettext "Kim — Transcoding video") $counter/$nbfiles: `basename "$FILE"`" 2>/dev/null
             # Encode with progress tracking
-            encode_with_progress "$FILE" "$OUTPUT" "$dbusRef" "$counter" "$nbfiles"
+            encode_with_progress "$FILE" "$OUTPUT" "$dbusRef" $counter $nbfiles
         fi;
     done
     qdbus $dbusRef close;;
