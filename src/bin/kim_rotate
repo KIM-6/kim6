@@ -41,7 +41,7 @@ for i in "$@";do
         let "counter +=1"
         FILE="$i"
         if test "EXIF" = $ANGLE; then
-            mogrify -auto-orient "$FILE";
+            mogrify -auto-orient "$FILE"
         else mogrify -rotate $ANGLE "$FILE"
         fi
         qdbus $dbusRef setLabelText "$(gettext "Kim — Rotating file: ") `basename "$FILE"`"
