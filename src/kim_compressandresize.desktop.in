@@ -1,4 +1,4 @@
-# Servicemenu — Compress and resize actions images
+# Servicemenu — Compress and resize images
 #
 # Copyright (C) 2005, 2006  Charles Bouveyron <charles.bouveyron@free.fr>
 # Copyright (C) 2025  Tomáš Hnyk <tomashnyk@gmail.com>
@@ -19,7 +19,7 @@
 [Desktop Entry]
 Type=Service
 MimeType=image/*;
-Actions=aRcprs10;bRcprs20;cRcprs30;dRcprs40;eRcprs50;fRcprs60;gRcprs70;hRcprs80;iRcprs90;jRcprsCustom;_SEPARATOR_;aRsize0300;bRsize0600;cRsize0800;dRsize1024;eRsize1280;fRsize1400;gRsize1600;hRsize1920;iRsize2560;jRsize3440;kRsize3840;lRsizeCustom;_SEPARATOR_;aWebThumb75120;bWebExp75640;cWebExp75800;dWebExp751024;
+Actions=aRcprs10;bRcprs30;cRcprs50;dRcprs70;eRcprs90;fRcprsCustom;_SEPARATOR_;aRsize0300;bRsize0600;cRsize0800;dRsize1024;eRsize1280;fRsize1400;gRsize1600;hRsize1920;iRsize2560;jRsize3440;kRsize3840;lRsizeCustom;_SEPARATOR_;aWebThumb75120;bWebExp75640;cWebExp75800;dWebExp751024;eWebExp751600;
 Encoding=UTF-8
 _X-KDE-Submenu=Kim — Compress and Resize
 
@@ -28,47 +28,27 @@ _Name=Compress at 10 %
 Icon=application-x-compress
 Exec=kim_compress 10 %D %U
 
-[Desktop Action bRcprs20]
-_Name=Compress at 20 %
-Icon=application-x-compress
-Exec=kim_compress 20 %D %U
-
-[Desktop Action cRcprs30]
+[Desktop Action bRcprs30]
 _Name=Compress at 30 %
 Icon=application-x-compress
 Exec=kim_compress 30 %D %U
 
-[Desktop Action dRcprs40]
-_Name=Compress at 40 %
-Icon=application-x-compress
-Exec=kim_compress 40 %D %U
-
-[Desktop Action eRcprs50]
+[Desktop Action cRcprs50]
 _Name=Compress at 50 %
 Icon=application-x-compress
 Exec=kim_compress 50 %D %U
 
-[Desktop Action fRcprs60]
-_Name=Compress at 60 %
-Icon=application-x-compress
-Exec=kim_compress 60 %D %U
-
-[Desktop Action gRcprs70]
+[Desktop Action dRcprs70]
 _Name=Compress at 70 %
 Icon=application-x-compress
 Exec=kim_compress 70 %D %U
 
-[Desktop Action hRcprs80]
-_Name=Compress at 80 %
-Icon=application-x-compress
-Exec=kim_compress 80 %D %U
-
-[Desktop Action iRcprs90]
+[Desktop Action eRcprs90]
 _Name=Compress at 90 %
 Icon=application-x-compress
 Exec=kim_compress 90 %D %U
 
-[Desktop Action jRcprsCustom]
+[Desktop Action fRcprsCustom]
 _Name=Compress Custom...
 Icon=application-x-compress
 Exec=kim_compress `kdialog --inputbox "Compression rate:" 60` %D %U
@@ -152,3 +132,10 @@ Exec=kim_webexport 800x800 %D %U
 _Name=WebExport: 1024x1024 at 75 %
 Icon=applications-development-web
 Exec=kim_webexport 1024x1024 %D %U
+
+[Desktop Action eWebExp751600]
+_Name=WebExport: 1600x1600 at 75 %
+Icon=applications-development-web
+Exec=kim_webexport 1600x1600 %D %U
+
+
