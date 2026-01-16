@@ -36,13 +36,13 @@ spit_install_log() {
 
 # Test for presence of dependencies, if not present, a user is presented with a log after installation
 if ! command -v montage >/dev/null 2>&1; then
-    install_log="$install_log""Cannot find executable <b>montage</b>  Please install it. It is usually in package <b>graphicsmagick</b> Without it, the montage feature will not work.<br><br>"
+    install_log="$install_log""Cannot find executable <b>montage</b>  Please install it. It is usually in package <b>imagemagick</b> or <b>ImageMagick</b> Without it, the montage feature will not work.<br><br>"
 fi
 if ! command -v mogrify >/dev/null 2>&1; then
-    install_log="$install_log""Cannot find executable <b>mogrify</b>  Please install it. It  is usually in package <b>graphicsmagick</b> Without it, a lot of features like resizing and rotating and other transformations will not work.<br><br>"
+    install_log="$install_log""Cannot find executable <b>mogrify</b>  Please install it. It  is usually in package <b>imagemagick</b> or <b>ImageMagick</b> Without it, a lot of features like resizing and rotating and other transformations will not work.<br><br>"
 fi
 if ! command -v convert >/dev/null 2>&1; then
-    install_log="$install_log""Cannot find executable <b>convert</b>  Please install it. It is usually in package <b>graphicsmagick</b> Without it, format conversion will not work.<br><br>"
+    install_log="$install_log""Cannot find executable <b>convert</b>  Please install it. It is usually in package <b>imagemagick</b> or <b>ImageMagick</b> Without it, format conversion will not work.<br><br>"
 fi
 if ! command -v ffmpeg >/dev/null 2>&1; then
     install_log="$install_log""Cannot find executable <b>ffmpeg</b>.  Please install it. It may be in package <b>ffmpeg</b>. Without it, video resizing will not work.<br><br>"
