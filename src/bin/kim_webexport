@@ -45,7 +45,7 @@ case $? in
             let "counter +=1"
             FILE="$i"
             mogrify -resize "$SCELTA" -quality "$WEB_Q" -- "$FILE"
-            qdbus $dbusRef setLabelText "$(gettext "Kim — Compressing file: ") `basename "$FILE"`"
+            qdbus $dbusRef setLabelText "$(gettext "Kim — Compressing file: ") `basename -- "$FILE"`"
             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;
     done
@@ -64,10 +64,10 @@ case $? in
             fi
             let "counter +=1"
             FILE="$i"
-            BASENAME="$(basename "$FILE")"
+            BASENAME="$(basename -- "$FILE")"
             NAME="${BASENAME%.*}"
             EXT="${BASENAME##*.}"
-            qdbus $dbusRef setLabelText "$(gettext "Kim — Compressing file: ") `basename "$FILE"`"
+            qdbus $dbusRef setLabelText "$(gettext "Kim — Compressing file: ") `basename -- "$FILE"`"
             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
             magick -- "$FILE" -resize $SCELTA -quality $WEB_Q "$DIR/${NAME}_web.${EXT}"
         fi;

@@ -51,7 +51,7 @@ case $? in
                 fi
             fi
             mv "$FILE" "$DIR/$newname$suff$counter.jpg"
-            qdbus $dbusRef setLabelText "$(gettext "Kim — Renaming file: ") `basename "$FILE"`"
+            qdbus $dbusRef setLabelText "$(gettext "Kim — Renaming file: ") `basename -- "$FILE"`"
             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;
     done
@@ -79,7 +79,7 @@ case $? in
                 fi
             fi
             cp "$FILE" "$DIR/$newname$suff$counter.jpg"
-            qdbus $dbusRef setLabelText "$(gettext "Kim — Renaming file: ") `basename "$FILE"`"
+            qdbus $dbusRef setLabelText "$(gettext "Kim — Renaming file: ") `basename -- "$FILE"`"
             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;
     done

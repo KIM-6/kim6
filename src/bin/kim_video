@@ -110,7 +110,7 @@ case $? in
             fi
             let "counter +=1"
             FILE="$i"
-            qdbus $dbusRef setLabelText "$(gettext "Kim — ") $counter/$nbfiles: `basename "$FILE"`" 2>/dev/null
+            qdbus $dbusRef setLabelText "$(gettext "Kim — ") $counter/$nbfiles: `basename -- "$FILE"`" 2>/dev/null
             WORK="$FILE-work"
             counter_suffix=1
             # handle the unlikely scenario $FILE-work already exists (this only works when we transcode to mp4, otherwise the command fails as ffmpeg does not know what format to transcode to without an extension)
@@ -159,7 +159,7 @@ case $? in
                 let "counter_suffix +=1"
             done
 
-            qdbus $dbusRef setLabelText "$(gettext "Kim — Transcoding video") $counter/$nbfiles: `basename "$FILE"`" 2>/dev/null
+            qdbus $dbusRef setLabelText "$(gettext "Kim — Transcoding video") $counter/$nbfiles: `basename -- "$FILE"`" 2>/dev/null
             # Encode with progress tracking
             encode_with_progress "$FILE" "$OUTPUT" "$dbusRef" $counter $nbfiles
         fi;

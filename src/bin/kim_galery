@@ -60,7 +60,7 @@ for i in "$@";do
         let "counter +=1"
         let "tmp +=1"
         FILE="$i";
-        IMAGE=`basename "$FILE"`;
+        IMAGE=`basename -- "$FILE"`;
         magick "$FILE" -resize $SCALE_1 $DIR/images/"$IMAGE";
         magick "$FILE" -resize $SCALE_2 $DIR/thumbs/"$IMAGE";
         W2=`identify -format "%w" $DIR/images/"$IMAGE"`;
