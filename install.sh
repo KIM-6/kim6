@@ -121,7 +121,7 @@ cp -pr "$src_folder"/src/gallery \
        "$src_folder"/src/bin \
        "$src_folder"/src/kim_translation \
        "$src_folder"/ABOUT \
-       "$src_folder"/LICENSE \
+       "$src_folder"/LICENSE.md \
        "$kim_helper_files"/
 
 # copy docs if present
