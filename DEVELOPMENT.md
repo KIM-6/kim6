@@ -36,7 +36,7 @@ cd ..
 
 ## Release
 
-First update the changelog (keep format!), then the translations (do not forget to commit them!) and then run the following in the project root directory (you need to have `gh` installed):
+First update the **changelog** (keep format!), then the translations (**do not forget to commit them!**) and then run the following in the project root directory (you need to have `gh` installed):
 ```
 VERSION=$(grep -m 1 "^Release" ChangeLog | grep -oP '\d+\.\d+\.\d+') # set kim6 version
 
