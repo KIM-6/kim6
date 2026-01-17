@@ -36,16 +36,16 @@ spit_install_log() {
 
 # Test for presence of dependencies, if not present, a user is presented with a log after installation
 if ! command -v montage >/dev/null 2>&1; then
-    install_log="$install_log""Cannot find executable <b>montage</b>  Please install it. It is usually in package <b>imagemagick</b> or <b>ImageMagick</b> Without it, the montage feature will not work.<br><br>"
+    install_log="$install_log""Cannot find executable <b>montage</b>. Please install it. It is usually in package <b>imagemagick</b> (Debian etc, Arch) or <b>ImageMagick</b> (Fedora etc.). Without it, the montage feature will not work.<br><br>"
 fi
 if ! command -v mogrify >/dev/null 2>&1; then
-    install_log="$install_log""Cannot find executable <b>mogrify</b>  Please install it. It  is usually in package <b>imagemagick</b> or <b>ImageMagick</b> Without it, a lot of features like resizing and rotating and other transformations will not work.<br><br>"
+    install_log="$install_log""Cannot find executable <b>mogrify</b>. Please install it. It is usually in package <b>imagemagick</b> or <b>ImageMagick</b>. Without it, a lot of features like resizing and rotating and other transformations will not work.<br><br>"
 fi
 if ! command -v convert >/dev/null 2>&1; then
-    install_log="$install_log""Cannot find executable <b>convert</b>  Please install it. It is usually in package <b>imagemagick</b> or <b>ImageMagick</b> Without it, format conversion will not work.<br><br>"
+    install_log="$install_log""Cannot find executable <b>convert</b>. Please install it. It is usually in package <b>imagemagick</b> or <b>ImageMagick</b> Without it, format conversion will not work.<br><br>"
 fi
 if ! command -v ffmpeg >/dev/null 2>&1; then
-    install_log="$install_log""Cannot find executable <b>ffmpeg</b>.  Please install it. It may be in package <b>ffmpeg</b>. Without it, video resizing will not work.<br><br>"
+    install_log="$install_log""Cannot find executable <b>ffmpeg</b>. Please install it. It is usually in package <b>ffmpeg</b>. Without it, video resizing will not work.<br><br>"
 else
    if ! ffmpeg -encoders 2>&1 | grep -q libx264; then
        install_log="$install_log""Cannot find encoder <b>libx264</b> for FFmpeg. Encoding video with it will not work. Please install it.<br><br>"
@@ -55,9 +55,8 @@ else
    fi
 fi
 if ! command -v xdg-email >/dev/null 2>&1; then
-    install_log="$install_log""Cannot find executable <b>xdg-email</b>  Please install it. It may be in package <b>xdg-utils</b>. Without it, sending an image by e-mail will not work.<br><br>"
+    install_log="$install_log""Cannot find executable <b>xdg-email</b>. Please install it. It is usually in package <b>xdg-utils</b>. Without it, sending an image by e-mail will not work.<br><br>."
 fi
-
 if [[ -n "$install_log" ]]; then
     install_log="$install_log""Some <b>dependencies are missing</b>. The installation continued, but some functionality might not work.<br><br>"
 fi
