@@ -26,13 +26,13 @@ let "nbfiles = $#"
 
 KIMDIR=`mktemp -d /tmp/kim.XXXXXXXX` || exit 1
 
-SIZE=`kdialog --inputbox "$(gettext "Size of small images:")" 400x400`;
-TILE=`kdialog --inputbox "$(gettext "Number of rows and columns:")" 5x4`;
-RATIO=`kdialog --inputbox "$(gettext "Overlaping ratio in percent:")" 15`;
-COLOR=`kdialog --inputbox "$(gettext "Background color:")" grey`;
-W=`echo $SIZE | sed 's/[^0-9]/ /g' | awk '{print $1}'`;
-let "OVER = ($RATIO*$W)/100";
-let "BORDER = (2*$W)/100";
+SIZE=`kdialog --inputbox "$(gettext "Size of small images:")" 400x400`
+TILE=`kdialog --inputbox "$(gettext "Number of rows and columns:")" 5x4`
+RATIO=`kdialog --inputbox "$(gettext "Overlaping ratio in percent:")" 15`
+COLOR=`kdialog --inputbox "$(gettext "Background color:")" grey`
+W=`echo $SIZE | sed 's/[^0-9]/ /g' | awk '{print $1}'`
+let "OVER = ($RATIO*$W)/100"
+let "BORDER = (2*$W)/100"
 trap 'qdbus $dbusRef close 2>/dev/null; rm -rf "$KIMDIR"' EXIT
 dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
 qdbus $dbusRef showCancelButton true
@@ -46,20 +46,17 @@ for i in "$@";do
         fi
         let "counter +=1"
         FILE=`basename "$i"`;
-        RANDOM=`perl -e 'print int(rand(1000000))'`;
-        while [ -e "$KIMDIR/pelemele_$RANDOM.png" ]; do
-            RANDOM=`perl -e 'print int(rand(1000000))'`;
-        done
+        RANDOM_NUM=${RANDOM}${RANDOM}${RANDOM}${RANDOM};
         qdbus $dbusRef setLabelText "$(gettext "Kim — resizing of file: ") $FILE"
         magick -- $i -resize $SIZE "$KIMDIR/$FILE"
         magick -- "$KIMDIR/$FILE" \
             -bordercolor white  -border $BORDER \
             -bordercolor grey60 -border 1 \
-            -background  none   -rotate `perl -e 'print rand() * 30 - 15'` \
+            -background  none   -rotate $((RANDOM % 31 - 15)) \
             -background  black  \( +clone -shadow 60x4+4+4 \) +swap \
             -background  none   -flatten \
-            -depth 8  -quality 95 "$KIMDIR/pelemele_$RANDOM.png"
+            -depth 8  -quality 95 "$KIMDIR/pelemele_$RANDOM_NUM.png"
         qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
-        fi;
+    fi
 done
-montage -background "$COLOR" -tile "$TILE" -geometry "-$OVER-$OVER" -- "$KIMDIR"/pelemele_*.png `kdialog --getsavefilename ~ *.png`;
+montage -background "$COLOR" -tile "$TILE" -geometry "-$OVER-$OVER" -- "$KIMDIR"/pelemele_*.png `kdialog --getsavefilename ~ *.png`
