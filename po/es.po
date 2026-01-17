@@ -172,7 +172,7 @@ msgid "Background color:"
 msgstr "Color de fondo:"
 
 #: ../src/bin/kim_pelemele:63 ../src/bin/kim_print:46
-msgid "Kim — resizing of file: "
+msgid "Kim — resizing file: "
 msgstr "Kim — Redimensionando archivo: "
 
 #: ../src/bin/kim_print:29

@@ -39,7 +39,7 @@ case "$nb" in
             fi
             let "counter +=1"
             FILE=`basename "$i"`;
-            qdbus $dbusRef setLabelText "$(gettext "Kim — resizing of file: ") $FILE"
+            qdbus $dbusRef setLabelText "$(gettext "Kim — resizing file: ") $FILE"
             magick -resize 640x480 -rotate '90<' -- $i "$KIMDIR/mini_$FILE";
             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;

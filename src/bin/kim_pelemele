@@ -47,7 +47,7 @@ for i in "$@";do
         let "counter +=1"
         FILE=`basename "$i"`;
         RANDOM_NUM=${RANDOM}${RANDOM}${RANDOM}${RANDOM};
-        qdbus $dbusRef setLabelText "$(gettext "Kim — resizing of file: ") $FILE"
+        qdbus $dbusRef setLabelText "$(gettext "Kim — resizing file: ") $FILE"
         magick -- $i -resize $SIZE "$KIMDIR/$FILE"
         magick -- "$KIMDIR/$FILE" \
             -bordercolor white  -border $BORDER \
