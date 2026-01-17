@@ -24,8 +24,6 @@ SOURCE_TRANSLATION_TTT
 dir="$1";
 nb=`kdialog --radiolist "$(gettext "Kim — Select album type:")" 1 "$(gettext "1x1 portrait album")"  off 2 "$(gettext "1x1 landscape album")"  off 3 "$(gettext "1x2 landscape album")"  off 4 "$(gettext "2x1 portrait album")"  off 5 "$(gettext "2x2 landscape album")" on 6 "$(gettext "3x2 portrait album")" off 7 "$(gettext "3x4 landscape album")" off 8 "$(gettext "4x4 landscape album")" off`
 
-# test -n "$KDEHOME" || KDEHOME="`kde4-config --localprefix`"; export KDEHOME
-#KIMDIR=`mktemp -d "$KDEHOME"/tmp-"$USER"/kim.XXXXXXXX` || exit 1
 KIMDIR=`mktemp -d /tmp/kim.XXXXXXXX` || exit 1
 
 dbusRef=`kdialog --progressbar "$(gettext "Kim — Creating miniatures ...")" 2`
@@ -76,7 +74,6 @@ esac
 
 qdbus $dbusRef setLabelText "$(gettext "Kim — Deleting miniatures ...")"
 qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value 2
-#rm "$KIMDIR"/miniature*.jpg*
 rm -rf "$KIMDIR"
 qdbus $dbusRef close
 
