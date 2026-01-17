@@ -32,7 +32,7 @@ let "nbfiles = ($# -1)/2"
 kdialog --title "$(gettext "Kim")" --yesnocancel "$(gettext "Do you want to create new files?")" --yes-label "$(gettext "Create new")" --no-label "$(gettext "Replace existing")"
 case $? in
     1)    # Replace existing files!
-    dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising compression")" $nbfiles`
+    dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
     qdbus $dbusRef showCancelButton true
     counter=0
     for i in "$@";do
@@ -52,7 +52,7 @@ case $? in
     qdbus $dbusRef close;;
 
     0)
-    dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising compression")" $nbfiles`
+    dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
     qdbus $dbusRef showCancelButton true
     counter=0
     for i in "$@";do

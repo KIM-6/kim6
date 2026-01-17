@@ -158,11 +158,6 @@ msgstr "Kim — 欄數："
 msgid "Kim — Treatment of file: "
 msgstr "Kim — 檔案處理方式："
 
-#: ../src/bin/kim_multiburst:34 ../src/bin/kim_webexport:35
-#: ../src/bin/kim_webexport:55
-msgid "Kim — Initialising compression"
-msgstr "Kim — 壓縮初始化中"
-
 #: ../src/bin/kim_pelemele:29
 msgid "Size of small images:"
 msgstr "小影像的大小："

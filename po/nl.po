@@ -158,11 +158,6 @@ msgstr "Kim — Aantal kolommen:"
 msgid "Kim — Treatment of file: "
 msgstr "Kim — Bezig met afhandelen van bestand: "
 
-#: ../src/bin/kim_multiburst:34 ../src/bin/kim_webexport:35
-#: ../src/bin/kim_webexport:55
-msgid "Kim — Initialising compression"
-msgstr "Kim — Bezig met initialiseren van compressie…"
-
 #: ../src/bin/kim_pelemele:29
 msgid "Size of small images:"
 msgstr "Grootte van kleine afbeeldingen:"

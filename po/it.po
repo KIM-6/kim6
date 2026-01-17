@@ -155,11 +155,6 @@ msgstr "Kim — Numero di colonne:"
 msgid "Kim — Treatment of file: "
 msgstr "Kim — Elaborazione del file: "
 
-#: ../src/bin/kim_multiburst:34 ../src/bin/kim_webexport:35
-#: ../src/bin/kim_webexport:55
-msgid "Kim — Initialising compression"
-msgstr "Kim — Inizializzazione della compressione"
-
 #: ../src/bin/kim_pelemele:29
 msgid "Size of small images:"
 msgstr "Dimensione delle immagini piccole:"
