@@ -48,3 +48,6 @@ All contributions are welcome!
 
 ## See also
 There is a functionally similar but independent project: https://github.com/irfanhakim-as/kde-service-menu-reimage
+
+## Licence
+KIM6 is licensed under [GPLv3 or later](LICENSE.md).
