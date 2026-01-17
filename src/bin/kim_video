@@ -97,7 +97,7 @@ encode_with_progress() {
 
 kdialog --title "$(gettext "Kim")" --yesnocancel "$(gettext "Do you want to create new files?")" --yes-label "$(gettext "Create new")" --no-label "$(gettext "Replace existing")"
 case $? in
-    1)    # Replace existing files!
+    1) # Replace existing files!
     dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
     qdbus $dbusRef showCancelButton true
     counter=0
@@ -134,7 +134,8 @@ case $? in
         fi;
     done
     qdbus $dbusRef close;;
-    0)
+
+    0) # Create new files
     dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
     qdbus $dbusRef showCancelButton true
     counter=0
