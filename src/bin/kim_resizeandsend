@@ -27,27 +27,49 @@ SOURCE_TRANSLATION_TTT
 KIMDIR=`mktemp -d /tmp/kim.XXXXXXXX` || exit 1
 ATTACHMENT="";
 trap 'qdbus $dbusRef close 2>/dev/null; rm -rf "$KIMDIR"' EXIT
-choice=`kdialog --radiolist "$(gettext "Kim — Send by mail:")" 1 "$(gettext "Full size")"  off 2 "$(gettext "800x800 px")"  on 3 "$(gettext "600x600 px")" off 4 "$(gettext "300x300 px")"  off`;
+choice=`kdialog --radiolist "$(gettext "Kim — Send by mail:")" \
+                          1 "$(gettext "Full size")"  off \
+                          2 "$(gettext "1600x1600")"  on \
+                          3 "$(gettext "1200x1200")"  off \
+                          4 "$(gettext "800x800 px")" off \
+                          5 "$(gettext "600x600 px")" off \
+                          6 "$(gettext "300x300 px")" off \
+                          7 "$(gettext "Custom size...")" off `;
 let "nbfiles = $#" 
-dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
-qdbus $dbusRef showCancelButton true 
-
 counter=0
+
+# Handling displaying the dialog in this function makes sure appropriate message at appropriate time is displayed
+function display_title_and_resize {
+    # Check if we already have a dialog, if not, start it
+    if [ -z "$dbusRef" ]; then
+        dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
+        qdbus $dbusRef showCancelButton true
+    fi
+    if [ "$1" == 0 ]; then # We are sending full size, nothing is resized
+      qdbus $dbusRef setLabelText "$(gettext "Kim — Copying files to temporary directory: ") `basename "$ATTACHMENT"`"
+      cp $i $KIMDIR
+    else #We are resizing
+        qdbus $dbusRef setLabelText "$(gettext "Kim — Resizing and compressing file: ") `basename "$ATTACHMENT"`"
+        magick -- "$ATTACHMENT" -resize $1 "$KIMDIR/$(basename -- "$ATTACHMENT")"
+    fi
+}
 
 for i in "$@";do
     if [ -f "$i" ];then
         #test if cancel button has been pushed
-        if [[ "$(qdbus $dbusRef wasCancelled)" == "true" ]] ; then
+        if [[ -n "$dbusRef" && "$(qdbus $dbusRef wasCancelled)" == "true" ]] ; then
             exit 1
         fi
         ATTACHMENT="$i"
         let "counter +=1"
-        qdbus $dbusRef setLabelText "$(gettext "Kim — Resizing and compressing file: ") `basename "$ATTACHMENT"`"
         case "$choice" in
-            1) cp $i $KIMDIR;;
-            2) magick -- "$ATTACHMENT" -resize 800x800 "$KIMDIR/$(basename -- "$ATTACHMENT")";;
-            3) magick -- "$ATTACHMENT" -resize 600x600 "$KIMDIR/$(basename -- "$ATTACHMENT")";;
-            4) magick -- "$ATTACHMENT" -resize 300x300 "$KIMDIR/$(basename -- "$ATTACHMENT")";;
+            1) display_title_and_resize 0 ;;
+            2) display_title_and_resize 1600x1600 ;;
+            3) display_title_and_resize 1200x1200 ;;
+            4) display_title_and_resize 800x800 ;;
+            5) display_title_and_resize 600x600 ;;
+            6) display_title_and_resize 300x300 ;;
+            7) display_title_and_resize $(kdialog --inputbox "Resize dimension (max width x max height):" 1600x1600);;
             *)exit 1;;
         esac
         qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
@@ -68,7 +90,7 @@ elif [ `command -v xdg-email` ]; then
     ATTACHMENT=`ls -m $KIMDIR/* | tr -d ' '`
     xdg-email --attach "$ATTACHMENT";
     qdbus $dbusRef close;
-    kdialog --msgbox "$(gettext "Kim — Send by mail: you can write your message!")"
+    kdialog --msgbox "$(gettext "Kim — Send by mail: you can write your message, hopefully your mail client supports adding attachments via xdg-email!")"
 else
     trap 'qdbus $dbusRef close 2>/dev/null' EXIT
     kdialog --msgbox "$(gettext "Can't find your mail client. The attachments are in $KIMDIR/ and you need to send them yourself.")"
