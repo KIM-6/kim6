@@ -42,7 +42,7 @@ counter=0
 function display_title_and_resize {
     # Check if we already have a dialog, if not, start it
     if [ -z "$dbusRef" ]; then
-        dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
+        dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising…")" $nbfiles`
         qdbus $dbusRef showCancelButton true
     fi
     if [ "$1" == 0 ]; then # We are sending full size, nothing is resized

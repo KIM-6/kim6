@@ -34,7 +34,7 @@ W=`echo $SIZE | sed 's/[^0-9]/ /g' | awk '{print $1}'`
 let "OVER = ($RATIO*$W)/100"
 let "BORDER = (2*$W)/100"
 trap 'qdbus $dbusRef close 2>/dev/null; rm -rf "$KIMDIR"' EXIT
-dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
+dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising…")" $nbfiles`
 qdbus $dbusRef showCancelButton true
 counter=0
 

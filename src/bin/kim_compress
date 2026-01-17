@@ -32,7 +32,7 @@ trap 'qdbus $dbusRef close 2>/dev/null' EXIT
 kdialog --title $(gettext "Kim") --yesnocancel "$(gettext "Do you want to create new files?")" --yes-label "$(gettext "Create new")" --no-label "$(gettext "Replace existing")"
 case $? in
     1) # Replace existing files!
-    dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
+    dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising…")" $nbfiles`
     qdbus $dbusRef showCancelButton true
     counter=0
     for i in "$@";do
@@ -50,7 +50,7 @@ case $? in
     done;;
 
     0) # Create new files
-    dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
+    dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising…")" $nbfiles`
     qdbus $dbusRef showCancelButton true
     counter=0
     for i in "$@";do

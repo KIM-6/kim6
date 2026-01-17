@@ -37,7 +37,7 @@ DIR=`kdialog --getexistingdirectory /home/$USER`;
 W="200";
 H="150";
 
-dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
+dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising…")" $nbfiles`
 qdbus $dbusRef showCancelButton true
 
 # Creation of directories

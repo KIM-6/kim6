@@ -45,7 +45,7 @@ case $? in
     done;;
 
     0) # Create new files
-    dbusRef=$(kdialog --progressbar "$(gettext 'Kim — Initialising ...')" $nbfiles)
+    dbusRef=$(kdialog --progressbar "$(gettext 'Kim — Initialising…')" $nbfiles)
     # $dbusRef expands to "service path" (two args), do not quote it
     qdbus $dbusRef showCancelButton true
     counter=0

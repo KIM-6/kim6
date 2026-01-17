@@ -109,7 +109,7 @@ msgstr "Sostituisci esistente"
 #: ../src/bin/kim_sortbydate:35 ../src/bin/kim_sortbydate:71
 #: ../src/bin/kim_treatment:38 ../src/bin/kim_treatment:77
 #: ../src/bin/kim_video:101 ../src/bin/kim_video:138
-msgid "Kim — Initialising ..."
+msgid "Kim — Initialising…"
 msgstr "Kim — Inizializzazione ..."
 
 #: ../src/bin/kim_compress:46 ../src/bin/kim_compress:70

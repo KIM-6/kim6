@@ -27,7 +27,7 @@ KIMDIR=`mktemp -d /tmp/kim.XXXXXXXX` || exit 1;
 trap 'qdbus $dbusRef close 2>/dev/null; rm -rf "$KIMDIR"' EXIT
 nb=`kdialog --radiolist "$(gettext "Kim — Select album type:")" 1 "$(gettext "9x13 cm: 2x2 images, landscape")"  off 2 "$(gettext "10x15 cm: 1x2 images, portrait")"  off 3 "$(gettext "11.5x15 cm: 1x2 images, portrait")"  on 4 "$(gettext "13x18 cm: 1x2 images, portrait")"  off 5 "$(gettext "20x25 cm: 1 image, landscape")" off 6 "$(gettext "3x2 portrait album")"  off 7 "$(gettext "Thumbnails: 4x5 images, portrait")" off`
 
-dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
+dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising…")" $nbfiles`
 qdbus $dbusRef showCancelButton true
 counter=0
 

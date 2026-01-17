@@ -29,7 +29,7 @@ FORMAT="$1";
 echo $FORMAT
 let "nbfiles = $# -1"
 trap 'qdbus $dbusRef close 2>/dev/null' EXIT
-dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
+dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising…")" $nbfiles`
 qdbus $dbusRef showCancelButton "true"
 
 counter=0
