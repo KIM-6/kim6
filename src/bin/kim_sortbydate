@@ -62,7 +62,7 @@ case $? in
             done
             mv "$TMPDIR/$FILE" "$DIR/$NEWNAME"
             qdbus $dbusRef setLabelText "$(gettext "Kim — Renaming file: ") $FILE"
-             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
+            qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;
     done
     qdbus $dbusRef close;;
@@ -98,7 +98,7 @@ case $? in
             done
             mv "$TMPDIR/$FILE" "$DIR/$NEWNAME"
             qdbus $dbusRef setLabelText "$(gettext "Kim — Renaming file: ") $FILE"
-             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
+            qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;
     done
     qdbus $dbusRef close;;

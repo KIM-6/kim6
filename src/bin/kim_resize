@@ -45,7 +45,7 @@ case $? in
             FILE="$i"
             mogrify -resize "$SCALE" "$FILE"
             qdbus $dbusRef setLabelText "$(gettext "Kim — Resizing file: ") `basename "$FILE"`"
-             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
+            qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;
     done
 
@@ -69,7 +69,7 @@ case $? in
             EXT="${BASENAME##*.}"
             magick -- "$FILE" -resize "$SCALE" "$DIR/${NAME}_resized.${EXT}"
             qdbus $dbusRef setLabelText "$(gettext "Kim — Resizing file: ") `basename "$FILE"`"
-             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
+            qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;
     done
     qdbus $dbusRef close;;
