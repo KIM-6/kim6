@@ -224,6 +224,14 @@ msgid "Full size"
 msgstr "Volledig"
 
 #: ../src/bin/kim_resizeandsend:32
+msgid "1600x1600 px"
+msgstr "1600x1600 px"
+
+#: ../src/bin/kim_resizeandsend:33
+msgid "1200x1200 px"
+msgstr "1200x1200 px"
+
+#: ../src/bin/kim_resizeandsend:34
 msgid "800x800 px"
 msgstr "800x800 px"
 
