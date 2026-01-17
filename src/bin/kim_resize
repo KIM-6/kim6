@@ -28,6 +28,7 @@ FILE="";
 SCALE="$1";
 let "nbfiles = ($# -1) / 2"
 DIR="$2";
+trap 'qdbus $dbusRef close 2>/dev/null' EXIT
 kdialog --title "$(gettext "Kim")" --yesnocancel "$(gettext "Do you want to create new files?")" --yes-label "$(gettext "Create new")" --no-label "$(gettext "Replace existing")"
 case $? in
     1) # Replace existing files!
@@ -38,18 +39,15 @@ case $? in
         if [ -f "$i" ];then
             #test if cancel button has been pushed
             if [[ "$(qdbus $dbusRef wasCancelled)" == "true" ]] ; then
-                qdbus $dbusRef close
                 exit 1
             fi
             let "counter +=1"
             FILE="$i"
-            mogrify -resize "$SCALE" "$FILE"
             qdbus $dbusRef setLabelText "$(gettext "Kim — Resizing file: ") `basename -- "$FILE"`"
+            mogrify -resize "$SCALE" "$FILE"
             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;
-    done
-
-    qdbus $dbusRef close;;
+    done;;
 
     0) # Create new files
     dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
@@ -59,7 +57,6 @@ case $? in
         if [ -f "$i" ];then
             #test if cancel button has been pushed
             if [[ "$(qdbus $dbusRef wasCancelled)" == "true" ]] ; then
-                qdbus $dbusRef close
                 exit 1
             fi
             let "counter +=1"
@@ -67,12 +64,11 @@ case $? in
             BASENAME="$(basename -- "$FILE")"
             NAME="${BASENAME%.*}"
             EXT="${BASENAME##*.}"
-            magick -- "$FILE" -resize "$SCALE" "$DIR/${NAME}_resized.${EXT}"
             qdbus $dbusRef setLabelText "$(gettext "Kim — Resizing file: ") `basename -- "$FILE"`"
+            magick -- "$FILE" -resize "$SCALE" "$DIR/${NAME}_resized.${EXT}"
             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;
-    done
-    qdbus $dbusRef close;;
+    done;;
 
     2) kdialog --title "$(gettext "Kim")" --msgbox "$(gettext "The action was cancelled by the user!")"
     exit 1;;

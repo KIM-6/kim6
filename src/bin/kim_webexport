@@ -28,6 +28,7 @@ SOURCE_TRANSLATION_TTT
 FILE="";
 SCELTA="$1";
 DIR="$2";
+trap 'qdbus $dbusRef close 2>/dev/null' EXIT
 let "nbfiles = ($# -1)/2"
 kdialog --title "$(gettext "Kim")" --yesnocancel "$(gettext "Do you want to create new files?")" --yes-label "$(gettext "Create new")" --no-label "$(gettext "Replace existing")"
 case $? in
@@ -39,7 +40,6 @@ case $? in
         if [ -f "$i" ];then
             #test if cancel button has been pushed
             if [[ "$(qdbus $dbusRef wasCancelled)" == "true" ]] ; then
-                qdbus $dbusRef close
                 exit 1
             fi
             let "counter +=1"
@@ -48,8 +48,7 @@ case $? in
             qdbus $dbusRef setLabelText "$(gettext "Kim — Compressing file: ") `basename -- "$FILE"`"
             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;
-    done
-    qdbus $dbusRef close;;
+    done;;
 
     0) # Create new files
     dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
@@ -59,7 +58,6 @@ case $? in
         if [ -f "$i" ];then
             #test if cancel button has been pushed
             if [[ "$(qdbus $dbusRef wasCancelled)" == "true" ]] ; then
-                qdbus $dbusRef close
                 exit 1
             fi
             let "counter +=1"
@@ -71,8 +69,7 @@ case $? in
             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
             magick -- "$FILE" -resize $SCELTA -quality $WEB_Q "$DIR/${NAME}_web.${EXT}"
         fi;
-    done
-    qdbus $dbusRef close;;
+    done;;
 
     2) kdialog --title "$(gettext "Kim")" --msgbox "$(gettext "The action was cancelled by the user!")"
     exit 1;;

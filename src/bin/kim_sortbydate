@@ -25,9 +25,8 @@ FILE="";
 DIR="$1"
 let "nbfiles = $#/2"
 
-#test -n "$KDEHOME" || KDEHOME="`kde4-config --localprefix`"; export KDEHOME
-TMPDIR=`mktemp -d /tmp/kim.XXXXXXXX` || exit 1
-
+KIMDIR=`mktemp -d /tmp/kim.XXXXXXXX` || exit 1
+trap 'qdbus $dbusRef close 2>/dev/null; rm -rf "$KIMDIR"' EXIT
 kdialog --title "$(gettext "Kim")" --yesnocancel "$(gettext "Do you want to create new files?")" --yes-label "$(gettext "Create new")" --no-label "$(gettext "Replace existing")"
 
 case $? in
@@ -39,13 +38,12 @@ case $? in
         if [ -f "$i" ];then
             #test if cancel button has been pushed
             if [[ "$(qdbus $dbusRef wasCancelled)" == "true" ]] ; then
-                qdbus $dbusRef close
                 exit 1
             fi
             let "counter +=1"
             FILE=`basename "$i"`;
-            mv "$DIR/$FILE" "$TMPDIR/$FILE"
-            DATE="$(identify -format "%[EXIF:DateTimeOriginal]" -- "$TMPDIR/$FILE")";
+            mv "$DIR/$FILE" "$KIMDIR/$FILE"
+            DATE="$(identify -format "%[EXIF:DateTimeOriginal]" -- "$KIMDIR/$FILE")";
             D1=`echo $DATE | sed 's/[^0-9]/ /g' | awk '{print $1}'`;
             D2=`echo $DATE | sed 's/[^0-9]/ /g' | awk '{print $2}'`;
             D3=`echo $DATE | sed 's/[^0-9]/ /g' | awk '{print $3}'`;
@@ -55,17 +53,15 @@ case $? in
             tmp=0;
             NAME="IMG-$D1$D2$D3"_"$D4$D5$D6";
             NEWNAME="$NAME.jpg";
-            #NEWNAME="$D1-$D2-$D3"_"$D4-$D5-$D6.jpg";
             while [ -e "$DIR/$NEWNAME" ]; do
                 let "tmp += 1";
                 NEWNAME="$NAME"_"$tmp.jpg"
             done
-            mv "$TMPDIR/$FILE" "$DIR/$NEWNAME"
             qdbus $dbusRef setLabelText "$(gettext "Kim — Renaming file: ") $FILE"
+            mv "$KIMDIR/$FILE" "$DIR/$NEWNAME"
             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;
-    done
-    qdbus $dbusRef close;;
+    done;;
 
     0) # Create new files
     dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
@@ -75,13 +71,12 @@ case $? in
         if [ -f "$i" ];then
             #test if cancel button has been pushed
             if [[ "$(qdbus $dbusRef wasCancelled)" == "true" ]] ; then
-                qdbus $dbusRef close
                 exit 1
             fi
             let "counter +=1"
             FILE=`basename "$i"`;
-            cp "$DIR/$FILE" "$TMPDIR/$FILE"
-            DATE="$(identify -format "%[EXIF:DateTimeOriginal]" -- "$TMPDIR/$FILE")";
+            cp "$DIR/$FILE" "$KIMDIR/$FILE"
+            DATE="$(identify -format "%[EXIF:DateTimeOriginal]" -- "$KIMDIR/$FILE")";
             D1=`echo $DATE | sed 's/[^0-9]/ /g' | awk '{print $1}'`;
             D2=`echo $DATE | sed 's/[^0-9]/ /g' | awk '{print $2}'`;
             D3=`echo $DATE | sed 's/[^0-9]/ /g' | awk '{print $3}'`;
@@ -96,15 +91,13 @@ case $? in
                 let "tmp += 1";
                 NEWNAME="$NAME"_"$tmp.jpg"
             done
-            mv "$TMPDIR/$FILE" "$DIR/$NEWNAME"
             qdbus $dbusRef setLabelText "$(gettext "Kim — Renaming file: ") $FILE"
+            mv "$KIMDIR/$FILE" "$DIR/$NEWNAME"
             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;
-    done
-    qdbus $dbusRef close;;
+    done;;
 
     2) kdialog --title "$(gettext "Kim")" --msgbox "$(gettext "The action was cancelled by the user!")"
     exit 1;;
 esac;
-rm -rf "$TMPDIR"
 

@@ -28,6 +28,7 @@ ATTACHMENT="";
 SCELTA="$1";
 DIR="$2";
 let "nbfiles = ($# -1)/2" 
+trap 'qdbus $dbusRef close 2>/dev/null' EXIT
 case $SCELTA in 
     mark) annotation=`kdialog --inputbox "$(gettext "Choose your annotation:")" "$(gettext "My annotation")"`;;
     border) color=`kdialog --radiolist "$(gettext "Kim — Select border color:")" 1 "$(gettext "white")"  on 2 "$(gettext "black")" off`;;
@@ -42,7 +43,6 @@ case $? in
         if [ -f "$i" ];then
             #test if cancel button has been pushed
             if [[ "$(qdbus $dbusRef wasCancelled)" == "true" ]] ; then
-                qdbus $dbusRef close
                 exit 1
             fi
             ATTACHMENT="$i"
@@ -70,8 +70,7 @@ case $? in
                 ;;
             esac
         fi;
-    done
-    qdbus $dbusRef close;;
+    done;;
 
     0) # Create new files
     dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
@@ -81,7 +80,6 @@ case $? in
         if [ -f "$i" ];then
             #test if cancel button has been pushed
             if [[ "$(qdbus $dbusRef wasCancelled)" == "true" ]] ; then
-                qdbus $dbusRef close
                 exit 1
             fi
             ATTACHMENT="$i"
@@ -109,8 +107,7 @@ case $? in
                 ;;
             esac
         fi;
-    done
-    qdbus $dbusRef close;;
+    done;;
 
     2) kdialog --title "$(gettext "Kim")" --msgbox "$(gettext "The action was cancelled by the user!")"
     exit 1;;

@@ -31,7 +31,7 @@ CODEC="$3" ; # libx264 / libx265
 EXTENSION="$4"; # orig or mp4
 DIR="$5";
 let "nbfiles = ($# -4)/2"
-
+trap 'qdbus $dbusRef close 2>/dev/null' EXIT
 # Function to get video duration in seconds
 get_duration() {
     ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$1" 2>/dev/null | cut -d'.' -f1
@@ -105,7 +105,6 @@ case $? in
         if [ -f "$i" ];then
             #test if cancel button has been pushed
             if [[ "$(qdbus $dbusRef wasCancelled)" == "true" ]] ; then
-                qdbus $dbusRef close
                 exit 1
             fi
             let "counter +=1"
@@ -125,15 +124,12 @@ case $? in
             if [ $? -ne 0 ]; then
                 # Restore original if cancelled
                 mv "$WORK" "$FILE" 2>/dev/null
-                qdbus $dbusRef close
                 exit 1
             fi
-
             # Remove work file
             rm -f "$WORK"
         fi;
-    done
-    qdbus $dbusRef close;;
+    done;;
 
     0) # Create new files
     dbusRef=`kdialog --progressbar "$(gettext "Kim — Initialising ...")" $nbfiles`
@@ -143,7 +139,6 @@ case $? in
         if [ -f "$i" ];then
             #test if cancel button has been pushed
             if test "true" = `qdbus $dbusRef wasCancelled`;then
-                qdbus $dbusRef close
                 exit 1
             fi
             let "counter +=1"
@@ -164,8 +159,7 @@ case $? in
             # Encode with progress tracking
             encode_with_progress "$FILE" "$OUTPUT" "$dbusRef" $counter $nbfiles
         fi;
-    done
-    qdbus $dbusRef close;;
+    done;;
     2) kdialog --title "$(gettext "Kim")" --msgbox "$(gettext "The action was cancelled by the user!")"
     exit 1;;
 esac;

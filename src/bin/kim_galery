@@ -23,6 +23,7 @@
 SOURCE_TRANSLATION_TTT
 # Create a html gallery
 FILE="";
+trap 'qdbus $dbusRef close 2>/dev/null' EXIT
 let "nbfiles = $#"
 KIM_INST_TTT
 KIM_DIR=$kim_inst/gallery
@@ -54,7 +55,6 @@ for i in "$@";do
     if [ -f "$i" ];then
         #test if cancel button has been pushed
         if [[ "$(qdbus $dbusRef wasCancelled)" == "true" ]] ; then
-            qdbus $dbusRef close
             exit 1
         fi
         let "counter +=1"
@@ -77,11 +77,9 @@ for i in "$@";do
             tmp=0;
         fi
         qdbus $dbusRef setLabelText "$(gettext "Kim — Treatment of file: ") $IMAGE"
-         qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
+        qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
     fi;
 done
 
 cat $KIM_DIR/index.part2 >> $DIR/index.html;
-qdbus $dbusRef close;
-
 xdg-open $DIR/index.html;
