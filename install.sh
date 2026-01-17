@@ -54,6 +54,9 @@ else
        install_log="$install_log""Cannot find encoder <b>libx265</b> for FFmpeg. Encoding video with it will not work. Please install it.<br><br>"
    fi
 fi
+if ! command -v exiftool >/dev/null 2>&1; then
+    install_log="$install_log""Cannot find executable <b>exiftool</b>. Please install it. It is usually in package <b>libimage-exiftool-perl</b> (Debian, Ubuntu etc.), <b>perl-Image-ExifTool</b> (Fedora etc.) or <b>perl-image-exiftool</b>(Arch). Without it, metadata stripping will not work.<br><br>"
+fi
 if ! command -v xdg-email >/dev/null 2>&1; then
     install_log="$install_log""Cannot find executable <b>xdg-email</b>. Please install it. It is usually in package <b>xdg-utils</b>. Without it, sending an image by e-mail will not work.<br><br>."
 fi
