@@ -19,7 +19,7 @@
 [Desktop Entry]
 Type=Service
 MimeType=image/*;
-Actions=Rename;SortByDate;SendByMail;_SEPARATOR_;PeleMele;Galery;_SEPARATOR_;Watermark;Border;_SEPARATOR_;Animation;Multiburst;Adjoin;_SEPARATOR_;Manual;License;About;
+Actions=Rename;SortByDate;SendByMail;_SEPARATOR_;PeleMele;Galery;_SEPARATOR_;Watermark;Border;StripMetadata;_SEPARATOR_;Animation;Multiburst;Adjoin;_SEPARATOR_;Manual;License;About;
 Encoding=UTF-8
 _X-KDE-Submenu=Kim — Treatment and publication
 
@@ -67,6 +67,11 @@ Exec=kim_multiburst %u
 _Name=Add a border
 Icon=image
 Exec=kim_treatment border %D %U
+
+[Desktop Action StripMetadata]
+Name=Strip EXIF metadata
+Icon=view-private
+Exec=kim_stripmeta %D %U
 
 [Desktop Action Album]
 _Name=Create a pdf album
