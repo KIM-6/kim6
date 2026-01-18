@@ -3,7 +3,7 @@ KIM6 is a service menu for the KDE Plasma desktop. It adds context-menu actions 
 
 KDE store: https://store.kde.org/p/2307290/
 
-![Screenshot](KIM6.png)
+![Screenshot](/graphics/screenshot.png)
 
 ## Dependencies, Install, Uninstall
 See [INSTALL.md](INSTALL.md).
