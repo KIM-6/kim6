@@ -1,5 +1,16 @@
 # Developer and translator information
 
+## Dependencies for development
+- intltool
+- gettext (xgettext, msginit, msgmerge)
+- GitHub CLI (gh)
+- tar
+- KDE (includes Dolphin, or you could use other compatible software)
+
+On Fedora, do:
+
+    sudo dnf install intltool gettext gh tar @kde-desktop
+
 ## Translations
 To submit a new translation, run `msginit -l XX` in the `po` directory (replace "XX" with the shortcut of your language) and translate the strings there.
 To change a current translation, edit the [po files](https://github.com/KIM-6/kim6/tree/master/po).
@@ -37,8 +48,8 @@ cd ..
 ```
 
 ## Release
+First update the **changelog** (keep format!), then the translations (**do not forget to commit them!**) and then run the following in the project root directory:
 
-First update the **changelog** (keep format!), then the translations (**do not forget to commit them!**) and then run the following in the project root directory (you need to have `gh` installed):
 ```
 VERSION=$(grep -m 1 "^Release" ChangeLog | grep -oP '\d+\.\d+\.\d+') # set kim6 version
 
@@ -58,7 +69,7 @@ NOTES=$(sed -n '/^Release/,/^$/p' ChangeLog | grep '^-' | head -n -1)
 gh release create "v$VERSION" --title "Version $VERSION" --notes "$NOTES" ./kim6*.tar.gz
 ```
 
-The archive is automatically uploaded to Github and a release and a new verison tag is made here. Then manually upload it to https://store.kde.org/p/2307290/ (you can delete the tar file after).
+The archive is automatically uploaded to GitHub and a release and a new version tag is made here. Then manually upload it to https://store.kde.org/p/2307290/ (you can delete the tar file after).
 
 ## Development
 

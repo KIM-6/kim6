@@ -23,7 +23,6 @@
                 <br> License: <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GPL 3</a> or any later version.
             </p>
             <p>KIM6 is a <a href="https://develop.kde.org/docs/apps/dolphin/service-menus">service menu</a> for <a href="https://kde.org">KDE</a> used for example by <a href="https://apps.kde.org/dolphin/Dolphin">Dolphin</a> and other users of <a href="https://invent.kde.org/frameworks/kio">KIO</a>. KIM6 allows you to perform actions on your images (and videos) from your desktop or file manager without having to use other applications. This service menu can be considered as a frontend of <a href="https://imagemagick.org">ImageMagick</a> (and <a href="https://ffmpeg.org">FFmpeg</a>). </p>
-            <p>KIM’s history goes as far back as some time around 2004 in the age of KDE 3. A huge thanks belongs to the original authors and people who later forked it. It has been resurrected for each successive KDE version, so this is its 4th iteration. Some features can therefore be a bit funky, especially in the publication menu.</p>
             <h1>Menus</h1>
             <ul>
                 <li>
@@ -39,35 +38,34 @@
                 </li>
                 <li>
                     <b>Treatment and publication</b>
-                    <p>This menu contains various actions. You can rename images (they will then share the name and will be differentiated by a suffix, so it will be for example: Picture_001.jpg, Picture_002.jpg. etc.</p>
+                    <p>This menu contains various actions. You can rename images (they will then share the name and will be differentiated by a suffix, so it will be for example: Picture_001.jpg, Picture_002.jpg. and so on).</p>
                     <p>If you use Kmail or Thunderbird, you should be able to resize pictures and open a message with them attached in one go.</p>
                     <p>Sort by date will rename pictures based on their EXIF dates so they should be then sorted by date in the file manager.</p>
-                    <p>You can also create a HTML gallery or a funky collage of (photo montage) from your pictures.</p>
                     <p>You can add black text (annotation) to the bottom right corner of your image and add white or black border to your images.</p>
+                    <p>You can also strip metadata from a picture. Note that currently, its timestamps will be reset. Only ICC profile and orientation (landscape or portrait) info is preserved.</p>
+                    <p>You can also create a HTML gallery or a funky collage of (photo montage) from your pictures.</p>
                     <p>You can combine several images into one file in the TIFF format (graphical programs like GIMP or Krita should be able to retrieve all the images from such a file.</p>
-                    <p>You can create a gif animation. That can be also done from a so-called multiburst image, but the current authors are not sure what that is supposed to do.</p> You can also display a license and this help. </p>
+                    <p>You can create a gif animation. That can be also done from a so-called multiburst image, but the current authors are not sure what that is supposed to do.</p>
+                    <p>You can also display a license, the names of authors and this help.</p>
                 </li>
                 <li>
                     <b>Video Compress and resize</b>
-                    <p>Transcodes video using either libx264 or libx265 to HD (1280x720) or FullHD (1920x1080) in three qualities (CFR values 17, 23 and 29 — only 17 should more or less preserve the amount of detail). Audio is copied and container (like MP4) is also preserved.</p>
+                    <p>Transcodes video using either libx264 or libx265 to HD (1280x720) or FullHD (1920x1080) in three qualities (CFR values 17, 23 and 29 — only 17 should more or less preserve the amount of detail). Audio is copied and container (like MKV) is either preserved or converted to MP4.</p>
                 </li>
             </ul>
             <h1>Usage</h1>
             <p> KIM6 is used via the file manager context menu. Select one or more image or video files, right-click, and choose the desired action from the KIM6 submenu. </p>
             <p> Most actions will prompt for confirmation before overwriting existing files. Pressing Enter will usually select the default option, which is to create new files rather than overwrite existing ones. </p>
             <p> Some behavior can be customized using environment variables. These variables can be set in the environment where your file manager is launched. </p>
-            <ul>
-                <li>
-                    <b>Web export quality</b>
-                    <p>When using the <b>Webexport</b> actions in the <b>Compress and resize</b> menu, KIM6 allows control over the JPEG compression quality via an environment variable. </p>
-                    <p>Set the <code>KIM_WEB_QUALITY</code> environment variable to a value between <b>1</b> and <b>100</b> to define the quality used when exporting images for the web: </p>
-                    <pre>KIM_WEB_QUALITY=85</pre>
-                    <p>If the variable is not set, KIM6 defaults to a quality value of <b>75</b>. </p>
-                </li>
-            </ul>
+            <p>You can also run the scripts (usually stored in <span id="code">~/.local/share/kio/servicemenus/kim6/bin/</span>) directly: <span id="code">./kim_resize ~/example.jpg 300x300 </span>
+            </p>
+            <h1>Configuration — Web export quality</h1>
+            <p>When using the <b>Webexport</b> actions in the <b>Compress and resize</b> menu, KIM6 allows control over the JPEG compression quality via an environment variable. </p>
+            <p>Set the <span id="code">KIM_WEB_QUALITY</span> environment variable to a value between <b>1</b> and <b>100</b> to define the quality used when exporting images for the web, for example: <span id="code">export KIM_WEB_QUALITY=85</span>. Note that in the UI, it will always say 75 %.</p>
+            <p>If the variable is not set, KIM6 defaults to a quality value of <b>75</b>. </p>
             <h1>Installation</h1> See <a href="https://github.com/KIM-6/kim6?tab=readme-ov-file#install">here.</a>
         </div>
         <!-- The footer information -->
-        <div id="footer"> KIM6 M Kde Image Menu 6 | Copyleft 2004-2025 </div>
+        <div id="footer"> KIM6 — Kde Image Menu 6 | Copyleft 2004–2026 </div>
     </body>
 </html>
