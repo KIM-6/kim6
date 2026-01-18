@@ -3,7 +3,7 @@
 # FIXME Description
 #
 # Copyright (C) 2005, 2006  Charles Bouveyron <charles.bouveyron@free.fr>
-# Copyright (C) 2025  Tomáš Hnyk <tomashnyk@gmail.com>
+# Copyright (C) 2025, 2026  Tomáš Hnyk <tomashnyk@gmail.com>
 # 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,9 +22,17 @@
 #          Alessandro Faggiano <>
 #          Mathieu Vilaplana <mathieu@creationgif.com>
 #          Raphaël Pinson <raphink@raphink.net>
-WEB_Q=${KIM_WEB_QUALITY:-75}
+
 
 SOURCE_TRANSLATION_TTT
+# Read configuration if it exists
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-"$HOME/.config"}
+if [[ -f "$XDG_CONFIG_HOME"/kim_kdeimagemenu ]];then
+    WEB_Q=$(kreadconfig6 --file "$XDG_CONFIG_HOME"/kim_kdeimagemenu --group "<default>" --key WEB_EXPORT_QUALITY)
+fi
+if [[ -z $WEB_Q ]];then
+    WEB_Q=75
+fi
 FILE="";
 SCELTA="$1";
 DIR="$2";

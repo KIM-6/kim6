@@ -54,6 +54,9 @@ else
        install_log="$install_log""Cannot find encoder <b>libx265</b> for FFmpeg. Encoding video with it will not work. Please install it.<br><br>"
    fi
 fi
+if ! command -v kreadconfig6 >/dev/null 2>&1; then
+    install_log="$install_log""Cannot find executable <b>kreadconfig6</b>. Please install it. It is usually in package <b>kf6-kconfig</b>. Without it, user settings will not work. They are not necessary for the program to function.<br><br>"
+fi
 if ! command -v exiftool >/dev/null 2>&1; then
     install_log="$install_log""Cannot find executable <b>exiftool</b>. Please install it. It is usually in package <b>libimage-exiftool-perl</b> (Debian, Ubuntu etc.), <b>perl-Image-ExifTool</b> (Fedora etc.) or <b>perl-image-exiftool</b>(Arch). Without it, metadata stripping will not work.<br><br>"
 fi
