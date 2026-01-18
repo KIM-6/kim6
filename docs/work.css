@@ -26,7 +26,6 @@ a {
     font-weight:600;
 }
 
-
 a:visited {
         color:#6a2ca0;
 }
@@ -65,4 +64,10 @@ a:hover {
 #footer {
     text-align:center;
     font-size:0.9em;
+}
+
+#code {
+    font-family: monospace;
+    background-color: #f4f4f4;
+    padding: 2px;
 }
