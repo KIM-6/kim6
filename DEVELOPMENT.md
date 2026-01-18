@@ -1,14 +1,16 @@
 # Developer and translator information
 
 ## Translations
-To submit a new translation, just run `msginit -l XX` in the po directory (replace "XX" with the shortcut of your language) and translate the strings there. Then open an issue here with the resulting file as an attachment to submit it or better create a pull request. Current wrong or incomplete translations can be done by directly editing the po files and opening pull requests.
+To submit a new translation, run `msginit -l XX` in the `po` directory (replace "XX" with the shortcut of your language) and translate the strings there.
+To change a current translation, edit the [po files](https://github.com/KIM-6/kim6/tree/master/po).
+In either case, open an [issue](https://github.com/KIM-6/kim6/issues/new) with the resulting file as an attachment. Even better, create a pull request.
 
-To test your translation, install it (see release) and run Dolphin like this (replace your new language, this is for Dutch):
+To test your translation, install it (see [INSTALL.md](/INSTALL.md#option-3-install-from-a-cloned-repository), option 3) and run Dolphin like this (replace your language for "nl"):
 ```
 LANGUAGE=nl dolphin
 ```
 
-To generate new `.pot` template and update the individual translations, one runs this in the project root directory (it actually runs in the `po` directory; unless you develop a new feature, you should not need this as I try to keep the translation strings up-to-date):
+To generate new `.pot` template and update the individual translations, one runs this in the project root directory (it actually runs in the `po` directory; unless you develop a new feature, you should not need this, the translations are kept mostly up to date):
 ```
 VERSION=$(grep -m 1 "^Release" ChangeLog | grep -oP '\d+\.\d+\.\d+') # set kim6 version
 cd po;
