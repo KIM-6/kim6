@@ -22,7 +22,7 @@
 ```
 servicemenuinstaller install ./kim6*.tar.gz
 ```
-(when run with root priviledges, it will install system-wide)
+(when run with root priviledes, it will install system-wide)
 
 ### Option 3: Install from a cloned repository
 ```
@@ -30,7 +30,7 @@ git clone https://github.com/KIM-6/kim6.git
 cd kim6
 ./install.sh
 ```
-(when run with root priviledges, it will install system-wide)
+(when run with root priviledes, it will install system-wide)
 
 ## Uninstall
 
@@ -41,13 +41,13 @@ On some systems, uninstall may need to be triggered twice (reported as https://b
 
 ### Option 2: Remove using `servicemenuinstaller`
 
-If you installed via Dolphion, you can also do:
+If you installed via Dolphin, you can also do:
 
 ```
 servicemenuinstaller uninstall ~/.local/share/servicemenu-download/kim6*.tar.gz
 ```
 
-In the unusual case when the archive was stored elsewhere (meaning you have non-standrd `$XDG_DATA_HOME`, you need to locate the archive and change the path above.
+In the unusual case when the archive was stored elsewhere (meaning you have non-standard `$XDG_DATA_HOME`, you need to locate the archive and change the path above.
 
 ### Option 3: Remove from a cloned repository
 
