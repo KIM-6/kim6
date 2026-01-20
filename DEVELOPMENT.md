@@ -93,3 +93,4 @@ Individual scripts can also be run directly. Look into the bin files (which are 
 
 - Functionally, KIM 6 is stable. Please report bugs if you find any.
 - Technically, it would be good to merge executable files and refactor common code in functions, that should reduce the code size by half. Patches welcome!
+- Look into this: https://brainbaking.com/post/2025/10/is-it-worth-it-to-optimize-images-for-your-site/
