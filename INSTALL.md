@@ -1,6 +1,6 @@
 ## Dependencies
 
-- **KDE Plasma 6**: Dolphin, KDialog and Qt.
+- **KDE Plasma 6**: Dolphin, KDialog, qdbus and Qt (these are actually separate packages).
 - **ImageMagick**: Required for most image operations.
 - **FFmpeg**: Required for video conversion; image functions work without it.
 - **xdg-email** from `xdg-utils`: Required for the “send by e-mail” action.
