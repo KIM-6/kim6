@@ -34,6 +34,9 @@ spit_install_log() {
     kdialog --title "KIM 6 Installation problems" --error="$install_log"
 }
 
+if ! command -v qdbus >/dev/null 2>&1; then
+    install_log="$install_log""Cannot find executable <b>qdbus</b>. Please install it. It is usually in package <b>qdbus-qt6</b> (Debian, Ubuntu etc.), <b>qt6-qttools</b> (Fedora etc.) or <b>qt6-tools</b>(Arch). Without it, almost nothing will work.<br><br>"
+fi
 # Test for presence of dependencies, if not present, a user is presented with a log after installation
 if ! command -v montage >/dev/null 2>&1; then
     install_log="$install_log""Cannot find executable <b>montage</b>. Please install it. It is usually in package <b>imagemagick</b> (Debian etc, Arch) or <b>ImageMagick</b> (Fedora etc.). Without it, the montage feature will not work.<br><br>"
