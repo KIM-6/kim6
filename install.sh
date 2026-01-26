@@ -44,6 +44,9 @@ fi
 if ! command -v mogrify >/dev/null 2>&1; then
     install_log="$install_log""Cannot find executable <b>mogrify</b>. Please install it. It is usually in package <b>imagemagick</b> or <b>ImageMagick</b>. Without it, a lot of features like resizing and rotating and other transformations will not work.<br><br>"
 fi
+if ! magick -list format | grep -q "HEIC"; then
+    install_log="$install_log""It seems there is no support for converting and working with <b>HEIC</b> files. Please install it. It is usually in package <b>ImageMagick-heic</b> (Fedora). Without it, working with HEIC files will not work.<br><br>"
+fi
 if ! command -v convert >/dev/null 2>&1; then
     install_log="$install_log""Cannot find executable <b>convert</b>. Please install it. It is usually in package <b>imagemagick</b> or <b>ImageMagick</b> Without it, format conversion will not work.<br><br>"
 fi
