@@ -44,7 +44,9 @@ case $? in
             let "counter +=1"
             FILE="$i"
             qdbus $dbusRef setLabelText "$(gettext "Kim — Compressing file: ") `basename $(FILE)`"
-            mogrify -quality $QUALITY -- "$FILE"
+            if ! error_output=$(mogrify -quality $QUALITY -- "$FILE" 2>&1); then
+                kdialog --title "$(gettext "Kim — Error")" --error "$(gettext "Compressing failed for file:") $(basename -- "$FILE")\n\n$(gettext "Error:") $error_output\n\n$(gettext "Note: On some systems, you may need to install additional ImageMagick packages (e.g., ImageMagick-heic for HEIC support on Fedora).")"
+            fi
             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;
     done;;
@@ -65,7 +67,9 @@ case $? in
             NAME="${BASENAME%.*}"
             EXT="${BASENAME##*.}"
             qdbus $dbusRef setLabelText "$(gettext "Kim — Compressing file: ") `basename $(FILE)`"
-            magick -quality $QUALITY -- "$FILE" "$DIR/${NAME}_compressed.${EXT}"
+            if ! error_output=$(magick -quality $QUALITY -- "$FILE" "$DIR/${NAME}_compressed.${EXT}" 2>&1); then
+                kdialog --title "$(gettext "Kim — Error")" --error "$(gettext "Compressing failed for file:") $(basename -- "$FILE")\n\n$(gettext "Error:") $error_output\n\n$(gettext "Note: On some systems, you may need to install additional ImageMagick packages (e.g., ImageMagick-heic for HEIC support on Fedora).")"
+            fi
             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;
     done;;

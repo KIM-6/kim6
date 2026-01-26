@@ -44,7 +44,9 @@ case $? in
             let "counter +=1"
             FILE="$i"
             qdbus $dbusRef setLabelText "$(gettext "Kim — Resizing file: ") `basename -- "$FILE"`"
-            mogrify -resize "$SCALE" "$FILE"
+            if ! error_output=$(mogrify -resize "$SCALE" "$FILE" 2>&1); then
+                kdialog --title "$(gettext "Kim — Error")" --error "$(gettext "Resizing failed for file:") $(basename -- "$FILE")\n\n$(gettext "Error:") $error_output\n\n$(gettext "Note: On some systems, you may need to install additional ImageMagick packages (e.g., ImageMagick-heic for HEIC support on Fedora).")"
+            fi
             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;
     done;;
@@ -65,7 +67,9 @@ case $? in
             NAME="${BASENAME%.*}"
             EXT="${BASENAME##*.}"
             qdbus $dbusRef setLabelText "$(gettext "Kim — Resizing file: ") `basename -- "$FILE"`"
-            magick -- "$FILE" -resize "$SCALE" "$DIR/${NAME}_resized.${EXT}"
+            if ! error_output=$(magick -- "$FILE" -resize "$SCALE" "$DIR/${NAME}_resized.${EXT}" 2>&1); then
+                kdialog --title "$(gettext "Kim — Error")" --error "$(gettext "Resizing failed for file:") $(basename -- "$FILE")\n\n$(gettext "Error:") $error_output\n\n$(gettext "Note: On some systems, you may need to install additional ImageMagick packages (e.g., ImageMagick-heic for HEIC support on Fedora).")"
+            fi
             qdbus $dbusRef org.freedesktop.DBus.Properties.Set org.kde.kdialog.ProgressDialog value $counter
         fi;
     done;;

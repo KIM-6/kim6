@@ -1,0 +1,41 @@
+#!/bin/bash
+#
+# KIM6 Helper Functions for Error Handling and Format Checking
+#
+# Copyright (C) 2025  Kim6 Contributors
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+SOURCE_TRANSLATION_TTT
+
+# Execute ImageMagick command and capture errors
+# Usage: kim_exec_magick "command" "file" "dbusRef"
+kim_exec_magick() {
+    local cmd="$1"
+    local file="$2"
+    local dbusRef="$3"
+    local error_output
+    
+    error_output=$(eval "$cmd" 2>&1 >/dev/null)
+    local exit_code=$?
+    
+    if [ $exit_code -ne 0 ]; then
+        # Show error dialog
+        kdialog --title "$(gettext "Kim — Error")" --error "$(gettext "Processing failed for file:") $(basename -- "$file")\n\n$(gettext "Error:") $error_output\n\n$(gettext "Note: On some systems, you may need to install additional ImageMagick packages (e.g., ImageMagick-heic for HEIC support on Fedora).")"
+        return 1
+    fi
+    return 0
+}
+
+# Check if ImageMagick supports a specific format
+# Usage: kim_check_format_support "HEIC"
+kim_check_format_support() {
+    local format="$1"
+    if ! magick -list format 2>/dev/null | grep -qi "^\\s*$format"; then
+        kdialog --title "$(gettext "Kim — Warning")" --sorry "$(gettext "ImageMagick does not support the $format format.")\n\n$(gettext "Please install the appropriate ImageMagick plugin package for your system:") \n- Fedora/RHEL: ImageMagick-heic\n- Debian/Ubuntu: libmagick++-dev or similar\n- Arch: imagemagick"
+        return 1
+    fi
+    return 0
+}
