@@ -66,7 +66,7 @@ Exec=kim_convert avif %U
 [Desktop Action ConvCustom]
 _Name=Convert custom ...
 Icon=document-save
-Exec=kim_convert `kdialog --inputbox "Choose format to convert:" ` %U;
+Exec=kim_convert "$(kdialog --inputbox 'Choose format to convert:' '')" %U
 
 [Desktop Action GrayScale]
 _Name=Convert to graysale
@@ -78,12 +78,12 @@ _Name=Convert in sepia tone
 Icon=document-save
 Exec=kim_treatment sepia %D %U
 
-[Desktop Action AutoRot];
+[Desktop Action AutoRot]
 _Name=Auto-rotate with EXIF
 Icon=object-rotate-right
 Exec=kim_rotate EXIF %U
 
-[Desktop Action Rot90];
+[Desktop Action Rot90]
 _Name=Rotate (90°)
 Icon=object-rotate-right
 Exec=kim_rotate 90 %U
@@ -101,14 +101,14 @@ Exec=kim_rotate 270 %U
 [Desktop Action RotCustom]
 _Name=Rotate custom...
 Icon=object-rotate-right
-Exec=kim_rotate `kdialog --inputbox "Rotate x degrees:" 45` %U;
+Exec=kim_rotate "$(kdialog --inputbox 'Rotate x degrees:' '45')" %U
 
 [Desktop Action Flip]
 _Name=Flip verticaly
 Icon=object-flip-vertical
-Exec=kim_flipflop flip %U 
+Exec=kim_flipflop flip %U
 
 [Desktop Action Flop]
 _Name=Flip horizontaly
 Icon=object-flip-horizontal
-Exec=kim_flipflop flop %U 
+Exec=kim_flipflop flop %U
