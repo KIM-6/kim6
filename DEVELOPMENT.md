@@ -92,5 +92,10 @@ Individual scripts can also be run directly. Look into the bin files (which are 
 ## Todo
 
 - Functionally, KIM 6 is stable. Please report bugs if you find any.
-- Technically, it would be good to merge executable files and refactor common code in functions, that should reduce the code size by half. Patches welcome!
-- Look into this: https://brainbaking.com/post/2025/10/is-it-worth-it-to-optimize-images-for-your-site/
+- Ideas that are not planned by the current maintainers of the project to be implemented but for which PRs are welcome:
+  - Look into this: https://brainbaking.com/post/2025/10/is-it-worth-it-to-optimize-images-for-your-site/
+  - Technically, it would be good to merge executable files and refactor common code in functions, that should reduce the code size by half. Patches welcome!
+  - When invoked from command line, the scripts could have `-h` switch that would show their syntax ( https://github.com/KIM-6/kim6/issues/52 )
+  - when invoked on the command line with not arguments, it should tell the user ( https://github.com/KIM-6/kim6/issues/48 )
+  - When there is an error on the command line, it could be raised to Kdialog ( https://github.com/KIM-6/kim6/issues/54 )
+  - Catch when a file that is to be created with a new name already exists (because we use hardcoded suffix for it) and do not overwrite it ( https://github.com/KIM-6/kim6/issues/47 )
