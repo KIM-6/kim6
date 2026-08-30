@@ -1,7 +1,7 @@
 # Chinese (Simplified) translations for KIM 6 — Kde Image Menu 6 package.
 # Copyright (C) 2026 THE KIM 6 — Kde Image Menu 6'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the KIM 6 — Kde Image Menu 6 package.
-# zjut-gwb, 2026.
+# asikeida <asikeida@gmail.com>, 2026.
 #
 msgid ""
 msgstr ""
@@ -9,12 +9,13 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/KIM-6/kim6/issues\n"
 "POT-Creation-Date: 2026-01-14 01:15+0100\n"
 "PO-Revision-Date: 2026-08-30 00:00+0800\n"
-"Last-Translator: zjut-gwb\n"
+"Last-Translator: asikeida <asikeida@gmail.com>\n"
 "Language-Team: Chinese (Simplified)\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../src/bin/kim_album:25 ../src/bin/kim_print:29
 msgid "Kim — Select album type:"
