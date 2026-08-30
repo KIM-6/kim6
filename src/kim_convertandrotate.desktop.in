@@ -54,12 +54,12 @@ Icon=application-pdf
 Exec=kim_convert pdf %U
 
 [Desktop Action WEBP]
-Name=Convert to WebP
+_Name=Convert to WebP
 Icon=image
 Exec=kim_convert webp %U
 
 [Desktop Action AVIF]
-Name=Convert to AVIF
+_Name=Convert to AVIF
 Icon=image
 Exec=kim_convert avif %U
 
