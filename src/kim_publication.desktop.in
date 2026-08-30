@@ -69,7 +69,7 @@ Icon=image
 Exec=kim_treatment border %D %U
 
 [Desktop Action StripMetadata]
-Name=Strip EXIF metadata
+_Name=Strip EXIF metadata
 Icon=view-private
 Exec=kim_stripmeta %D %U
 

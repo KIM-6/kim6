@@ -93,7 +93,7 @@ msgstr "是否要创建新文件？"
 #: ../src/bin/kim_sortbydate:31 ../src/bin/kim_treatment:35
 #: ../src/bin/kim_video:98 ../src/bin/kim_webexport:32
 msgid "Create new"
-msgstr "新建文件"
+msgstr "创建新文件"
 
 #: ../src/bin/kim_compress:31 ../src/bin/kim_rename:30 ../src/bin/kim_resize:31
 #: ../src/bin/kim_sortbydate:31 ../src/bin/kim_treatment:35
@@ -111,7 +111,7 @@ msgstr "替换现有文件"
 #: ../src/bin/kim_treatment:38 ../src/bin/kim_treatment:77
 #: ../src/bin/kim_video:101 ../src/bin/kim_video:138
 msgid "Kim — Initialising…"
-msgstr "Kim — 正在初始化..."
+msgstr "Kim — 正在初始化…"
 
 #: ../src/bin/kim_compress:46 ../src/bin/kim_compress:70
 #: ../src/bin/kim_multiburst:53 ../src/bin/kim_webexport:48
@@ -218,7 +218,15 @@ msgstr "Kim — 通过邮件发送："
 
 #: ../src/bin/kim_resizeandsend:32
 msgid "Full size"
-msgstr "原始大小"
+msgstr "完整大小"
+
+#: ../src/bin/kim_resizeandsend:32
+msgid "1600x1600"
+msgstr "1600x1600"
+
+#: ../src/bin/kim_resizeandsend:33
+msgid "1200x1200"
+msgstr "1200x1200"
 
 #: ../src/bin/kim_resizeandsend:32
 msgid "800x800 px"
@@ -232,6 +240,14 @@ msgstr "600x600 像素"
 msgid "300x300 px"
 msgstr "300x300 像素"
 
+#: ../src/bin/kim_resizeandsend:37
+msgid "Custom size..."
+msgstr "自定义大小..."
+
+#: ../src/bin/kim_resizeandsend:49
+msgid "Kim — Copying files to temporary directory: "
+msgstr "Kim — 正在复制文件到临时目录："
+
 #: ../src/bin/kim_resizeandsend:49
 msgid "Kim — Resizing and compressing file: "
 msgstr "Kim — 正在调整并压缩文件："
@@ -240,6 +256,22 @@ msgstr "Kim — 正在调整并压缩文件："
 #: ../src/bin/kim_resizeandsend:74
 msgid "Kim — Send by mail: you can write your message!"
 msgstr "Kim — 通过邮件发送：你可以开始撰写邮件了！"
+
+#: ../src/bin/kim_resizeandsend:93
+msgid ""
+"Kim — Send by mail: you can write your message, hopefully your mail client "
+"supports adding attachments via xdg-email!"
+msgstr ""
+"Kim — 通过邮件发送：你可以开始撰写邮件了，希望你的邮件客户端"
+"支持通过 xdg-email 添加附件！"
+
+#: ../src/bin/kim_stripmeta:30
+msgid "Kim — Initialising metadate stripping"
+msgstr "Kim — 正在初始化元数据清理"
+
+#: ../src/bin/kim_stripmeta:42 ../src/bin/kim_stripmeta:64
+msgid "Kim — Stripping metadata from file: "
+msgstr "Kim — 正在移除文件元数据："
 
 #: ../src/bin/kim_treatment:32
 msgid "Choose your annotation:"
@@ -280,39 +312,39 @@ msgstr "Kim — 压缩和调整大小"
 
 #: ../src/kim_compressandresize.desktop.in.h:3
 msgid "Compress at 10 %"
-msgstr "压缩到 10 %"
+msgstr "以 10 % 质量压缩"
 
 #: ../src/kim_compressandresize.desktop.in.h:5
 msgid "Compress at 20 %"
-msgstr "压缩到 20 %"
+msgstr "以 20 % 质量压缩"
 
 #: ../src/kim_compressandresize.desktop.in.h:7
 msgid "Compress at 30 %"
-msgstr "压缩到 30 %"
+msgstr "以 30 % 质量压缩"
 
 #: ../src/kim_compressandresize.desktop.in.h:9
 msgid "Compress at 40 %"
-msgstr "压缩到 40 %"
+msgstr "以 40 % 质量压缩"
 
 #: ../src/kim_compressandresize.desktop.in.h:11
 msgid "Compress at 50 %"
-msgstr "压缩到 50 %"
+msgstr "以 50 % 质量压缩"
 
 #: ../src/kim_compressandresize.desktop.in.h:13
 msgid "Compress at 60 %"
-msgstr "压缩到 60 %"
+msgstr "以 60 % 质量压缩"
 
 #: ../src/kim_compressandresize.desktop.in.h:15
 msgid "Compress at 70 %"
-msgstr "压缩到 70 %"
+msgstr "以 70 % 质量压缩"
 
 #: ../src/kim_compressandresize.desktop.in.h:17
 msgid "Compress at 80 %"
-msgstr "压缩到 80 %"
+msgstr "以 80 % 质量压缩"
 
 #: ../src/kim_compressandresize.desktop.in.h:19
 msgid "Compress at 90 %"
-msgstr "压缩到 90 %"
+msgstr "以 90 % 质量压缩"
 
 #: ../src/kim_compressandresize.desktop.in.h:20
 msgid "Compress Custom..."
@@ -381,6 +413,10 @@ msgstr "网页导出：800x800，质量 75 %"
 #: ../src/kim_compressandresize.desktop.in.h:40
 msgid "WebExport: 1024x1024 at 75 %"
 msgstr "网页导出：1024x1024，质量 75 %"
+
+#: ../src/kim_compressandresize.desktop.in.h:34
+msgid "WebExport: 1600x1600 at 75 %"
+msgstr "网页导出：1600x1600，质量 75 %"
 
 #: ../src/kim_compressandresizevideo.desktop.in.h:2
 msgid "Transcode video to 1280x720, good quality, libx265"
@@ -522,6 +558,14 @@ msgid "Convert to PDF"
 msgstr "转换为 PDF"
 
 #: ../src/kim_convertandrotate.desktop.in.h:8
+msgid "Convert to WebP"
+msgstr "转换为 WebP"
+
+#: ../src/kim_convertandrotate.desktop.in.h:9
+msgid "Convert to AVIF"
+msgstr "转换为 AVIF"
+
+#: ../src/kim_convertandrotate.desktop.in.h:8
 msgid "Convert custom ..."
 msgstr "自定义转换..."
 
@@ -587,7 +631,7 @@ msgstr "重命名图片"
 
 #: ../src/kim_publication.desktop.in.h:7
 msgid "Create a multi-files Tiff image"
-msgstr "创建多文件 TIFF 图片"
+msgstr "创建多页 TIFF 图像"
 
 #: ../src/kim_publication.desktop.in.h:8
 msgid "Create a gif animation"
@@ -600,6 +644,10 @@ msgstr "将连拍图片转换为 GIF 动画"
 #: ../src/kim_publication.desktop.in.h:10
 msgid "Add a border"
 msgstr "添加边框"
+
+#: ../src/kim_publication.desktop.in.h:11
+msgid "Strip EXIF metadata"
+msgstr "移除 EXIF 元数据"
 
 #: ../src/kim_publication.desktop.in.h:11
 msgid "Create a pdf album"
